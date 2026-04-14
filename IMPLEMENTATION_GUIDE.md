@@ -3,7 +3,7 @@
 ## Implementation Guide & System Log
 
 **Owner:** Zamir Kazi (zamir@zmrcapital.com)
-**Portfolio:** 18 properties
+**Portfolio:** 19 properties
 **Created:** April 14, 2026
 **Last Updated:** April 14, 2026
 
@@ -11,7 +11,7 @@
 
 ## 1. System Overview
 
-This pipeline automatically generates a weekly asset management report for ZMR Capital's 18-property portfolio. It pulls data from Fireflies meeting transcripts, builds an HTML dashboard, deploys it to a live URL, archives structured data for future rollups, and distributes via Slack and email.
+This pipeline automatically generates a weekly asset management report for ZMR Capital's 19-property portfolio. It pulls data from Fireflies meeting transcripts, builds an HTML dashboard, deploys it to a live URL, archives structured data for future rollups, and distributes via Slack and email.
 
 ### Pipeline Flow
 
@@ -238,21 +238,86 @@ The sandbox and browser run in completely separate environments with no shared f
 
 ---
 
-## 8. Change Log
+
+
+## 10. Master Property Reference
+
+**Source:** [Master Property List](https://docs.google.com/spreadsheets/d/1TD9UU2VTPWcYwL7AaHyHOLUeFE70MBx-DLCrRrPJpHg/edit?gid=0#gid=0) (Google Sheet, owned by Melanie Toquica)
+
+**Total: 19 properties | 5,651 units | 5 markets**
+
+CRITICAL: The dashboard and all reports MUST use the market (City, State) listed below. Do NOT infer markets from meeting discussion groupings.
+
+### ARIZONA (3 properties, 672 units)
+
+| # | Property Name | Former Name | Market | Units | Asset Manager |
+|---|--------------|-------------|--------|-------|---------------|
+| 1 | The Flats | District Flats | Mesa, AZ | 112 | Mike |
+| 2 | Nightingale on 25th | Tides on 25th | Deer Valley, AZ | 240 | Mike |
+| 3 | The Julia | — | Mesa, AZ | 320 | Mike |
+
+### FLORIDA (8 properties, 2,741 units)
+
+| # | Property Name | Former Name | Market | Units | Asset Manager |
+|---|--------------|-------------|--------|-------|---------------|
+| 4 | The Boardwalk | — | Fort Myers, FL | 338 | Nicole |
+| 5 | Hanley Place | — | Tampa, FL | 400 | Nicole |
+| 6 | Skye at Conway | — | Orlando, FL | 220 | Nicole |
+| 7 | Skye Oaks | Palms at Palisades | Brandon, FL | 125 | Nicole |
+| 8 | Skye Oaks | Brandon Oaks | Brandon, FL | 160 | Nicole |
+| 9 | Skye Reserve | Reserve at Brandon | Brandon, FL | 982 | Nicole |
+| 10 | Preserve at Riverwalk | — | Bradenton, FL | 300 | Nicole |
+| 11 | Skye at Hunter's Creek | Sonoma Pointe | Kissimmee, FL | 216 | Nicole |
+
+### GEORGIA (2 properties, 466 units)
+
+| # | Property Name | Former Name | Market | Units | Asset Manager |
+|---|--------------|-------------|--------|-------|---------------|
+| 12 | Park at Peachtree Hills | — | Atlanta, GA | 118 | Mike |
+| 13 | Upland Townhomes | — | Mableton, GA | 348 | Mike |
+
+### TEXAS (5 properties, 1,556 units)
+
+| # | Property Name | Former Name | Market | Units | Asset Manager |
+|---|--------------|-------------|--------|-------|---------------|
+| 14 | Ninety-Nine 44 | — | Dallas, TX | 260 | Mike |
+| 15 | Parks At Walnut | — | Dallas, TX | 308 | Mike |
+| 16 | Chimney Hill | — | Dallas, TX | 240 | Mike |
+| 17 | Skye Isle | Bayou Bend | Dallas, TX | 308 | Nicole |
+| 18 | Skye at Love | Pecan Square | Dallas, TX | 440 | Nicole |
+
+### LAS VEGAS (1 property, 216 units)
+
+| # | Property Name | Former Name | Market | Units | Asset Manager |
+|---|--------------|-------------|--------|-------|---------------|
+| 19 | Skye Ridge | Sunridge | Las Vegas, NV | 216 | Nicole |
+
+### Common Market Mistakes to Avoid
+
+- Chimney Hill is in DALLAS, TX (not Atlanta)
+- Skye at Hunter's Creek is in KISSIMMEE, FL (not Atlanta)
+- Skye at Conway is in ORLANDO, FL (not Dallas)
+- Skye Reserve is in BRANDON, FL (not Dallas)
+- Skye Ridge is in LAS VEGAS, NV (not Dallas)
+- Skye Oaks (both) are in BRANDON, FL (not Tampa)
+- The Boardwalk is in FORT MYERS, FL (not Tampa)
+
+## 11. Change Log
 
 | Date       | Change | Details |
 |-----------|--------|---------|
-| 2026-04-14 | Initial build | Created 96KB HTML dashboard from 4 Fireflies transcripts covering 11 of 18 properties |
+| 2026-04-14 | Initial build | Created 96KB HTML dashboard from 4 Fireflies transcripts covering 11 of 19 properties |
 | 2026-04-14 | GitHub Pages deployment | Deployed to https://zamirkazi.github.io/zmr-weekly-AM-reports/ via main branch |
 | 2026-04-14 | JSON archive | Created `archive/2026-W15.json` with structured data for Week 15 |
 | 2026-04-14 | Slack distribution | Sent detailed message to Zamir DM (U01N25J7789) |
 | 2026-04-14 | Gmail draft | Created draft to all 7 team members with live dashboard link |
 | 2026-04-14 | Bold formatting fix | Fixed 10 unclosed `<strong>` tags in Action Items sections causing body paragraphs to render bold. Commit `5230d94`. |
 | 2026-04-14 | Implementation guide | Created this document for portability and knowledge preservation |
+| 2026-04-14 | Property reference added | Added Section 10 with all 19 properties, correct markets from Master Property List Google Sheet. Fixed market misattributions (Chimney Hill, Hunter's Creek, Conway, Reserve, Ridge, Oaks, Boardwalk). Updated portfolio count from 18 to 19. |
 
 ---
 
-## 9. Troubleshooting
+## 12. Troubleshooting
 
 **Dashboard not updating after commit:**
 GitHub Pages can take 1â5 minutes to propagate. Check deployment status at Settings â Pages in the repo.
