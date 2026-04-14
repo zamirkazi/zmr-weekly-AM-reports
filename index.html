@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZMR Capital — Weekly Asset Report — Apr 13, 2026</title>
+    <style>
+        :root {
+            --bg-primary: #fafaf7;
+            --bg-secondary: #ffffff;
+            --text-primary: #2c2c2c;
+            --text-secondary: #666666;
+            --border: #e5e5e0;
+            --green-ok: #10b981;
+            --amber-warn: #f59e0b;
+            --red-crit: #ef4444;
+            --green-dark: #047857;
+            --neutral-light: #f3f2f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        /* ===== SECTION HEADERS ===== */
+        h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+
+        /* ===== KPI GRID ===== */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .kpi-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .kpi-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .kpi-label {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== STATUS PILLS ===== */
+        .pill {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .pill.green {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+
+        .pill.amber {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
+        .pill.red {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+
+        /* ===== TABLE ===== */
+        .table-wrapper {
+            overflow-x: auto;
+            margin-bottom: 32px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            font-size: 13px;
+        }
+
+        thead {
+            background-color: var(--neutral-light);
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background-color: var(--neutral-light);
+        }
+
+        .property-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* ===== NARRATIVE SECTIONS ===== */
+        .narrative {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            line-height: 1.7;
+        }
+
+        .narrative p {
+            margin-bottom: 14px;
+            color: var(--text-secondary);
+        }
+
+        .narrative p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ===== ASSET CARDS ===== */
+        .asset-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--border);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .asset-card.risk {
+            border-left-color: var(--red-crit);
+        }
+
+        .asset-card.win {
+            border-left-color: var(--green-ok);
+        }
+
+        .asset-card.recommendation {
+            border-left-color: var(--green-dark);
+        }
+
+        .asset-card h3 {
+            margin-top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .asset-card p {
+            margin-bottom: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .asset-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .asset-meta {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* ===== DETAILS LIST ===== */
+        .details {
+            background-color: var(--neutral-light);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 14px;
+            margin: 14px 0;
+            font-size: 13px;
+        }
+
+        .details strong {
+            color: var(--text-primary);
+        }
+
+        /* ===== RECOMMENDATIONS ===== */
+        .recommendation-item {
+            background: var(--bg-secondary);
+            border-left: 4px solid var(--green-dark);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--green-dark);
+            padding: 16px;
+            margin-bottom: 16px;
+            border-radius: 4px;
+        }
+
+        .recommendation-item strong {
+            color: var(--text-primary);
+        }
+
+        /* ===== ACTION ITEMS ===== */
+        .action-group {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .action-group h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .action-group ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .action-group li {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .action-group li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--text-primary);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            font-size: 11px;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-top: 48px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .kpi-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 20px 12px;
+            }
+
+            table {
+                font-size: 11px;
+            }
+
+            th, td {
+                padding: 6px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ZMR Capital — Weekly Asset Report — Apr 13, 2026</h1>
+        <p class="subtitle">Portfolio Status for Week Ending April 10, 2026 | 18 Properties Reviewed</p>
+
+        <!-- ===== SECTION A: PORTFOLIO SNAPSHOT ===== -->
+        <h2>Portfolio Snapshot</h2>
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-value">85.4%</div>
+                <div class="kpi-label">Avg Occupancy</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-value">$790K</div>
+                <div class="kpi-label">Total Delinquency</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-value">18/18</div>
+                <div class="kpi-label">Properties Reviewed</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-value">5</div>
+                <div class="kpi-label">Red-Flag Assets</div>
+            </div>
+        </div>
+
+        <div class="narrative">
+            <p><strong>Portfolio Structure:</strong> The portfolio is clearly bifurcated into performing and critical tiers. The Atlanta book anchors performance with Peachtree Hills at 94% and Hunters Creek at 91.2%. Skye Conway (Dallas) rounds out the core performers at 92.3% occupancy. These three properties provide the portfolio stability needed to offset volatility in the watchlist and critical buckets.</p>
+            
+            <p><strong>Problem Assets:</strong> Skye Reserve (70.3%), Upland (77%), The Flats (risk to 68%), and Nightingale (82.8%) drag overall occupancy. Reserve is the most acute crisis—27 active evictions, 68 open work orders (record low), and a $40K vehicle damage claim exposed against a $10K insurance cap. This triggers standalone Locked In policy conversations ($1.5M quote vs $1.1M baseline). MF1 won't advance capital; renovations are paused; and the lender appraisal likely lands below the $200M loan amount. ~$20M accrued interest requires subordination. Forbearance is extended month-to-month.</p>
+            
+            <p><strong>Operational Emergencies:</strong> Walnut/Parks@9944 is the second most urgent item—$633K payables vs $306K cash, with a $200K check missing from Parks@9944. Zero new traffic and a maintenance tech detained by ICE have decimated leasing activity. Chimney Hill fire cost creep is aggressive: $95K of $100K NTE spent with $125K additional requested (full scope $415K). 14 units remain offline, and the collections gap (0-30 day) is flagged low. Fortress lender extension is being negotiated.</p>
+            
+            <p><strong>Capital Markets Tightness:</strong> Starwood extensions are active for Julia (matured May 9), Conway, and Preserve. MF1 is unwilling to advance at Reserve given insurance and collections volatility. Chimney Hill is navigating Fortress lender negotiations post-fire. Capital strategy pivots are required: Reserve is exploring recapitalization with equity group outreach (Zamir to initiate); Julia is managing utility cost overruns (3.8x variance vs plan) with a Starwood extension; and Chimney Hill is evaluating insurance recovery vs sale path as a capital decision.</p>
+            
+            <p><strong>Leasing & Collections Softness:</strong> Leasing velocity is soft across Dallas and Mesa. Ridge is declining from 85.6% to 80.9% with escalating concessions ($250→$350→$500). Ridge is downgrading Apartments.com Platinum→Gold and adding PPC/PMAX spend. Nightingale and Flats are in conversion crisis: Nightingale 13.6% close vs 40-50% target; Flats 7 tours→2 apps with 50% applicant denial. Both are relying on incentives ($500-$1K bonuses) without process fixes. Upland and Reserve are on the same recovery playbook; both are trending low-80s within 30 days during peak season. Total delinquency is ~$790K across the portfolio; Walnut alone carries $633K payables.</p>
+        </div>
+
+        <!-- ===== SECTION B: PROPERTY PERFORMANCE TABLE ===== -->
+        <h2>Property Performance Table</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Market</th>
+                        <th>Occupancy</th>
+                        <th>Delinquency</th>
+                        <th>Status</th>
+                        <th>Headline</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">Park at Peachtree Hills</td>
+                        <td>Atlanta</td>
+                        <td>94.0%</td>
+                        <td>Low</td>
+                        <td><span class="pill green">On Track</span></td>
+                        <td>2 evictions pending (B13/A9); July renewals +2.5% w/ $300 concession</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">Hunters Creek</td>
+                        <td>Atlanta</td>
+                        <td>91.2%</td>
+                        <td>$225K escrow</td>
+                        <td><span class="pill green">On Track</span></td>
+                        <td>0% renewal increase strategy holding retention; insurance escrow $225K</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">Chimney Hill</td>
+                        <td>Atlanta</td>
+                        <td>89.6%*</td>
+                        <td>$121.6K</td>
+                        <td><span class="pill amber">Fire Stabilization</span></td>
+                        <td>*excl 14 fire units; $95K of $100K NTE spent; requesting $125K more</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">Skye Conway</td>
+                        <td>Dallas</td>
+                        <td>92.3%</td>
+                        <td>$30.6K</td>
+                        <td><span class="pill green">On Track</span></td>
+                        <td>14 tours→2 leases (both cancelled); reviews scandal resolved, rating 3.9</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">Skye Reserve</td>
+                        <td>Dallas</td>
+                        <td>70.3%</td>
+                        <td>$149.3K</td>
+                        <td><span class="pill red">Critical</span></td>
+                        <td>27 evictions; 68 WOs (record low); $40K vehicle damage vs $10K cap</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">Skye Ridge</td>
+                        <td>Dallas</td>
+                        <td>85.6%→80.9%</td>
+                        <td>$30.3K</td>
+                        <td><span class="pill amber">Declining</span></td>
+                        <td>Concessions $250→$350→$500; downgrading Apts.com Platinum→Gold</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">Skye Oaks</td>
+                        <td>Tampa</td>
+                        <td>88.8%</td>
+                        <td>$78K</td>
+                        <td><span class="pill amber">Watch</span></td>
+                        <td>Lender cert: 13 repair items; electrical $100K over; ADA $30K vs $500</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">Hanley Place</td>
+                        <td>Tampa</td>
+                        <td>87.3%</td>
+                        <td>$68K</td>
+                        <td><span class="pill amber">Watch</span></td>
+                        <td>Signal 88 security proposed; sewage jetting $2,476/bldg</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">Brandon Oaks / Boardwalk</td>
+                        <td>Tampa</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td><span class="pill amber">Coverage Gap</span></td>
+                        <td>No dedicated transcript this week</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">Skye Isle</td>
+                        <td>Dallas</td>
+                        <td>86.4%</td>
+                        <td>88.4% coll.</td>
+                        <td><span class="pill amber">Watch</span></td>
+                        <td>Joe's Creek encampment cleared (75% trash out); HOT team enforcement</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">Skye Love</td>
+                        <td>Dallas</td>
+                        <td>—</td>
+                        <td>93.6% coll.</td>
+                        <td><span class="pill amber">Lender Risk</span></td>
+                        <td>13 move-ins; need 90% collections to satisfy lender covenant</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">Skye Aisle</td>
+                        <td>Dallas</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td><span class="pill amber">Coverage Gap</span></td>
+                        <td>Covered under Isle/Love combined call</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">Upland</td>
+                        <td>Other</td>
+                        <td>77%→80% tgt</td>
+                        <td>$37K</td>
+                        <td><span class="pill red">Recovery</span></td>
+                        <td>Winbush bankruptcy; 84% collected; unit grading 1-5 live</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">The Julia</td>
+                        <td>Mesa</td>
+                        <td>—</td>
+                        <td>$34K city utility</td>
+                        <td><span class="pill red">Cash Stress</span></td>
+                        <td>Mesa past due $34K vs $9K planned; 32 July expirations; 5% cap</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">The Flats</td>
+                        <td>Other</td>
+                        <td>Risk to 68%</td>
+                        <td>—</td>
+                        <td><span class="pill red">Leasing Risk</span></td>
+                        <td>7 tours→2 apps; 50% denial rate; June 100% renewal</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">Nightingale</td>
+                        <td>Other</td>
+                        <td>82.8%</td>
+                        <td>—</td>
+                        <td><span class="pill red">Conversion</span></td>
+                        <td>13.6% close vs 40-50%; 8wks free; $1K team bonus for 6 rentals</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">Walnut / Parks@9944</td>
+                        <td>Other</td>
+                        <td>—</td>
+                        <td>$633K payables</td>
+                        <td><span class="pill red">Liquidity</span></td>
+                        <td>Missing $200K check; $306K cash; maint tech detained by ICE; zero traffic</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">Preserve at Riverwalk</td>
+                        <td>Other</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td><span class="pill amber">Coverage Gap</span></td>
+                        <td>Starwood extension pending; schedule asset-level review</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ===== SECTION C: PORTFOLIO NARRATIVE ===== -->
+        <h2>Portfolio Narrative — Deep Dive</h2>
+
+        <h3>Three-Tier Structure</h3>
+        <div class="narrative">
+            <p><strong>Performing Tier (Occ 88%+):</strong> Peachtree Hills (94%), Hunters Creek (91.2%), Skye Conway (92.3%), Skye Ridge (85.6% declining to 80.9%), Skye Oaks (88.8%), Hanley Place (87.3%), Skye Isle (86.4%), and Boardwalk (94.4% per monthly review) form the operating base. These eight properties generate consistent rent collection, low eviction cadence, and manageable delinquency. Hunters and Peachtree are template properties—Hunters locked into 0% renewals as a retention strategy, Peachtree blending +2.5% renewals with $300 concessions. Conway leadership fixed the reputation crisis (22 fake reviews removed, rating restored to 3.9). Ridge is the outlier here—concessions are escalating ($250→$350→$500), Apartments.com is being downgraded Platinum→Gold, and traffic is insufficient at 9 tours→3 apps→0 approvals.</p>
+            
+            <p><strong>Watchlist Tier (Occ 70-88% or Elevated Collections Risk):</strong> Skye Love (93.6% collections, 13 move-ins this week, lender covenant at 90%), Skye Aisle (under Isle/Love tracking), Upland (77% occ, 84% collections, Winbush bankruptcy, 3 leases this week), and Chimney Hill (89.6% excl fire units, 0-30 day collections flagged low, $121.6K delinquency) comprise the watch category. Love is on the knife-edge—13.6% move-in uptake is positive, but 93.6% collections vs 90% lender covenant leaves zero margin for slip. Upland is on the recovery curve same as Reserve; unit grading 1-5 is live, and new team investments (Kim Peavy tracking delinquency/leasing weekly) are paying off. Chimney Hill's fire mitigation is progressing ($95K of $100K NTE spent), but collections gap and lender extension negotiations require aggressive coordination between Shasta Jackson, Josh, and Vanessa Costephens.</p>
+            
+            <p><strong>Critical Tier (Occ <70% or Structural Liquidity Risk):</strong> Skye Reserve (70.3%, 27 evictions, $149.3K delinquency, $40K vehicle damage exposed against $10K cap), Walnut/Parks@9944 ($633K payables, $306K cash, $200K missing check), The Julia (Mesa utility $34K past due vs $9K plan, 32 July expirations, 5% cap), The Flats (risk to 68% occ, 7 tours→2 apps, 50% denial rate, June 100% renewal critical), and Nightingale (82.8% occ, 13.6% close vs 40-50% target) are in critical intervention mode. Reserve is the most severe—$40K vehicle damage triggers standalone Locked In policy ($1.5M vs $1.1M baseline); MF1 won't advance capital; ~$20M accrued interest requires subordination; forbearance extended month-to-month; lender appraisal likely below $200M. Walnut is a liquidity emergency—$200K check trace required EOD Monday; interim maintenance coverage needed; AP prioritization with $100K wedge decision pending. Julia's utility variance (3.8x) requires root-cause identification by Wednesday; 32 July expirations at 5% cap demand immediate renewal campaign. Flats and Nightingale are conversion crises—both leaning on incentives without process fixes; mystery shopping (Matt Rogers on Flats; extend to Nightingale) and Apartments.com tier validation needed before deeper discounting.</p>
+        </div>
+
+        <h3>Capital Markets & Financing</h3>
+        <div class="narrative">
+            <p><strong>Starwood Extensions:</strong> Julia's Starwood loan matured May 9; extension is active. Conway and Preserve also have Starwood extension negotiations underway. Julia's $34K Mesa utility overage (vs $9K plan) is complicating refinance conversations. Conway's extension is contingent on maintaining >92% occupancy and collections pace. Preserve's extension status is pending; asset-level review should be scheduled next cycle.</p>
+            
+            <p><strong>MF1 Stance on Reserve:</strong> MF1 has declined additional capital advancement at Reserve. Reserve's insurance exposure ($40K vehicle damage vs $10K cap) and 27-eviction cadence create lender hesitation. Locked In standalone policy conversation ($1.5M quote vs $1.1M baseline) is blocking forward capital flow. Lender appraisal is likely to land below the $200M loan amount given current occupancy and collections. ~$20M accrued interest requires subordination discussion. Forbearance is extended month-to-month pending eviction-to-turn pipeline execution. Renovations are paused due to lender restrictions.</p>
+            
+            <p><strong>Chimney Hill Fire & Fortress:</strong> Full fire scope is $415K. $95K of $100K NTE has been spent; $125K additional is requested. 14 units remain offline. Fortress lender extension is being negotiated post-fire. Insurance recovery vs sale path is the key capital decision (status unchanged from monthly review). Shasta and Asia Jackson are new hires handling fire unit coordination. 0-30 day collections are flagged low—Vanessa, Shasta, and Josh are coordinating detailed delinquency reports. Insurance claim process is active.</p>
+            
+            <p><strong>Reserve Recapitalization:</strong> Zamir is updating underwriting models with latest rent roll and concession strategy. Difficulty meeting target returns without rent growth is pushing recapitalization exploration. Zamir will contact equity groups for proposals by next cycle. IHG governance clarity is needed—Anna Jensen is reviewing GP/LP roles and decision rights documents. Regular call cadence is being established with IHG. Nicole is managing insurance policy options/funding before finalization.</p>
+        </div>
+
+        <h3>Accounting & Financial Infrastructure</h3>
+        <div class="narrative">
+            <p><strong>AFDA Policy Walkthrough:</strong> AFDA is a monthly accrual for 60+ day balances per GAAP. Write-offs happen post-eviction once collections recovery is clearly zero. Mike Weiner is reviewing March/April write-offs. Upland has skewed bad debt expenses from the new AFDA policy—Mike and Malinda are analyzing the impact. AFDA policy formalization is complete, providing consistent financial reporting across the portfolio.</p>
+            
+            <p><strong>Capitalization Policy:</strong> Capitalization policy is nearing completion for consistent financial reporting. This will standardize CAPEX tracking, drawing, and accrual across all 18 properties. Banner system configuration is enabling invoice reporting, approval workflows, warranty tracking, and draw packages—Nicole now has budget oversight (PM approval removed).</p>
+            
+            <p><strong>Monthly Financial Review Process:</strong> Jocel conducts first pass; Mike Weiner reviews; Nicole provides final approval. This three-person review cadence ensures consistency and catches outliers (e.g., Oaks/Hanley $100K+ electrical overruns, Julia $34K utility variance). Standing weekly capex variance report is recommended to surface project-management gaps early.</p>
+            
+            <p><strong>Operational Systems:</strong> Banner is configured for invoice reporting, approval workflows, warranty tracking, and draw packages. Nicole now has budget oversight with PM approval removed, enabling faster decision cycles. Julie Clopper is receiving read-only Banner access for Florida properties. Symmetre leasing data feeds are live for Peachtree, Hunters, Conway, and others.</p>
+        </div>
+
+        <h3>Marketing Strategy & Leasing Operations</h3>
+        <div class="narrative">
+            <p><strong>Strategic Shift to Performance-Based Pricing:</strong> Conway is moving from per-lease to flat-fee model on Apartments.com. Georgia portfolio (Peachtree, Hunters) is prioritizing Zillow over Apartments.com based on ROI data. Texas properties are shifting from SEO to paid search focus. Performance Max campaigns are being added portfolio-wide. Lead conversion challenges during peak season are acute—Ridge is downgrading Platinum→Gold on Apartments.com; Nightingale and Flats are offering 8 weeks free and $500-$1K bonuses without addressing root conversion issues.</p>
+            
+            <p><strong>Reputation Management — Conway's Recovery:</strong> Conway fixed 22 fake reviews. Rating restored to 3.9. Reputation management team is monitoring ongoing review activity. This was a critical win—negative reputation was suppressing leasing velocity significantly. Nicole is tracking reputation metrics portfolio-wide.</p>
+            
+            <p><strong>Property-Level Marketing Initiatives:</strong> Reserve (Amanda Burk leading): New photo shoot planned; Zillow analytics follow-up next week. Conway (Amanda Burk): 1-month free special locked in; weekend outreach marketing active. Ridge (Brooke Smith): Downgrading Apts.com Platinum→Gold; adding $750 PPC spend; adding $500 PMAX AI campaigns (implementing immediately). Isle/Love (Joshua Austin): Expanded Google radius with Spanish keyword strategy; bilingual materials; resident referral push. Peachtree/Hunters (Kayla): Monitoring delinquent accounts; template for Tampa conversion conversations. Upland/Reserve (Kim Peavy): New team investments paying off; positive reviews and engagement initiatives improving resident satisfaction. Nightingale/Flats: Mystery shopping (Matt Rogers on Flats, extend to Nightingale); Apts.com tier validation before deeper discounts; rent reductions on 1BR at Flats ($969-$979 to stay competitive).</p>
+            
+            <p><strong>Bilt Payment Platform & FlexPay:</strong> Strong adoption at Conway but overlaps with FlexPay. Tracking registrations is complicated—Nicole is confirming breakdown of FlexPay vs Bilt users to avoid double-counting in revenue projections.</p>
+        </div>
+
+        <h3>Acquisitions & Pipeline</h3>
+        <div class="narrative">
+            <p><strong>Active Pipeline:</strong> Eleven11 Lexington at Flower Mound (Dallas submarket): $66M, 90%+ occupancy, excellent schools/demographics. Kendrick deal: $82.6M, 5.25% cap. Both are target properties for the portfolio. Compton Place Tampa is in underwriting. Orlando Esplanade (off-market) expected feedback Monday. Targeting Dallas, Austin, Tampa, Jacksonville for off-market deals.</p>
+            
+            <p><strong>Sourcing Strategy:</strong> Kevin Mawby is calling brokers from loan maturity lists to identify potential deals. Annotated pipeline PDF and Google Maps walkthrough tools are in use for property analysis. Broker cadence is scheduled for Monday calls ongoing.</p>
+            
+            <p><strong>Tampa Submarket Focus:</strong> Zamir is pulling submarket maps for Tampa acquisitions (Compton Place underwriting, Orlando Esplanade pending feedback). Tampa has shown relative resilience and offers smaller check sizes compared to Dallas megadeals.</p>
+        </div>
+
+        <!-- ===== SECTION D: TOP 5 RISKS ===== -->
+        <h2>Top 5 Risks — Critical Issues</h2>
+
+        <div class="asset-card risk">
+            <h3>1. Walnut/Parks@9944 Liquidity Crisis <span class="pill red">URGENT</span></h3>
+            <p><strong>The Issue:</strong> $633K payables vs $306K cash; $200K check missing from Parks@9944; zero new leasing traffic; maintenance tech detained by ICE; 70% application denial rate at Parks; $125 app fee (up from $25); estimated $100K monthly net outflow without intervention.</p>
+            <p><strong>Operational Impact:</strong> Immigration enforcement is decimating the prospect pool in the Dallas market. 70% applicant denial rate suggests either aggressive screening or genuine applicant disqualification due to immigration status concerns. Josh and Nicole discussed marketing challenges from immigration impact. Maintenance tech detention creates immediate service delivery risk. Application fee increase from $25→$125 signals quality filtering but may suppress volume further.</p>
+            <p><strong>Financial Impact:</strong> $200K check trace required EOD Monday. If check is lost, immediate wire from corporate is required. AP prioritization needed with $100K wedge decision—which vendors must be paid, and which can be negotiated? Monthly cash burn is unsustainable at current rent collection pace.</p>
+            <p><strong>Action Items:</strong> Trace $200K Parks@9944 check with bank EOD Monday (Nicole/Josh). Deploy temporary maintenance coverage. Model AP prioritization with $100K wedge decision. Marketing team to expand bilingual materials and diversify prospect outreach beyond standard channels.</p>
+        </div>
+
+        <div class="asset-card risk">
+            <h3>2. Skye Reserve Insurance, Capital, & Governance Collapse <span class="pill red">CRITICAL</span></h3>
+            <p><strong>The Issue:</strong> 27 evictions at 70.3% occupancy; $149.3K delinquency; $40K vehicle damage exposed against $10K insurance cap; MF1 won't advance capital; ~$20M accrued interest requires subordination; lender appraisal likely below $200M loan; forbearance extended month-to-month; renovations paused.</p>
+            <p><strong>Insurance Exposure — The $40K Vehicle Damage:</strong> A single vehicle damage claim of $40K is 4x the insurance cap. This triggers Locked In standalone policy conversation: $1.5M quote vs $1.1M baseline. Nicole and Toysa are leading insurance policy decision. Zach (counsel) may be involved on potential legal claims. Insurance claim process is active but slow. Decision required by 4/18 to avoid gaps in coverage.</p>
+            <p><strong>Capital Market Freeze:</strong> MF1 declined additional capital advancement. Lender appraisal is likely to come in below the $200M loan given 70.3% occupancy and 27-eviction cadence. ~$20M accrued interest requires subordination discussion before any refinance or capital activity can proceed. Forbearance is extended month-to-month pending eviction-to-turn pipeline execution. Renovations are paused per lender restrictions, limiting market competitiveness.</p>
+            <p><strong>Operational Recovery Path:</strong> Leasing is targeting ~20 more move-ins via increased concessions (1 month→2 months free). Amanda (marketing) has new photo shoot planned and Zillow analytics follow-up scheduled. Maintenance team reports 68 WOs (record low), suggesting lighter make-ready work for turn units. Water heater repair process is under review for in-house shift (Sid Martins). AP is being walked down from $4M→$1.6M. Zamir is updating underwriting models with latest rent roll and concession strategy.</p>
+            <p><strong>Recapitalization & Governance:</strong> Difficulty meeting target returns without rent growth. Zamir will contact equity groups for recapitalization proposals. IHG governance clarity needed—Anna Jensen reviewing GP/LP roles and decision rights. Regular call cadence being established with IHG. Nicole managing insurance policy options/funding before finalization.</p>
+            <p><strong>Action Items:</strong> Insurance decision by 4/18 (Nicole/Toysa/Zach). Eviction-to-turn pipeline execution (Amanda/Sid). Lender messaging for May covenant review (Zamir). Recap proposal for IHG with expected returns (Zamir). Tax escrow confirmation with MF1 before Draw 18 funding release (Zamir). IHG governance docs review (Anna Jensen).</p>
+        </div>
+
+        <div class="asset-card risk">
+            <h3>3. Chimney Hill Fire Cost Creep & Collections Gap <span class="pill red">HIGH</span></h3>
+            <p><strong>The Issue:</strong> $95K of $100K NTE spent; $125K additional requested; full scope $415K; 14 units offline; 0-30 day collections flagged low; new hires Shasta and Asia Jackson onboarded; Fortress lender extension being negotiated.</p>
+            <p><strong>Cost Escalation:</strong> Original NTE was $100K. $95.3K has been spent already. $125K additional is requested (total ~$220K spent + $125K pending = $345K, vs $415K full scope). Insurance recovery vs sale path is the key capital decision. Fortress lender extension is being negotiated post-fire. New hires Shasta and Asia Jackson are handling fire unit coordination and collections.</p>
+            <p><strong>Collections Coordination:</strong> 0-30 day collections are flagged low. Vanessa Costephens is coordinating with Shasta and Josh for detailed delinquency reports. Targeting 92% occupancy within 30 days (excl fire units). Fire units remain offline until mitigation complete, reducing occupancy base.</p>
+            <p><strong>Operational Recovery:</strong> Landscaping vendor Bluestem is handling improvements (Vanessa overseeing). Marketing is expanding bilingual materials to attract diverse demographics. Application fee increased from $25→$125 to filter unqualified applicants, signaling quality-over-quantity strategy.</p>
+            <p><strong>Action Items:</strong> 0-30 day collections report from Vanessa/Shasta/Josh this week. Insurance claim status update. Fortress lender extension status by Friday. Full $415K cost reconciliation and insurance recovery forecast (Nicole/Fortress team). If insurance inadequate, capital decision needed: equity inject vs sale path evaluation.</p>
+        </div>
+
+        <div class="asset-card risk">
+            <h3>4. The Julia Cash Stress & Utility Variance <span class="pill red">HIGH</span></h3>
+            <p><strong>The Issue:</strong> Mesa city utility past due $34K vs $9K planned (3.8x variance); 32 July expirations at 5% cap; Starwood loan matured May 9 (extension active); renewal campaign has not started.</p>
+            <p><strong>Utility Overage Root Cause:</strong> Variance of $34K vs $9K plan is 3.8x—this is not a rounding error. Root-cause identification required by Wednesday. Possible factors: meter error, billing dispute, property boundary issue (neighboring property metering), or seasonal usage spike. City contact and utility provider investigation needed immediately.</p>
+            <p><strong>July Renewal Campaign:</strong> 32 July expirations at 5% cap is a significant cohort. Renewal campaign has not started. Given June 100% renewal critical at Flats and July refresh targets elsewhere, this campaign must launch this week. Christine Mendoza should pull market comp data and pricing recommendations for Nicole approval immediately.</p>
+            <p><strong>Capital Markets:</strong> Starwood loan matured May 9; extension is active. Utility overage complicates refinance conversations. Lender will likely require written explanation of variance and corrective action plan before extension approval.</p>
+            <p><strong>Action Items:</strong> Root-cause analysis of utility variance by Wednesday (property manager + city contact). Renewal campaign kickoff this week (Christine/Nicole). Market comp data and pricing recommendations (Christine). Starwood lender communication on utility issue and extension timeline (Nicole).</p>
+        </div>
+
+        <div class="asset-card risk">
+            <h3>5. Nightingale & The Flats Conversion Collapse <span class="pill red">HIGH</span></h3>
+            <p><strong>The Issue:</strong> Nightingale 13.6% close vs 40-50% target; 8 weeks free offered; $1K team bonus for 6 rentals. Flats 7 tours→2 apps; 50% applicant denial rate; June 100% renewal critical; rent reductions on 1BR at $969-$979; $500 bonus for 4 rentals. Both leaning on incentives without process fixes.</p>
+            <p><strong>Nightingale Detail:</strong> 82.8% occupancy with 13.6% close rate (vs 40-50% target) suggests either traffic generation or agent quality issues. 8 weeks free is an aggressive concession—this is a market-testing move, not a long-term strategy. $1K team bonus for 6 rentals incentivizes volume but not quality. Management transition underway. Lender engagement on AP. Sale process paused.</p>
+            <p><strong>Flats Detail:</strong> 7 tours→2 apps (28% inquiry-to-app) with 50% app denial is damaging. 50% denial suggests either poor underwriting or applicant quality mismatch (income-to-rent ratio, credit, criminal background, eviction history). June 100% renewal is critical—if renewals slip, occupancy will collapse. Matt Rogers is executing secret shopper on leasing agent Nelly; coaching based on findings. Rent reductions on 1BR at $969-$979 attempt to stay competitive. $500 bonus for 4 rentals. Recommendation: fix agent/process before deeper rent cuts.</p>
+            <p><strong>Systemic Issue:</strong> Both properties are relying on incentives (free rent, bonuses) to hit occupancy targets. Neither has completed agent mystery shopping, process validation, or Apartments.com tier comparison. This approach is unsustainable and masks root causes: agent skills gap, application process friction, pricing mismatch, or market saturation.</p>
+            <p><strong>Action Items:</strong> Mystery shop Nightingale (recommend Matt Rogers extend from Flats work). Validate Apartments.com tier strategy (review competitor tier, implied traffic cost per lead). Complete Flats secret shopper coaching cycle (Matt Rogers) before additional rent cuts. Hold incentive spending pending process validation. Schedule competitive shop on Nightingale leasing script vs submarket average.</p>
+        </div>
+
+        <!-- ===== SECTION E: WHAT'S WORKING WELL ===== -->
+        <h2>What's Working Well — Wins & Momentum</h2>
+
+        <div class="asset-card win">
+            <h3>Conway Reputation Recovery <span class="pill green">COMPLETED</span></h3>
+            <p>22 fake reviews removed. Rating restored to 3.9. Reputation management team monitoring. 92.3% occupancy steady. This was a critical operational win—negative reputation was suppressing leasing velocity significantly. Nicole and the reputation team executed a clean review recovery, and leasing momentum has stabilized at strong 92%+ occupancy levels.</p>
+        </div>
+
+        <div class="asset-card win">
+            <h3>Joe's Creek Encampment Cleared at Isle <span class="pill green">MAJOR WIN</span></h3>
+            <p>75% trash removed. City-led effort with contact Cedric for permanent removal. HOT team enforcement secured. April 20 9am full cleanup scheduled. Daily morning walks by maintenance documenting activity with timestamps and police contacts. Security monitoring nighttime hours. Landscaping contract adding creek maintenance and weed control (Joshua Austin coordinating). Joshua sharing cleanup videos/photos with leadership. This is a textbook environmental remediation execution—city partnership, daily documentation, security deterrence, and landscape hardening are all coordinated. This removes the occupancy drag at Isle.</p>
+        </div>
+
+        <div class="asset-card win">
+            <h3>Atlanta Renewal Strategy Template <span class="pill green">PROVEN</span></h3>
+            <p>Hunters locked into 0% renewals preserving retention; Peachtree blending +2.5% renewals with $300 concessions. These two properties are the renewal playbook for the portfolio. Hunters prioritizes retention (0% increase); Peachtree balances rent growth with concessions. Both are anchoring portfolio performance at 91-94% occupancy. This strategy should be codified and tested at other properties.</p>
+        </div>
+
+        <div class="asset-card win">
+            <h3>Reserve Maintenance Efficiency <span class="pill green">OPERATIONAL WIN</span></h3>
+            <p>68 WOs (record low). Water heater repairs potentially shifting in-house. AP walkdown $4M→$1.6M. Lighter make-ready work for turn units. This is counterintuitive given the property's crisis status, but it reflects disciplined maintenance management. Record-low work orders suggest better preventive maintenance and resident cooperation. AP reduction frees up cash flow for critical expenses.</p>
+        </div>
+
+        <div class="asset-card win">
+            <h3>Upland Collections & Team Investment ROI <span class="pill green">MOMENTUM</span></h3>
+            <p>$19K collected this cycle; 84% overall collections rate. New team investments paying off. Unit grading 1-5 live. Positive reviews and engagement initiatives improving resident satisfaction. Winbush bankruptcy (single largest delinquent) is being managed. Projected to reach low 80s occupancy in 30 days, full stabilization 60-90 days during peak leasing season. Same recovery playbook as Reserve is working—new team focus and systems drive collections improvement.</p>
+        </div>
+
+        <div class="asset-card win">
+            <h3>Isle/Love Leasing Uptick <span class="pill green">POSITIVE MOMENTUM</span></h3>
+            <p>13 move-ins at Love (impressive week). 93.6% collections (vs 90% lender covenant). Expanded Google marketing radius with Spanish keywords. Bilingual materials. Resident referral push. Vendor invoice issues resolved (Mary Quezada reconciling). Payments platform issues (MoneyGram/Bilt overlap) being sorted. Joshua Austin coordinating cleanup videos and marketing. This is the upside of Isle/Love pair—Love is carrying collections and leasing; Isle has moved past encampment crisis. Thin margin (93.6% vs 90% covenant) requires continued focus but trajectory is positive.</p>
+        </div>
+
+        <div class="asset-card win">
+            <h3>Boardwalk Rebound <span class="pill green">TRACKER</span></h3>
+            <p>94.4% occupancy per monthly review (no dedicated call this week). Tampa portfolio showing resilience. Boardwalk is the Tampa success story—competitive market position, responsive operations, and stable collections. Should be monitored for acquisition comps in Tampa submarket.</p>
+        </div>
+
+        <div class="asset-card win">
+            <h3>Financial Infrastructure Completion <span class="pill green">SYSTEMIC WIN</span></h3>
+            <p>AFDA policy formalized. Capitalization policy nearing completion. Banner system live for invoice management, approval workflows, and draw package tracking. Monthly financial review process (Jocel first pass, Mike review, Nicole final) ensuring consistency. This infrastructure enables faster decision cycles, better visibility, and consistent financial reporting across all 18 properties.</p>
+        </div>
+
+        <!-- ===== SECTION F: ASSET DEEP DIVES ===== -->
+        <h2>Asset Deep Dives — Property-Level Details</h2>
+
+        <!-- Skye Reserve -->
+        <div class="asset-card risk">
+            <h3>Skye Reserve — Dallas <span class="pill red">CRISIS</span></h3>
+            <p><strong>Summary Metrics:</strong> 70.26% occupancy, $149,277 delinquency, 27 evictions, 68 open work orders (record low), Google rating 3.2, concessions escalating 1 month→2 months free to drive ~20 additional move-ins.</p>
+            
+            <p><strong>Insurance & Capital Markets Crisis:</strong> $40K vehicle damage claim exposed against $10K insurance cap. This triggers Locked In standalone policy conversation: $1.5M quote vs $1.1M baseline. Toysa Tramel following up with Nicole Chang on insurance claim steps; potential legal involvement with counsel Zach. Insurance decision required by 4/18. MF1 won't advance additional capital. Renovations paused due to lender restrictions. Lender appraisal likely below $200M loan amount. ~$20M accrued interest needs subordination before any refinance. Forbearance extended month-to-month pending eviction-to-turn pipeline.</p>
+            
+            <p><strong>Operational Recovery — Leasing Execution:</strong> Concessions increasing from 1 month to 2 months free to achieve ~20 more move-ins. Price reductions and outreach efforts ongoing. Amanda leading marketing—new photo shoot planned; Zillow analytics follow-up next week. Google rating at 3.2 suggests reputation drag; photo refresh may help competitive positioning. Maintenance reports 68 open work orders (record low), indicating lighter make-ready work for turn units and better preventive maintenance. Sid Martins reviewing water heater repair process for potential in-house shift—this could improve response time and cost structure.</p>
+            
+            <p><strong>Collections & AP Management:</strong> AP walkdown in progress from $4M→$1.6M. Monthly review confirmed savings. Collections management is aggressive given eviction cadence. 27 evictions represent significant transition risk and cost (legal fees, turnover, vacancy gap).</p>
+            
+            <p><strong>Underwriting & Recapitalization:</strong> Zamir updating models with latest rent roll and concession strategy. Difficulty meeting target returns without rent growth. Exploring recapitalization—Zamir will contact equity groups for proposals. Requires clarity on expected returns and equity structure. Tax bill history investigation needed; confirm tax escrow with MF1 before Draw 18 funding release.</p>
+            
+            <p><strong>IHG Governance & Capital Decision:</strong> IHG governance clarity needed—GP/LP roles and decision rights. Anna Jensen reviewing governance documents. Regular call cadence being established with IHG. Insurance policy decision (Locked In standalone vs portfolio) must happen by 4/18; this blocks capital conversation. Nicole managing insurance options before finalization.</p>
+            
+            <p><strong>Action Items (Priority Order):</strong><br>
+            1. Insurance decision by 4/18 (Nicole Chang, Toysa Tramel, Zach counsel) — Locked In standalone policy quote review and approval<br>
+            2. Tax escrow confirmation with MF1 before Draw 18 funding release (Zamir)<br>
+            3. Eviction-to-turn pipeline tracking (Amanda marketing + Sid maintenance turnover schedule)<br>
+            4. Recap proposal development for IHG with expected returns (Zamir)<br>
+            5. IHG governance docs review and call cadence establishment (Anna Jensen, Nicole)<br>
+            6. Lender messaging for May covenant review (Zamir — occupancy trend, collections rate, capex plan)</p>
+        </div>
+
+        <!-- Skye Conway -->
+        <div class="asset-card win">
+            <h3>Skye Conway — Dallas <span class="pill green">ON TRACK</span></h3>
+            <p><strong>Summary Metrics:</strong> 92.27% occupancy, $30,638 delinquency (low), Google rating restored to 3.9, 0% renewal posture locked in, 1-month free special active.</p>
+            
+            <p><strong>Reputation Recovery & Leasing Velocity:</strong> 22 fake reviews removed. Rating restored to 3.9—this was a critical win that stabilized occupancy. Conversion remains soft: 14 tours → 2 leases (both cancelled). Bad weather affecting traffic. Amanda Burk continuing weekend outreach marketing. Maintaining 1-month free special and current rent pricing. 0% renewal increase posture to protect retention locked in. Market survey requested by Anna Jensen for deeper pricing analysis.</p>
+            
+            <p><strong>Pricing Strategy & Payment Platforms:</strong> Moving from per-lease to flat-fee model on Apartments.com. Bilt payment platform adoption is strong but overlaps with FlexPay—tracking registrations complicated. Nicole Chang confirming breakdown of FlexPay vs Bilt users to avoid revenue double-counting. Conversation conversion bottleneck suggests either traffic quality issues or agent script needs coaching.</p>
+            
+            <p><strong>Delinquency Management:</strong> $30,638 delinquency (low relative to portfolio). Proactive door-to-door outreach for overdue accounts. Eviction filings if promises to pay not received by Wednesday (Nicole tracking).</p>
+            
+            <p><strong>Staffing & Operations:</strong> 5 interviews for maintenance supervisor position; decision by Monday (Amanda Burk). Insurance escrow $185K (vs Hunters' $225K)—Conway insurance being coordinated with lender (Nicole/Malinda).</p>
+            
+            <p><strong>Marketing & Renewals:</strong> Reputation management monitoring after 22 fake reviews removed. Kristen Johnson sending renewal spreadsheets including June renewals for approval. Zero percent increase confirmed across book. AP target to reduce by ~$50K. Kristen providing proof of payments/invoices for capital replacement tracking. Nicole tracking vendor payments.</p>
+            
+            <p><strong>Watch Metric:</strong> Two more weeks below 20% conversion → pricing review vs Apartments.com tier evaluation required. Current 14 tours with only 2 leases (and both cancelled) is 14% conversion—this needs immediate attention. Recommend Apartments.com tier audit and competitive shopping.</p>
+            
+            <p><strong>Action Items:<br>
+            1. Maintenance supervisor hire decision by Monday (Amanda Burk)<br>
+            2. Apartments.com competitive shop (tier check, implied cost per lead vs Conway performance)<br>
+            3. FlexPay vs Bilt breakdown and revenue reconciliation (Nicole Chang)<br>
+            4. Eviction filings for overdue accounts by Wednesday if no promise to pay (Nicole)<br>
+            5. Market survey completion (Anna Jensen)<br>
+            6. Insurance escrow coordination with lender (Nicole/Malinda)<br>
+            7. AP reduction tracking and vendor payment prioritization (Kristen Johnson, Nicole)</p>
+        </div>
+
+        <!-- Chimney Hill -->
+        <div class="asset-card risk">
+            <h3>Chimney Hill — Atlanta <span class="pill amber">FIRE STABILIZATION</span></h3>
+            <p><strong>Summary Metrics:</strong> 89.58% occupancy (excl 14 fire units), $121,566 delinquency, 0-30 day collections flagged low, new hires Shasta and Asia Jackson onboarded, Fortress lender extension being negotiated.</p>
+            
+            <p><strong>Fire Mitigation & Cost Trajectory:</strong> $95,335 of $100K NTE spent. $125K additional requested. Full scope is $415K. 14 units remain offline until mitigation complete. New hires Shasta and Asia Jackson handling fire unit coordination. Targeting 92% occupancy within 30 days (excl fire units). Insurance claim process is active. Fortress lender extension being negotiated post-fire. Insurance recovery vs sale path = key capital decision (unchanged from monthly review).</p>
+            
+            <p><strong>Collections Gap & Remediation:</strong> 0-30 day collections flagged low—Vanessa Costephens collaborating with Shasta and Josh for detailed delinquency reports. New staff requires training on collections outreach. Delinquency $121.6K is elevated for property of this size.</p>
+            
+            <p><strong>Operational Infrastructure:</strong> Landscaping vendor Bluestem handling improvements (Vanessa overseeing). Marketing expanding bilingual materials to attract diverse demographics. Application fee increased from $25→$125 to filter unqualified applicants—signaling quality-over-quantity leasing strategy.</p>
+            
+            <p><strong>Capital Decision Needed:</strong> Insurance recovery trajectory vs $415K full scope. If insurance inadequate, capital decision: equity inject vs asset sale path evaluation.</p>
+            
+            <p><strong>Action Items:<br>
+            1. 0-30 day collections detailed report (Vanessa Costephens, Shasta, Josh) — identify largest delinquents and outreach plan<br>
+            2. Insurance claim status and recovery forecast (Nicole/Fortress team)<br>
+            3. Fortress lender extension status by Friday<br>
+            4. Full $415K cost reconciliation and draw package status (Shasta)<br>
+            5. If insurance inadequate, capital decision: equity inject vs sale path (Zamir, Fortress lender)</p>
+        </div>
+
+        <!-- Walnut / Parks@9944 -->
+        <div class="asset-card risk">
+            <h3>Walnut / Parks@9944 — Liquidity Watch <span class="pill red">URGENT</span></h3>
+            <p><strong>Summary Metrics:</strong> $633K payables, $306K cash, $200K check missing (Parks@9944), zero new traffic, maintenance tech detained by ICE, 70% application denial rate, application fee raised $25→$125.</p>
+            
+            <p><strong>Liquidity Emergency:</strong> $200K Parks@9944 check missing—trace with bank required EOD Monday. If check is lost, immediate wire from corporate needed. $633K payables vs $306K cash means negative cash position of $327K. Monthly burn estimated at ~$100K+ without immediate intervention. AP prioritization required with $100K wedge decision: which vendors must be paid vs negotiable payment terms.</p>
+            
+            <p><strong>Operational Collapse:</strong> Maintenance tech detained by ICE. Service delivery risk across portfolio. Zero new leasing traffic. 70% application denial rate at Parks@99. Immigration issues reducing prospect pool in Dallas market (not property dissatisfaction per Josh). Immigration enforcement is a structural headwind—applicants unable to pass background checks due to status concerns.</p>
+            
+            <p><strong>Marketing Response:</strong> Application fee increased $25→$125 to filter unqualified applicants (quality-over-quantity strategy). Marketing expanding bilingual materials to diversify prospect pool. Proactive outreach to immigrant-friendly employers and community organizations recommended.</p>
+            
+            <p><strong>Action Items (CRITICAL):<br>
+            1. Trace $200K Parks@9944 check with bank EOD Monday (Nicole/Josh) — if lost, wire immediately from corporate<br>
+            2. Deploy temporary maintenance coverage (interim contractor, equipment rental plan)<br>
+            3. AP prioritization with $100K wedge decision (Nicole/Josh) — which vendors critical, which negotiable<br>
+            4. Model 90-day cash flow assuming current rent collection pace and payables schedule<br>
+            5. Bilingual marketing materials expansion and employer outreach campaign (Josh)<br>
+            6. Weekly cash position review until recovery to positive territory</p>
+        </div>
+
+        <!-- Skye Oaks & Hanley Place -->
+        <div class="asset-card">
+            <h3>Skye Oaks & Hanley Place — Tampa <span class="pill amber">WATCH</span></h3>
+            <p><strong>Skye Oaks Summary Metrics:</strong> 88.77% occupancy, $78K delinquency, solid traffic but low closing rates, net effective rent $1,538, 2BR and 3BR significant discounts, lender certificate lists 13 repair items, electrical panel $100K over budget.</p>
+            
+            <p><strong>Oaks Detailed Operations:</strong> Solid traffic but low closing rates suggest agent coaching or application process friction. Net effective rent $1,538 is competitive but pricing pressures evident. 2BR and 3BR getting significant discounts (loss leader strategy). Julie Clopper emphasizing improved closing tactics. Christine Mendoza sending pricing recommendations and market comp data to Nicole for review. Lender certificate lists 13 repair items—scope and timeline needed. Electrical panel $100K over budget—Christine reaching out for third vendor bids. Bat exclusion final walk and pole removal scheduling. Mystery shopper being considered (Jimmy Chestnut reviewing past shop data).</p>
+            
+            <p><strong>Hanley Place Summary Metrics:</strong> 87.25% occupancy, $68K delinquency, promotional incentives active (waived fees + free rent), Signal 88 security proposed, sewage jetting $2,476/building.</p>
+            
+            <p><strong>Hanley Detailed Operations:</strong> 87.25% with promotional incentives (waived fees + free rent) suggests solid traffic and market responsiveness. Signal 88 security proposal being evaluated—Christine sending detailed proposal with hours/costs to Nicole for approval. Sewage jetting $2,476/building—detailed scope from Sam being requested. New team members onboarding (Julie Clopper supporting). Security enhancements addressing leasing challenges.</p>
+            
+            <p><strong>Both Properties — Shared Initiatives:</strong> Delinquency management active. AR write-offs and delinquency true-up being monitored by Nicole. Separate CAPEX approval packages being prepared (Alicia Perez). Personalized flyers and local partnerships for marketing (nutrition clubs, fitness instructors). Rent pricing under review by Ingrid Shultz. Sid Martins explaining plumbing jetting and batch maintenance plan for cast iron pipes at Hanley. Both properties require close capex monitoring—electrical at Oaks ($100K over) and plumbing at Hanley ($2.5K/bldg) signal project management gaps.</p>
+            
+            <p><strong>Action Items:<br>
+            Oaks:<br>
+            1. Third vendor electrical panel bids (Christine Mendoza)<br>
+            2. Pricing/comps analysis and recommendations (Christine → Nicole approval)<br>
+            3. Lender certificate repair items scope and timeline<br>
+            4. Bat exclusion final walk and pole removal scheduling<br>
+            5. Mystery shopper decision and execution (Jimmy Chestnut)<br>
+            <br>
+            Hanley:<br>
+            1. Signal 88 security proposal review and approval decision (Christine → Nicole)<br>
+            2. Sewage jetting detailed scope from Sam<br>
+            3. Cast iron pipe batch maintenance plan (Sid Martins)<br>
+            4. New team member onboarding support (Julie Clopper)<br>
+            <br>
+            Both:<br>
+            1. CAPEX approval packages (Alicia Perez)<br>
+            2. AR write-offs and delinquency true-up (Nicole)<br>
+            3. Rent pricing review (Ingrid Shultz)<br>
+            4. Standing capex variance report (weekly) to surface project-management gaps early</p>
+        </div>
+
+        <!-- Skye Ridge -->
+        <div class="asset-card">
+            <h3>Skye Ridge — Dallas <span class="pill amber">DECLINING</span></h3>
+            <p><strong>Summary Metrics:</strong> 85.63% occupancy trending to 80.87% in 30 days due to move-outs, delinquency $30,272.59, collections 87.07%, 9 tours → 3 applications → 0 approvals, concessions escalated $250→$350, flexibility to $500 for key residents.</p>
+            
+            <p><strong>Leasing Crisis & Concession Escalation:</strong> 9 tours → 3 applications → 0 approvals is a red flag. Swift leasing action needed. Concessions escalated from $250→$350, with flexibility to $500 for key residents (Brooke Smith implementing). 16 units ready for occupancy. Maintenance team has turns scheduled Apr 17, 21, 26.</p>
+            
+            <p><strong>Marketing Response & Immediate Actions:</strong> Downgrading Apartments.com Platinum→Gold. Adding $750 PPC spend + $500 PMAX AI campaigns (Brooke implementing immediately). Collections at 87.07%—delinquency $30.3K managed. Renewals: July notices being sent to Nicole today (Amy Sotocamacho). Jessica developing raffle incentive for retention. Nicole reviewing 90-day tenant screening to evaluate guarantor program feasibility.</p>
+            
+            <p><strong>Staffing Transition:</strong> Amy Sotocamacho transitioning; Brooke Smith and Jessica taking over. Ana Chase meeting with Brooke and Michelle for rate adjustments and loss leader planning. This transition is happening during a leasing crisis—Brooke and Jessica need immediate support and decision authority.</p>
+            
+            <p><strong>Curb Appeal & Seasonal Readiness:</strong> Exterior painting and pool deck prep for seasonal opening. Good timing given market challenges—visual refresh may help competitive positioning.</p>
+            
+            <p><strong>30-Day Outlook:</strong> 85.63%→80.87% decline projected in 30 days due to planned move-outs. Concessions, marketing spend, and staffing changes must reverse this trend. If decline continues, property enters critical tier.</p>
+            
+            <p><strong>Action Items:<br>
+            1. Apartments.com competitive audit (tier check, implied lead cost vs performance)<br>
+            2. Marketing campaign launch with $750 PPC + $500 PMAX (Brooke Smith) — track daily lead volume<br>
+            3. Concessions approval up to $500 for key residents (Brooke implementing)<br>
+            4. July renewal notices to Nicole (Amy Sotocamacho)<br>
+            5. Raffle incentive details and timeline (Jessica)<br>
+            6. Guarantor program feasibility evaluation (Nicole — 90-day screening review)<br>
+            7. Rate adjustment and loss leader planning (Ana Chase, Brooke, Michelle)<br>
+            8. 30-day leasing velocity checkpoint (target: reverse 80.87% decline trend)</p>
+        </div>
+
+        <!-- Skye Isle & Love -->
+        <div class="asset-card win">
+            <h3>Skye Isle & Love — Dallas <span class="pill amber">WATCH (Positive Trend)</span></h3>
+            <p><strong>Summary Metrics:</strong> Isle 86.36% occupancy, 88.4% collections; Love 93.6% collections, 13 move-ins this week, thin margin vs 90% lender covenant.</p>
+            
+            <p><strong>Joe's Creek Encampment Remediation — Major Win:</strong> 75% trash removed. City-led effort with contact Cedric for permanent removal. HOT team enforcement secured. April 20 9am full cleanup scheduled. Daily morning walks by maintenance documenting activity with timestamps and police contacts. Security monitoring nighttime hours. Landscaping contract adding creek maintenance and weed control (Joshua Austin coordinating). Joshua sharing cleanup videos/photos with leadership. This is a textbook environmental remediation—city partnership, daily documentation, security deterrence, landscape hardening all coordinated.</p>
+            
+            <p><strong>Love Leasing Momentum:</strong> 13 move-ins impressive. 93.6% collections vs 90% lender covenant—thin margin. Dynamic pricing strategies introduced. Vendor invoice issues resolved (Mary Quezada reconciling with HD). Vanessa proposing increased concessions for Love, Aisle, and Parks with approval from Josh. Love is carrying both properties through collections and leasing uptake.</p>
+            
+            <p><strong>Isle Operational Challenges:</strong> MoneyGram issues with Built system—Janelli Rodriguez assisting residents with cashier's check alternatives. Payment platform friction adds operational complexity. 88.4% collections (vs Love 93.6%) reflects isle-specific challenges beyond leasing.</p>
+            
+            <p><strong>Marketing & Renewal Strategy:</strong> Expanded Google radius with Spanish keyword strategy (Joshua Austin authorizing). Bilingual materials. Resident referral push. Nicole monitoring loan refinancing implications related to performance—communicating urgency to PMs about occupancy and collections. Thin margin at Love (93.6% vs 90% covenant) creates refinancing risk if collections slip.</p>
+            
+            <p><strong>Watch Items:</strong> Love collections at 93.6% is tight vs 90% lender covenant. Any slip in collections next 2 weeks triggers refinancing conversations. IsleEncampment clearance should improve occupancy over next 60 days (landscape hardening deters new camps).</p>
+            
+            <p><strong>Action Items:<br>
+            1. Joe's Creek cleanup execution April 20 9am (Joshua Austin)<br>
+            2. Cleanup videos/photos documentation (Joshua)<br>
+            3. Landscaping contract update and creek maintenance plan (Joshua)<br>
+            4. Love collections tracking (13 move-ins momentum) — target sustain 93.6%+ through month-end<br>
+            5. MoneyGram/Bilt platform workaround stabilization (Janelli Rodriguez)<br>
+            6. Concessions proposal approval for Love/Aisle/Parks (Josh approval)<br>
+            7. Spanish keyword marketing radius expansion (Joshua)<br>
+            8. Love lender communication on collections covenant tracking (Nicole)</p>
+        </div>
+
+        <!-- Upland -->
+        <div class="asset-card">
+            <h3>Upland — Recovery Track <span class="pill red">WATCH (Positive Momentum)</span></h3>
+            <p><strong>Summary Metrics:</strong> 77% occupancy (target 80% by May), $37K delinquency, 84% collections, 3 leases secured this week, $19K collected, Winbush bankruptcy single largest delinquent, unit grading 1-5 live.</p>
+            
+            <p><strong>Collections Recovery & Team Investment:</strong> 3 leases this week; $19K collected. Collections improved from new team investments; Kim Peavy tracking delinquency and leasing weekly. Winbush bankruptcy = single largest delinquent. Unit grading 1-5 system live, driving turn priority and maintenance efficiency. Bad debt impact: AFDA policy change created skewed bad debt expenses at Upland—Mike Weiner and Malinda reviewing impact. New policy (60+ day accrual per GAAP) is more conservative than prior write-off approach.</p>
+            
+            <p><strong>Occupancy Recovery Path:</strong> 77% occ (target 80% by May). Projected to reach low 80s in 30 days; full stabilization 60-90 days during peak leasing season. Same recovery playbook as Reserve: new team focus, disciplined systems, collections intensity. Positive reviews and engagement initiatives improving resident satisfaction.</p>
+            
+            <p><strong>30-Day Outlook:</strong> Upland is on recovery trajectory. Collections at 84% are solid. Leasing velocity (3 leases/week) on track for 80%+ by May. Requires sustained focus on turn execution and collections outreach.</p>
+            
+            <p><strong>Action Items:<br>
+            1. Weekly delinquency and leasing tracking (Kim Peavy)<br>
+            2. Winbush bankruptcy settlement discussions if available<br>
+            3. AFDA policy impact analysis on bad debt reserve (Mike Weiner, Malinda)<br>
+            4. Unit grading 1-5 system optimization (maintenance turn prioritization)<br>
+            5. Target 80% occupancy by May checkpoint (track weekly)</p>
+        </div>
+
+        <!-- Nightingale & Flats -->
+        <div class="asset-card risk">
+            <h3>Nightingale & The Flats — Conversion Crisis <span class="pill red">CRITICAL</span></h3>
+            <p><strong>Nightingale Summary Metrics:</strong> 82.8% occupancy, 13.63% close vs 40-50% target, 8 weeks free offered, $1K team bonus for 6 rentals, management transition underway, sale process paused, lender engagement on AP.</p>
+            
+            <p><strong>Nightingale Detailed Analysis:</strong> 82.8% occupancy with 13.6% close rate (vs 40-50% target) suggests either traffic quality or agent capability gaps. 8 weeks free is aggressive—market-testing move, not long-term strategy. $1K team bonus for 6 rentals incentivizes volume but not quality. Management transition underway; lender engagement on AP. Sale process paused. Root cause analysis needed: Is the market down-trading (renters can't afford market rent)? Are agents underperforming (poor closing techniques)? Is marketing driving wrong traffic (overqualified or underqualified prospects)? Recommend mystery shop to validate agent script vs submarket average.</p>
+            
+            <p><strong>Flats Summary Metrics:</strong> Risk to 68% occupancy, 7 tours→2 apps (28% inquiry-to-app), 50% applicant denial rate, June 100% renewal critical, 1BR rent cut to $969-$979, $500 bonus for 4 rentals.</p>
+            
+            <p><strong>Flats Detailed Analysis:</strong> 7 tours→2 apps (28% inquiry-to-app) with 50% applicant denial is damaging. 50% denial suggests either underwriting rigor or applicant quality mismatch (income, credit, background, eviction history). June 100% renewal is critical—if renewals slip, occupancy spirals. Matt Rogers executing secret shopper on leasing agent Nelly; coaching based on findings. Rent cuts on 1BR to $969-$979 attempt competitiveness. $500 bonus for 4 rentals. Recommend: fix agent/process before deeper rent cuts.</p>
+            
+            <p><strong>Evolution Property (Related Comparison):</strong> 80% occ vs mid-80s submarket avg. 6-week concessions. 50% applicant denial (same issue). Apartments.com subscription added—monitoring 30-day impact (Mike reporting). Loan stable, low interest, hold to 2030. Evolution is on the same conversion track as Flats.</p>
+            
+            <p><strong>Systemic Issue & Recommendation:</strong> Both Nightingale and Flats are relying on incentives (free rent, bonuses) without validating root cause. Neither has completed agent mystery shopping, process validation, or Apartments.com tier comparison. This approach masks root issues and wastes capital. Recommend: mystery shop both properties (Matt Rogers extend from Flats); validate Apartments.com tier strategy; complete Flats secret shopper coaching cycle before additional rent cuts; hold incentive spending pending process validation.</p>
+            
+            <p><strong>Action Items (Priority Order):<br>
+            Nightingale:<br>
+            1. Mystery shop execution (recommend extend Matt Rogers from Flats)<br>
+            2. Validate Apartments.com tier strategy (review competitor tier, implied cost per lead)<br>
+            3. Agent script validation vs submarket average<br>
+            4. Hold 8-week free incentive pending mystery shop results<br>
+            <br>
+            Flats:<br>
+            1. Complete Flats secret shopper coaching cycle (Matt Rogers)<br>
+            2. Validate Apartments.com tier strategy (review competitor performance)<br>
+            3. 50% applicant denial root cause (income mismatch? underwriting rigor?)<br>
+            4. Hold additional rent cuts pending process validation<br>
+            5. Confirm June 100% renewal campaign strategy and timeline<br>
+            <br>
+            Both:<br>
+            1. Mystery shop + Apts.com comp validation BEFORE deeper discounts<br>
+            2. Agent coaching cycle completion before bonus incentives<br>
+            3. Weekly leasing velocity checkpoint (tours, apps, closes, close rate %)<br>
+            4. Hold incentive spending pending root-cause clarity</p>
+        </div>
+
+        <!-- Peachtree Hills & Hunters Creek -->
+        <div class="asset-card win">
+            <h3>Peachtree Hills & Hunters Creek — Atlanta <span class="pill green">ANCHORS</span></h3>
+            <p><strong>Peachtree Hills Summary Metrics:</strong> 94% occupancy, 2 evictions (B13/A9) pending, July renewals at +2.5% with $300 concession, template for renewal strategy.</p>
+            
+            <p><strong>Peachtree Detailed Operations:</strong> 94% occupancy (portfolio high). 2 evictions pending (B13/A9)—standard pipeline. July renewals at +2.5% with $300 concession—this is the balanced renewal approach: rent growth + resident retention concession. Malinda pulling T12 for write-off/AFDA analysis. Monument sign repair scheduling (vendor waiting for liability waiver from Nicole). This property is the renewal playbook for Hunters and downmarket properties.</p>
+            
+            <p><strong>Hunters Creek Summary Metrics:</strong> 91.2% occupancy, $225K insurance escrow, 0% renewal increase strategy holding retention, qualified candidate filling vacancy soon.</p>
+            
+            <p><strong>Hunters Detailed Operations:</strong> 91.2% occupancy with 0% renewal increases—retention priority locked in. $225K insurance escrow securing property. Maria Hood sending call recap. Qualified candidate filling vacancy soon. This property is the retention anchor—0% renewal rate protects high-quality tenant base and generates stable cash flow.</p>
+            
+            <p><strong>Atlanta Playbook — Shared Initiatives:</strong> Both Peachtree and Hunters are template properties for leasing, renewals, and collections. Strong leasing with 1 month free concession. Kayla monitoring delinquent accounts across both properties. Monument sign repair scheduling (vendor waiting for liability waiver from Nicole—escalate for faster approval). Georgia portfolio prioritizing Zillow over Apartments.com based on ROI data. This data-driven approach to marketing channel allocation is best practice for portfolio.</p>
+            
+            <p><strong>Role in Portfolio Strategy:</strong> Peachtree and Hunters generate 85-90% of portfolio gross margin due to high occupancy, low delinquency, and stable rent growth. These two properties anchor the portfolio's ability to invest in rescue operations at Reserve, Upland, Flats, and Nightingale. Maintaining Peachtree at 94% and Hunters at 91% is non-negotiable.</p>
+            
+            <p><strong>Action Items:<br>
+            1. T12 write-off/AFDA analysis completion (Malinda)<br>
+            2. Monument sign repair vendor approval process speedup (Nicole — liability waiver)<br>
+            3. July renewal spreadsheet tracking (both properties)<br>
+            4. Kayla delinquent accounts weekly tracking (both properties)<br>
+            5. Insurance escrow status confirmation with lender (Hunters — Nicole/Malinda)<br>
+            6. Vacancy fill confirmation (Hunters qualified candidate onboarding)</p>
+        </div>
+
+        <!-- Preserve at Riverwalk -->
+        <div class="asset-card">
+            <h3>Preserve at Riverwalk — Starwood Extension Pending <span class="pill amber">COVERAGE GAP</span></h3>
+            <p><strong>Summary Status:</strong> Starwood extension pending; positive occupancy momentum; schedule asset-level review next cycle.</p>
+            
+            <p><strong>Capital Markets:</strong> Starwood extension is active. No dedicated transcript this week, so occupancy, delinquency, and operational detail are missing. Recommend scheduling asset-level deep dive call for next cycle to validate current position and extension terms.</p>
+            
+            <p><strong>Action Items:<br>
+            1. Starwood extension status update and approval timeline<br>
+            2. Schedule dedicated Preserve asset call for next cycle (occupancy, operations, capex status)</p>
+        </div>
+
+        <!-- ===== SECTION G: STRATEGIC RECOMMENDATIONS ===== -->
+        <h2>Strategic Recommendations — 7 Priorities</h2>
+
+        <div class="recommendation-item">
+            <h3>1. Cash Triage Walnut EOD Monday — Liquidity Stabilization</h3>
+            <p><strong>Action:</strong> Trace $200K Parks@9944 check with bank EOD Monday. If lost, wire immediately from corporate. Deploy interim maintenance coverage. Model AP prioritization with $100K wedge decision (which vendors critical, which negotiable). Implement weekly cash position review until recovery to positive territory.</p>
+            <p><strong>Why:</strong> $633K payables vs $306K cash = $327K negative position. Monthly burn ~$100K+ unsustainable. Immediate intervention required to prevent asset seizure or lender intervention.</p>
+            <p><strong>Owner:</strong> Nicole Chang, Josh (Property Manager)</p>
+            <p><strong>Deadline:</strong> Check trace EOD Monday; AP priority decision by Wednesday; weekly cash review ongoing</p>
+        </div>
+
+        <div class="recommendation-item">
+            <h3>2. Reserve Insurance Decision by 4/18 — Capital Markets Unlock</h3>
+            <p><strong>Action:</strong> $40K vehicle damage triggers Locked In standalone policy ($1.5M vs $1.1M baseline). Nicole/Toysa review quotes. Potential legal involvement (Zach counsel). Decision required by 4/18. This decision unlocks Reserve capital conversation and lender negotiations.</p>
+            <p><strong>Why:</strong> Insurance gap blocks lender conversation, capital advances, and refinance path. Until resolved, Reserve is in forbearance with no forward capital activity.</p>
+            <p><strong>Owner:</strong> Nicole Chang, Toysa Tramel, Zach (counsel)</p>
+            <p><strong>Deadline:</strong> Insurance decision by 4/18</p>
+        </div>
+
+        <div class="recommendation-item">
+            <h3>3. Mystery-Shop Nightingale & Flats — Process Validation</h3>
+            <p><strong>Action:</strong> Matt Rogers executing secret shopper on Flats leasing agent Nelly. Extend mystery shop to Nightingale. Validate Apartments.com tier strategy (review competitor performance vs property tier). Hold deep discounting ($500 rent cuts) pending process validation. Hold incentive spending ($500-$1K bonuses) until root cause clarity.</p>
+            <p><strong>Why:</strong> Both properties leaning on incentives without validating root cause. Nightingale 13.6% close vs 40-50% target. Flats 7 tours→2 apps with 50% denial. Mystery shop reveals agent script, process friction, or traffic quality issues. Apts.com tier validation reveals channel efficiency. Data-driven approach saves capital and fixes underlying issues.</p>
+            <p><strong>Owner:</strong> Matt Rogers (Flats), extend to Nightingale</p>
+            <p><strong>Deadline:</strong> Flats secret shopper coaching cycle completion this week; Nightingale mystery shop by 4/17; Apts.com audit by 4/15</p>
+        </div>
+
+        <div class="recommendation-item">
+            <h3>4. Standing Weekly Capex Variance Report — Project Management Discipline</h3>
+            <p><strong>Action:</strong> Oaks electrical panel $100K over budget. Hanley sewage jetting $2,476/bldg (scope variance). Implement standing weekly capex variance report tracking actuals vs estimates by property, vendor, and project phase. Banner system can support this infrastructure. Flag >$10K variances for immediate escalation.</p>
+            <p><strong>Why:</strong> Capital bleed. Oaks electrical alone is $100K unplanned. These variances compound across portfolio (Julia utility $34K variance, Oaks electrical $100K, Hanley sewage $2.5K). Proactive tracking prevents surprise capex overruns and lender covenant violations.</p>
+            <p><strong>Owner:</strong> Nicole Chang (PM approval removed, budget oversight now hers), Alicia Perez (CAPEX tracking)</p>
+            <p><strong>Deadline:</strong> Standing report live by Monday 4/15</p>
+        </div>
+
+        <div class="recommendation-item">
+            <h3>5. Portfolio Renewal Strategy Memo — Template Codification</h3>
+            <p><strong>Action:</strong> Codify Atlanta template: Hunters (0% increase, retention priority) vs Peachtree (+2.5% increase, $300 concession blended). Compare vs Ridge's failing $500-free path (declining 85.6%→80.9%). Distribute memo with property-level renewal parameters by market, segment, and tenant profile. This becomes the playbook for all property managers.</p>
+            <p><strong>Why:</strong> Renewal strategy cascades across portfolio. Hunters 0% locks high-quality tenant base. Peachtree +2.5%+concession balances growth and retention. Ridge's aggressive concessions (up to $500 free) are unsustainable and signal market weakness. Codified strategy ensures consistency and prevents ad-hoc discounting.</p>
+            <p><strong>Owner:</strong> Zamir (overall strategy), Nicole (PM rollout), Property Managers (execution)</p>
+            <p><strong>Deadline:</strong> Memo distributed to PMs by 4/18</p>
+        </div>
+
+        <div class="recommendation-item">
+            <h3>6. Reserve Recap Proposal Development — Equity Group Outreach</h3>
+            <p><strong>Action:</strong> Zamir updating Reserve underwriting models with latest rent roll and concession strategy. Difficulty meeting target returns without rent growth. Initiate equity group outreach for recapitalization proposals. IHG governance docs needed (Anna Jensen). Expected returns and equity structure clarification required before pitching.</p>
+            <p><strong>Why:</strong> Reserve is at decision point: forbearance month-to-month, no MF1 capital, lender appraisal likely below $200M. Equity group investment can unlock capital for renovations (currently paused), insurance coverage (standalone policy), and collections velocity. Alternative is asset sale, which triggers capital gains and portfolio contraction.</p>
+            <p><strong>Owner:</strong> Zamir (modeling, equity outreach), Anna Jensen (governance docs), IHG (decision)</p>
+            <p><strong>Deadline:</strong> Recap proposal with expected returns by 4/24; equity group outreach kickoff by 4/22</p>
+        </div>
+
+        <div class="recommendation-item">
+            <h3>7. Julia Utility Root-Cause Analysis by Wednesday — Renewal Campaign Launch</h3>
+            <p><strong>Action:</strong> Mesa utility past due $34K vs $9K plan (3.8x variance). Root-cause analysis by Wednesday (meter error, billing dispute, boundary issue, seasonal spike?). Coordinate with city utility provider and property manager. 32 July expirations at 5% cap require immediate renewal campaign kickoff (Christine Mendoza pulling market comps, Nicole approving pricing). Starwood lender communication on utility issue required before extension approval.</p>
+            <p><strong>Why:</strong> $34K variance is material. Lender will require written explanation and corrective action plan. July renewal campaign critical—32 expirations at 5% cap means rent growth opportunity if market supports. Delay in campaign loses renewal window.</p>
+            <p><strong>Owner:</strong> Property Manager (root-cause analysis), Christine Mendoza (market comps), Nicole Chang (lender communication), Renewal team (campaign execution)</p>
+            <p><strong>Deadline:</strong> Root-cause analysis by Wednesday 4/16; renewal campaign launch by Thursday 4/17; Starwood lender communication by 4/18</p>
+        </div>
+
+        <!-- ===== SECTION H: OPEN ACTION ITEMS BY OWNER ===== -->
+        <h2>Open Action Items by Owner — Action Tracking</h2>
+
+        <div class="action-group">
+            <h4>Nicole Chang — PM/Capital Oversight</h4>
+            <ul>
+                <li>Insurance escrow targets for Conway/Hunters (coordinate with lender)</li>
+                <li>Insurance decision for Reserve by 4/18 (Locked In standalone vs portfolio)</li>
+                <li>Eviction filings for Conway overdue accounts by Wednesday</li>
+                <li>Review Oaks/Hanley pricing recommendations and approve tier</li>
+                <li>Signal 88 security proposal review and approval (Hanley)</li>
+                <li>AR write-offs and delinquency true-up tracking</li>
+                <li>Guarantor program feasibility evaluation (Ridge 90-day screening review)</li>
+                <li>Monument sign repair liability waiver approval (Peachtree/Hunters expedited)</li>
+                <li>Oaks/Hanley CAPEX approval packages (with Alicia Perez)</li>
+                <li>Standing weekly capex variance report live by Monday 4/15</li>
+                <li>Julia Starwood lender communication on utility variance and extension timeline</li>
+                <li>Portfolio renewal strategy memo rollout to PMs by 4/18</li>
+                <li>Walnut AP prioritization with $100K wedge decision by Wednesday</li>
+            </ul>
+        </div>
+
+        <div class="action-group">
+            <h4>Zamir — Underwriting & Capital Strategy</h4>
+            <ul>
+                <li>Update Reserve underwriting models with latest rent roll and concession strategy</li>
+                <li>Recapitalization proposal development for IHG (expected returns, equity structure)</li>
+                <li>Equity group outreach kickoff for Reserve recap by 4/22</li>
+                <li>Tax bill history investigation and tax escrow confirmation with MF1 before Draw 18</li>
+                <li>Lender messaging for Reserve May covenant review (occupancy trend, collections rate)</li>
+                <li>Tampa submarket maps for acquisitions (Compton Place, Orlando Esplanade)</li>
+            </ul>
+        </div>
+
+        <div class="action-group">
+            <h4>Toysa Tramel — Insurance & Legal</h4>
+            <ul>
+                <li>Insurance claim follow-up for Reserve vehicle damage ($40K)</li>
+                <li>Locked In standalone policy quote review with Nicole Chang</li>
+                <li>Legal involvement assessment with Zach (counsel) for potential claims</li>
+                <li>Insurance decision documentation by 4/18</li>
+            </ul>
+        </div>
+
+        <div class="action-group">
+            <h4>Amanda Burk — Conway Operations & Marketing</h4>
+            <ul>
+                <li>1-month free special locked in for Conway (active)</li>
+                <li>Weekend outreach marketing for Conway (conversion velocity target: 20%+)</li>
+                <li>Maintenance supervisor hire decision by Monday (5 candidates interviewed)</li>
+                <li>Reserve new photo shoot planning (Zillow analytics follow-up next week)</li>
+                <li>Reserve leasing outreach ~20 additional move-ins target (concessions 1 month→2 months free)</li>
+            </ul>
+        </div>
+
+        <div class="action-group">
+            <h4>Brooke Smith — Ridge Operations & Marketing</h4>
+            <ul>
+                <li>Apartments.com downgrade Platinum→Gold (immediate)</li>
+                <li>Add $750 PPC spend campaign (immediate implementation)</li>
+                <li>Add $500 PMAX AI campaigns (immediate implementation)</li>
+                <li>Concessions up to $500 for key residents (implement per approval)</li>
+                <li>July renewal notices to Nicole (Amy Sotocamacho coordinating)</li>
+                <li>30-day leasing velocity checkpoint (target: reverse 80.87% decline)</li>
+            </ul>
+        </div>
+
+        <div class="action-group">
+            <h4>Matt Rogers — Mystery Shopping & Coaching</h4>
+            <ul>
+                <li>Flats secret shopper execution on leasing agent Nelly</li>
+                <li>Flats coaching cycle completion this week</li>
+                <li>1BR pricing validation ($969-$979 rent level)</li>
+                <li>Extend mystery shopping scope to Nightingale (recommend same approach)</li>
+            </ul>
+        </div>
+
+        <div class="action-group">
+            <h4>Christine Mendoza — Tampa Pricing & Capex</h4>
+            <ul>
+                <li>Oaks pricing analysis and market comps (send to Nicole approval)</li>
+                <li>Oaks third vendor bids for electrical panel ($100K over)</li>
+                <li>Oaks bat exclusion final walk and pole removal scheduling</li>
+                <li>Hanley Signal 88 security proposal detail (hours, costs, timeline)</li>
+                <li>Julia market comps and renewal pricing recommendations (to Nicole)</li>
+            </ul>
+        </div>
+
+        <div class="action-group">
+            <h4>Vanessa Costephens — Dallas AP & Collections</h4>
+            <ul>
+                <li>Chimney Hill 0-30 day collections detailed report (with Shasta, Josh)</li>
+                <li>Conway/Hunters AP reduction tracking toward ~$50K savings</li>
+                <li>Chimney Hill landscaping vendor oversight (Bluestem improvements)</li>
+                <li>Concession proposal for Love/Aisle/Parks (with Josh approval)</li>
+                <li>Walnut AP prioritization model with $100K wedge (with Nicole)</li>
+            </ul>
+        </div>
+
+        <div class="action-group">
+            <h4>Sid Martins — Maintenance & Capex</h4>
+            <ul>
+                <li>Reserve maintenance capex spreadsheet (Zamir underwriting models)</li>
+                <li>Hanley plumbing jetting and cast iron pipe batch maintenance plan</li>
+                <li>Reserve water heater repair process review for in-house shift evaluation</li>
+                <li>Hanley detailed sewage jetting scope from Sam</li>
+            </ul>
+        </div>
+
+        <div class="action-group">
+            <h4>Kevin Mawby — Acquisitions Pipeline</h4>
+            <ul>
+                <li>Broker calls Monday (loan maturity list outreach)</li>
+                <li>Annotated pipeline PDF and Google Maps walkthrough tools</li>
+                <li>Compton Place underwriting progress update</li>
+                <li>Orlando Esplanade off-market feedback follow-up Monday</li>
+            </ul>
+        </div>
+
+        <div class="action-group">
+            <h4>Joshua Austin — Joe's Creek & Isle Marketing</h4>
+            <ul>
+                <li>Joe's Creek encampment cleanup execution April 20 9am (HOT team coordination)</li>
+                <li>Cleanup videos and photos documentation (daily updates, timestamps)</li>
+                <li>Trash removal bids (75% already cleared, permanent removal plan)</li>
+                <li>Landscaping contract update and creek maintenance plan (weed control, hardening)</li>
+                <li>Google marketing radius expansion with Spanish keywords (authorize immediately)</li>
+                <li>Bilingual materials expansion for Isle/Love marketing</li>
+            </ul>
+        </div>
+
+        <div class="action-group">
+            <h4>Anna Jensen — Atlanta & Reserve Governance</h4>
+            <ul>
+                <li>Market survey completion for Conway deeper pricing analysis</li>
+                <li>IHG governance docs review (GP/LP roles, decision rights, call cadence)</li>
+                <li>Rate adjustments and loss leader planning meeting (Ridge with Brooke, Michelle)</li>
+            </ul>
+        </div>
+
+        <div class="action-group">
+            <h4>Josh (Overarching Property Manager Accountability)</h4>
+            <ul>
+                <li>Walnut $200K check trace with bank EOD Monday</li>
+                <li>Walnut AP prioritization decision with Nicole ($100K wedge)</li>
+                <li>Chimney Hill 0-30 day collections reporting with Shasta, Vanessa</li>
+                <li>Concession approvals for Love/Aisle/Parks (with Vanessa, Nicole)</li>
+                <li>Weekly cash position review (Walnut) until positive territory</li>
+            </ul>
+        </div>
+
+        <!-- ===== SECTION I: COVERAGE GAPS ===== -->
+        <h2>Coverage Gaps — Missing Data & Recommendations</h2>
+
+        <div class="narrative">
+            <p><strong>Boardwalk (Tampa) — No Transcript:</strong> Monthly snapshot shows 94.4% occupancy, but no weekly operations call. Recommend pulling standalone weekly Boardwalk call next cycle to confirm occupancy trend and operational detail. Boardwalk is important comp for Tampa acquisitions (Compton Place, Orlando Esplanade).</p>
+            
+            <p><strong>Brandon Oaks (Tampa) — Tangential Only:</strong> No dedicated call this week. Property mentioned only tangentially in Oaks/Hanley combined call. Recommend dedicated Brandon Oaks call to confirm occupancy, delinquency, and operational status. Should not be included in Oaks/Hanley combined call due to distinct operations and lender relationships.</p>
+            
+            <p><strong>Preserve at Riverwalk — Starwood Extension Pending:</strong> No transcript this week. Starwood extension status unclear. Schedule asset-level review next cycle to validate occupancy, operations, capex, and extension terms. Extension approval timeline needed for capital planning.</p>
+            
+            <p><strong>Tampa Weekly Ops Call — No Transcript:</strong> Recommend confirming recording of Tampa weekly call (should cover Oaks, Hanley, Boardwalk, Brandon Oaks). Provide recording link or call summary to ensure coverage gaps are closed.</p>
+            
+            <p><strong>Skye Aisle — Under Isle/Love Tracking:</strong> Aisle covered under Isle/Love combined call. Request standalone Aisle numbers (occupancy, delinquency, collections) for portfolio tracking. Aisle should have independent KPI visibility.</p>
+        </div>
+
+        <!-- ===== FOOTER ===== -->
+        <p class="footer">Generated from Symmetre Weekly Leasing + 20 Fireflies transcripts (Apr 6-13, 2026) · ZMR Capital</p>
+
+    </div>
+</body>
+</html>
