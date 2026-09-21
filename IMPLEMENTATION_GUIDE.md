@@ -5,7 +5,7 @@
 **Owner:** Zamir Kazi (zamir@zmrcapital.com)
 **Portfolio:** 19 properties
 **Created:** April 14, 2026
-**Last Updated:** April 14, 2026
+**Last Updated:** September 21, 2026
 
 ---
 
@@ -57,11 +57,11 @@ Pure HTML/CSS, no external dependencies, fully self-contained.
 
 **Sections:**
 1. Portfolio Snapshot â high-level KPIs (occupancy, collections, delinquency)
-2. Property Performance Table â 18 rows with status indicators (green/amber/red)
+2. Property Performance Table â 19 rows with status indicators (green/amber/red)
 3. Portfolio Narrative â qualitative summary from meeting transcripts
 4. Top 5 Risks â ranked risk items with severity indicators
 5. What's Working â portfolio wins and positive trends
-6. Asset Deep Dives â detailed cards for 11 properties discussed in meetings
+6. Asset Deep Dives â detailed cards for all 19 properties
 7. Strategic Recommendations â forward-looking action items
 8. Action Items by Owner â tasks assigned to specific team members
 9. Coverage Gaps â properties not discussed in meetings that week
@@ -227,7 +227,7 @@ The sandbox and browser run in completely separate environments with no shared f
 **Method B â Gzip + Base64 injection (for new files):**
 1. In sandbox: `gzip -c file.html | base64 -w0 > gz_b64.txt`
 2. Split into chunks and inject into browser via `javascript_tool`
-3. Decompress in browser using `DecompressionStream` API
+3. Decompress in browser using `DecompressionStream` API. IMPORTANT: do NOT use `new Blob([bytes]).stream().pipeThrough(ds)` - it stalls indefinitely on GitHub pages. Write to the stream's own writer instead: `const ds = new DecompressionStream("gzip"); const w = ds.writable.getWriter(); w.write(bytes); w.close(); await new Response(ds.readable).arrayBuffer();`
 4. Create File from result and inject into upload form
 
 ### Known Limitations
@@ -314,6 +314,14 @@ CRITICAL: The dashboard and all reports MUST use the market (City, State) listed
 | 2026-04-14 | Bold formatting fix | Fixed 10 unclosed `<strong>` tags in Action Items sections causing body paragraphs to render bold. Commit `5230d94`. |
 | 2026-04-14 | Implementation guide | Created this document for portability and knowledge preservation |
 | 2026-04-14 | Property reference added | Added Section 10 with all 19 properties, correct markets from Master Property List Google Sheet. Fixed market misattributions (Chimney Hill, Hunter's Creek, Conway, Reserve, Ridge, Oaks, Boardwalk). Updated portfolio count from 18 to 19. |
+| 2026-09-21 | Week 38 report generated | Built dashboard from 47 Fireflies transcripts (2026-09-14 to 2026-09-21). All 19 properties covered; 16 reported an occupancy figure. Portfolio: 88.1% unit-weighted occupancy across 4,783 reporting units, 88.0% average collections, 3 green / 12 amber / 4 red. |
+| 2026-09-21 | GitHub Pages deployment | Committed `index.html` (60,733 bytes) to main. Verified live at https://zamirkazi.github.io/zmr-weekly-AM-reports/ with all 19 rows and correct markets per Section 10. |
+| 2026-09-21 | JSON archive | Created `archive/2026-W38.json` (39,011 bytes) with meta, portfolioSnapshot, properties (19), risks (5), actionItems (39), wins (8), recommendations (7) and coverageGaps (6). |
+| 2026-09-21 | Slack distribution | Sent Week 38 summary to Zamir DM (U01N25J7789), basic ASCII only. |
+| 2026-09-21 | Gmail draft | Created draft to all 7 team members with the live dashboard link. |
+| 2026-09-21 | Spec corrections | Section 3 still said 18 table rows and 11 deep-dive cards; corrected to 19 rows and all 19 properties to match Section 10. |
+| 2026-09-21 | Transfer method note | `DecompressionStream` via `Blob.stream().pipeThrough()` stalls and never resolves on the GitHub upload page. Writing to the stream's own writer (`ds.writable.getWriter()`) works. See Section 7. |
+| 2026-09-21 | Coverage gap follow-ups | Preserve at Riverwalk has no weekly ops call (capital/valuation coverage only) and both Skye Oaks parcels are reported as one combined campus. Recommend adding a Preserve ops call and splitting Skye Oaks by parcel. |
 
 ---
 
