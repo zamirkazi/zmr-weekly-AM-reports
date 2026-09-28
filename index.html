@@ -3,549 +3,181 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ZMR Capital - Weekly AM Report - Week 38</title>
-<style>
-:root{
-  --bg-primary:#fafaf7;
-  --green-ok:#10b981;
-  --amber-warn:#f59e0b;
-  --red-crit:#ef4444;
-  --green-dark:#047857;
-  --ink:#1f2328;
-  --ink-soft:#57606a;
-  --line:#e3e2dc;
-  --card:#ffffff;
-}
-*{box-sizing:border-box}
-body{
-  margin:0;padding:32px 20px 72px;background:var(--bg-primary);color:var(--ink);
-  font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
-  -webkit-font-smoothing:antialiased;
-}
-.wrap{max-width:900px;margin:0 auto}
-header.masthead{border-bottom:3px solid var(--ink);padding-bottom:18px;margin-bottom:8px}
-.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
-h1{font-size:30px;line-height:1.2;margin:8px 0 6px;letter-spacing:-.02em}
-.sub{color:var(--ink-soft);font-size:14px;margin:0}
-h2{font-size:21px;margin:44px 0 6px;letter-spacing:-.01em;padding-bottom:8px;border-bottom:1px solid var(--line)}
-h3{font-size:16px;margin:0 0 4px}
-p{margin:10px 0}
-.lede{color:var(--ink-soft);font-size:14px;margin:0 0 14px}
-
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0 8px}
-.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 14px 12px}
-.kpi .label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);font-weight:700}
-.kpi .value{font-size:26px;font-weight:700;letter-spacing:-.02em;margin-top:4px;line-height:1.1}
-.kpi .foot{font-size:12px;color:var(--ink-soft);margin-top:2px}
-.kpi.green .value{color:var(--green-dark)}
-.kpi.amber .value{color:#b45309}
-.kpi.red .value{color:#b91c1c}
-
-.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--card);margin-top:14px}
-table{border-collapse:collapse;width:100%;font-size:13.5px}
-th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:middle}
-th{background:#f4f3ee;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft);font-weight:700;white-space:nowrap}
-tbody tr:last-child td{border-bottom:none}
-td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
-tr.mkt td{background:#f0efe8;font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
-
-.badge{display:inline-block;padding:2px 9px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;color:#fff}
-.badge.green{background:var(--green-ok)}
-.badge.amber{background:var(--amber-warn)}
-.badge.red{background:var(--red-crit)}
-.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:baseline}
-.dot.green{background:var(--green-ok)}
-.dot.amber{background:var(--amber-warn)}
-.dot.red{background:var(--red-crit)}
-
-.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0}
-.card.green{border-left:4px solid var(--green-ok)}
-.card.amber{border-left:4px solid var(--amber-warn)}
-.card.red{border-left:4px solid var(--red-crit)}
-.card .meta{font-size:12px;color:var(--ink-soft);margin:0 0 8px}
-.card p.body{margin:0;font-size:14px}
-
-.risk{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0;display:flex;gap:14px}
-.risk.high{border-left:4px solid var(--red-crit)}
-.risk.medium{border-left:4px solid var(--amber-warn)}
-.risk.low{border-left:4px solid var(--green-ok)}
-.rank{flex:0 0 34px;height:34px;border-radius:8px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px}
-.risk .rbody{flex:1;min-width:0}
-.risk h3{margin:0 0 2px;font-size:15px}
-.risk .sev{font-size:11px;letter-spacing:.07em;text-transform:uppercase;font-weight:700;color:var(--ink-soft)}
-.risk p{font-size:14px;margin:8px 0 0}
-.mitig{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-size:13.5px;color:var(--ink-soft)}
-.mitig strong{color:var(--ink)}
-
-ul.plain{margin:10px 0;padding-left:20px}
-ul.plain li{margin:7px 0;font-size:14.5px}
-
-.owner{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:12px 0}
-.owner h3{font-size:15px;margin:0 0 8px;padding-bottom:6px;border-bottom:1px solid var(--line)}
-.owner ul{margin:0;padding-left:18px}
-.owner li{font-size:14px;margin:7px 0}
-.pri{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:1px 7px;border-radius:4px;margin-right:6px;vertical-align:1px}
-.pri.critical{background:#fee2e2;color:#991b1b}
-.pri.high{background:#fef3c7;color:#92400e}
-.pri.medium{background:#e5e7eb;color:#374151}
-.tag{font-size:12px;color:var(--ink-soft)}
-
-footer{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-soft)}
-
-@media (max-width:680px){
-  body{padding:20px 14px 56px}
-  .kpis{grid-template-columns:repeat(2,1fr)}
-  h1{font-size:24px}
-  table{font-size:12.5px}
-  th,td{padding:8px 9px}
-}
-@media print{
-  body{background:#fff;padding:0;font-size:11pt}
-  .wrap{max-width:100%}
-  .card,.risk,.owner,.tablewrap,.kpi{break-inside:avoid;box-shadow:none}
-  h2{break-after:avoid}
-  a{text-decoration:none;color:inherit}
-}
-</style>
+<title>ZMR Capital - Weekly AM Report - Week 39</title>
+<style>:root{--bg-primary:#fafaf7;--green-ok:#10b981;--amber-warn:#f59e0b;--red-crit:#ef4444;--green-dark:#047857;--ink:#1f2937;--muted:#6b7280;--line:#e5e7eb;--card:#ffffff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg-primary);color:var(--ink);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:28px 18px 60px}
+header h1{font-size:26px;margin:0 0 4px}header p{margin:0;color:var(--muted)}
+h2{font-size:19px;margin:34px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--line)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.kpi .v{font-size:22px;font-weight:700}.kpi .l{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:13.5px}
+th,td{padding:8px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{background:#f3f4f1;font-size:12px;text-transform:uppercase;letter-spacing:.03em;color:var(--muted)}
+td.n{text-align:right;white-space:nowrap}tr.mk td{background:#f7f7f2;font-weight:700;font-size:12.5px;letter-spacing:.03em}
+.b{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11.5px;font-weight:700;color:#fff;text-transform:uppercase}
+.b.green{background:var(--green-ok)}.b.amber{background:var(--amber-warn)}.b.red{background:var(--red-crit)}
+.b.high{background:var(--red-crit)}.b.medium{background:var(--amber-warn)}.b.low{background:var(--green-ok)}.b.critical{background:var(--red-crit)}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:10px;padding:13px 16px;margin:0 0 10px}
+.card.green{border-left-color:var(--green-ok)}.card.amber{border-left-color:var(--amber-warn)}.card.red{border-left-color:var(--red-crit)}.card.win{border-left-color:var(--green-dark)}
+.card h3{margin:0 0 4px;font-size:15.5px}.card .meta{font-size:12.5px;color:var(--muted);margin-bottom:6px}.card p{margin:4px 0}
+.owner h3{font-size:15px;margin:18px 0 6px}.owner ul{margin:0;padding-left:20px}.owner li{margin:3px 0}
+.small{font-size:12.5px;color:var(--muted)}
+.tw{overflow-x:auto}
+@media (max-width:640px){th:nth-child(3),td:nth-child(3),th:nth-child(4),td:nth-child(4){display:none}}
+@media print{body{background:#fff}.wrap{max-width:none;padding:0}h2{page-break-after:avoid}.card,tr{page-break-inside:avoid}.b{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style>
 </head>
 <body>
 <div class="wrap">
-
-<header class="masthead">
-<div class="eyebrow">ZMR Capital &middot; Asset Management</div>
-<h1>Weekly Portfolio Report &mdash; Week 38</h1>
-<p class="sub">Week of 2026-09-14 to 2026-09-20 &middot; 19 properties &middot; 5,651 units &middot; 5 markets &middot; Generated 2026-09-21 from 47 Fireflies meeting transcripts</p>
-</header>
-<h2>Portfolio Snapshot</h2>
-<p class="lede">Occupancy is unit-weighted across the 4,783 units with a reported figure this week (16 of 19 properties). Collections is a simple average of the seven properties that reported a collections percentage.</p>
-<div class="kpis">
-<div class="kpi"><div class="label">Total Units</div><div class="value">5,651</div><div class="foot">19 properties</div></div>
-<div class="kpi amber"><div class="label">Occupancy</div><div class="value">88.1%</div><div class="foot">unit-weighted, 4,783 units</div></div>
-<div class="kpi amber"><div class="label">Collections</div><div class="value">88.0%</div><div class="foot">avg of 7 reporting</div></div>
-<div class="kpi red"><div class="label">Critical Assets</div><div class="value">4</div><div class="foot">of 19 properties</div></div>
-</div>
-<div class="kpis">
-<div class="kpi green"><div class="label">Performing</div><div class="value">3</div><div class="foot">green status</div></div>
-<div class="kpi amber"><div class="label">Watchlist</div><div class="value">12</div><div class="foot">amber status</div></div>
-<div class="kpi red"><div class="label">Critical</div><div class="value">4</div><div class="foot">red status</div></div>
-<div class="kpi"><div class="label">Meetings Reviewed</div><div class="value">47</div><div class="foot">Sept 14 &ndash; Sept 21</div></div>
-</div>
-<h2>Property Performance</h2>
-<p class="lede">All 19 properties. Markets per the Master Property List (Section 10 of the Implementation Guide). A dash indicates the metric was not reported in this week&rsquo;s meetings.</p>
-<div class="tablewrap"><table>
-<thead><tr><th>Property</th><th>Market</th><th class="num">Units</th><th>AM</th><th class="num">Occ.</th><th class="num">Coll.</th><th>Status</th></tr></thead><tbody>
-<tr class="mkt"><td colspan="7">Arizona &mdash; 3 properties, 672 units</td></tr>
-<tr>
-<td><span class="dot amber"></span>The Flats</td>
-<td>Mesa, AZ</td>
-<td class="num">112</td>
-<td>Mike</td>
-<td class="num">88.39%</td>
-<td class="num">87.5%</td>
-<td><span class="badge amber">watchlist</span></td>
-</tr>
-<tr>
-<td><span class="dot red"></span>Nightingale on 25th</td>
-<td>Deer Valley, AZ</td>
-<td class="num">240</td>
-<td>Mike</td>
-<td class="num">80.00%</td>
-<td class="num">-</td>
-<td><span class="badge red">critical</span></td>
-</tr>
-<tr>
-<td><span class="dot amber"></span>The Julia</td>
-<td>Mesa, AZ</td>
-<td class="num">320</td>
-<td>Mike</td>
-<td class="num">90.31%</td>
-<td class="num">-</td>
-<td><span class="badge amber">watchlist</span></td>
-</tr>
-<tr class="mkt"><td colspan="7">Florida &mdash; 8 properties, 2,741 units</td></tr>
-<tr>
-<td><span class="dot amber"></span>The Boardwalk</td>
-<td>Fort Myers, FL</td>
-<td class="num">338</td>
-<td>Nicole</td>
-<td class="num">85.00%</td>
-<td class="num">89.4%</td>
-<td><span class="badge amber">watchlist</span></td>
-</tr>
-<tr>
-<td><span class="dot amber"></span>Hanley Place</td>
-<td>Tampa, FL</td>
-<td class="num">400</td>
-<td>Nicole</td>
-<td class="num">95.00%</td>
-<td class="num">-</td>
-<td><span class="badge amber">watchlist</span></td>
-</tr>
-<tr>
-<td><span class="dot green"></span>Skye at Conway</td>
-<td>Orlando, FL</td>
-<td class="num">220</td>
-<td>Nicole</td>
-<td class="num">93.00%</td>
-<td class="num">-</td>
-<td><span class="badge green">performing</span></td>
-</tr>
-<tr>
-<td><span class="dot amber"></span>Skye Oaks (Palms at Palisades)</td>
-<td>Brandon, FL</td>
-<td class="num">125</td>
-<td>Nicole</td>
-<td class="num">91.00%</td>
-<td class="num">-</td>
-<td><span class="badge amber">watchlist</span></td>
-</tr>
-<tr>
-<td><span class="dot amber"></span>Skye Oaks (Brandon Oaks)</td>
-<td>Brandon, FL</td>
-<td class="num">160</td>
-<td>Nicole</td>
-<td class="num">91.00%</td>
-<td class="num">-</td>
-<td><span class="badge amber">watchlist</span></td>
-</tr>
-<tr>
-<td><span class="dot red"></span>Skye Reserve</td>
-<td>Brandon, FL</td>
-<td class="num">982</td>
-<td>Nicole</td>
-<td class="num">78.00%</td>
-<td class="num">87.0%</td>
-<td><span class="badge red">critical</span></td>
-</tr>
-<tr>
-<td><span class="dot red"></span>Preserve at Riverwalk</td>
-<td>Bradenton, FL</td>
-<td class="num">300</td>
-<td>Nicole</td>
-<td class="num">-</td>
-<td class="num">-</td>
-<td><span class="badge red">critical</span></td>
-</tr>
-<tr>
-<td><span class="dot amber"></span>Skye at Hunter&#x27;s Creek</td>
-<td>Kissimmee, FL</td>
-<td class="num">216</td>
-<td>Nicole</td>
-<td class="num">90.74%</td>
-<td class="num">-</td>
-<td><span class="badge amber">watchlist</span></td>
-</tr>
-<tr class="mkt"><td colspan="7">Georgia &mdash; 2 properties, 466 units</td></tr>
-<tr>
-<td><span class="dot green"></span>Park at Peachtree Hills</td>
-<td>Atlanta, GA</td>
-<td class="num">118</td>
-<td>Mike</td>
-<td class="num">97.50%</td>
-<td class="num">91.3%</td>
-<td><span class="badge green">performing</span></td>
-</tr>
-<tr>
-<td><span class="dot amber"></span>Upland Townhomes</td>
-<td>Mableton, GA</td>
-<td class="num">348</td>
-<td>Mike</td>
-<td class="num">92.24%</td>
-<td class="num">80.0%</td>
-<td><span class="badge amber">watchlist</span></td>
-</tr>
-<tr class="mkt"><td colspan="7">Texas &mdash; 5 properties, 1,556 units</td></tr>
-<tr>
-<td><span class="dot amber"></span>Ninety-Nine 44</td>
-<td>Dallas, TX</td>
-<td class="num">260</td>
-<td>Mike</td>
-<td class="num">-</td>
-<td class="num">-</td>
-<td><span class="badge amber">watchlist</span></td>
-</tr>
-<tr>
-<td><span class="dot green"></span>Parks At Walnut</td>
-<td>Dallas, TX</td>
-<td class="num">308</td>
-<td>Mike</td>
-<td class="num">-</td>
-<td class="num">-</td>
-<td><span class="badge green">performing</span></td>
-</tr>
-<tr>
-<td><span class="dot red"></span>Chimney Hill</td>
-<td>Dallas, TX</td>
-<td class="num">240</td>
-<td>Mike</td>
-<td class="num">92.00%</td>
-<td class="num">92.7%</td>
-<td><span class="badge red">critical</span></td>
-</tr>
-<tr>
-<td><span class="dot amber"></span>Skye Isle</td>
-<td>Dallas, TX</td>
-<td class="num">308</td>
-<td>Nicole</td>
-<td class="num">93.18%</td>
-<td class="num">-</td>
-<td><span class="badge amber">watchlist</span></td>
-</tr>
-<tr>
-<td><span class="dot amber"></span>Skye at Love</td>
-<td>Dallas, TX</td>
-<td class="num">440</td>
-<td>Nicole</td>
-<td class="num">89.77%</td>
-<td class="num">-</td>
-<td><span class="badge amber">watchlist</span></td>
-</tr>
-<tr class="mkt"><td colspan="7">Las Vegas &mdash; 1 property, 216 units</td></tr>
-<tr>
-<td><span class="dot amber"></span>Skye Ridge</td>
-<td>Las Vegas, NV</td>
-<td class="num">216</td>
-<td>Nicole</td>
-<td class="num">94.44%</td>
-<td class="num">88.1%</td>
-<td><span class="badge amber">watchlist</span></td>
-</tr>
-</tbody></table></div>
-<h2>Portfolio Narrative</h2>
-<p>The portfolio split cleanly in two this week. Three assets &mdash; Skye at Conway, Park at Peachtree Hills and Parks at Walnut &mdash; are performing well enough that the operating conversation has moved from filling units to raising fees and tapering incentives. Four assets are in genuine distress, and in each case the distress has a specific, nameable cause rather than a general market condition.</p>
-<p>Skye Reserve is the dominant story by weight. At 982 units it is 17% of the portfolio, and at roughly 78% occupancy with 31 down or admin-classified units it accounts for most of the gap between the portfolio&rsquo;s 88.1% unit-weighted occupancy and where it should be. The operating diagnosis this week was unusually direct: the problem is leadership vacancy, not demand. Brian cannot relocate to Tampa, Tina&rsquo;s role is unfilled, and daily task ownership has been unclear for weeks. The response is concrete &mdash; Jeremy on site daily, Ed pulled in at roughly 25% for three to four months, Julie&rsquo;s portfolio lightened for more site time, a regional manager in final interviews &mdash; and the early evidence is encouraging, with pending applications cleaned from 79 to 34 and lease execution accelerating. The timing matters because the MF1/Berkshire term sheet on a $10 million equity injection lands this week and the counterparty is arguing stabilized value while we are being measured on current performance.</p>
-<p>Preserve at Riverwalk is a different kind of problem: not operating, but structural. A comparable sale implies roughly $80.55 million against a $98 million basis with $66.4 million of debt outstanding, after $7&ndash;8 million of contributions and approaching capital call 19 or 20. There is no operating fix for that arithmetic, and no operations call was held this week to attempt one.</p>
-<p>Credit quality is the connective thread across the amber cohort. Chimney Hill posted bad debt near 19.7% by the 16th. Upland Townhomes holds 92.24% physical occupancy but only 80% collections, which cuts effective occupancy to about 72%. Skye Ridge is looking at 9% November retention. The Flats slipped to 87.5% collections. These are not four separate problems; they are one underwriting-and-concession-design problem showing up in four places. The encouraging development is that the response is finally standardizing &mdash; TransUnion eviction-risk scores layered into screening, second-chance approvals ended, concession burn-off tracked separately from true delinquency, payment-pattern columns added to drive non-renewal decisions. The Florida income-to-rent thresholds flagged separately in the AM team call, some as low as 2.0x rent with credit screening below 560, suggest the standard needs to be set at the portfolio level rather than negotiated asset by asset.</p>
-<p>A second cross-cutting issue is documentation rather than performance. The Newmark lender-required repairs at Boardwalk, Hanley Place and Skye Oaks are past the original July 30 requirement with a hard September 30 deadline at Skye Oaks, and the binding constraint is not whether the work was done but whether ZMR can prove it. Invoices, payment records, certifications and before-and-after photos are scattered across email, Yardi and vendor records. Similar friction is showing up in the draw workflow, where lenders reference outdated capital budgets and a newly-required title search plus $175 wire on every Preserve draw keeps being rediscovered rather than built into the process.</p>
-<p>Marketing was the week&rsquo;s clearest win and the clearest source of transferable evidence. Portfolio-wide PPC conversions rose over 7% to more than 600 at roughly $32 per conversion, and the portfolio added 67 Google reviews. Skye Oaks quadrupled leases and nearly halved cost per lease after a website refresh and increased PMAX spend. Skye Reserve moved from 21 to 45 leases with cost per lease down over $100. Against that, The Flats produced zero Zillow applications or leases and Chimney Hill&rsquo;s lead-to-prospect conversion fell 30%. The reallocation logic is already proven; the constraint is the speed of the approval cycle.</p>
-<h2>Top 5 Risks</h2>
-<div class="risk high"><div class="rank">1</div><div class="rbody">
-<h3>Skye Reserve</h3>
-<div class="sev">high severity</div>
-<p>982 units at ~78% occupancy with 31 down or admin-classified units, ~$800K in vendor payables and collections at 87%. Root cause is leadership vacancy - Brian cannot relocate, Tina&#x27;s role is unfilled, and on-site ownership of daily tasks has been unclear for weeks. Lender and investor confidence is explicitly at stake, and the MF1/Berkshire recapitalization is being negotiated against this operating record.</p>
-<div class="mitig"><strong>Mitigation:</strong> Jeremy on site daily and application backlog already cut from 79 to 34. Ed pulled in at 25% for 3-4 months, Julie&#x27;s portfolio lightened for more site time, regional manager hire in final interviews. Tina and Jeremy to produce one authoritative down-unit tracker with costs and remediation dates for the lender; $144K draw submitted against aging AP.</div>
-</div></div>
-<div class="risk high"><div class="rank">2</div><div class="rbody">
-<h3>Preserve at Riverwalk</h3>
-<div class="sev">high severity</div>
-<p>Comparable sale implies ~$80.55M value against a $98M basis and a $66.4M loan - equity is deeply impaired after $7-8M of contributions and the asset is approaching capital call 19 or 20. Capital records still carry a $50,000 unexplained variance and a misposted June contribution.</p>
-<div class="mitig"><strong>Mitigation:</strong> Megan to report off Agora and the capital tracker rather than Yardi until reconciled; Julie to investigate the negative paid-in-capital entry and June bank rec. Sugandha and Merlee reconciling lender capital budget draw discrepancies. Every draw now requires a title search plus $175 wire - build it into the standard workflow rather than rediscovering it each cycle.</div>
-</div></div>
-<div class="risk high"><div class="rank">3</div><div class="rbody">
-<h3>Chimney Hill</h3>
-<div class="sev">high severity</div>
-<p>Bad debt near 19.7% by the 16th - the worst credit reading in the portfolio - against 92.7% collections versus a 95% target, while the delinquency report itself is unreliable with discrepancies up to $30,000.</p>
-<div class="mitig"><strong>Mitigation:</strong> Mike Weiner to reconcile the 0-30 day bucket and clarify the $30,000 discrepancy before any further decisions are made off that report. Add eviction history and a payment-pattern column to drive non-renewal of chronic late payers. Josh continuing eviction filings on legal timelines. Target 95-96% collections by Sept 29 excluding write-offs.</div>
-</div></div>
-<div class="risk high"><div class="rank">4</div><div class="rbody">
-<h3>Boardwalk / Hanley Place / Skye Oaks</h3>
-<div class="sev">high severity</div>
-<p>Newmark lender-required repairs are past the original July 30 requirement with a hard Sept 30 deadline at Skye Oaks. Completion is disputed at Boardwalk, documentation is missing at Hanley Place, and asphalt scope at Skye Oaks exceeds the ~$22,500 budget. Lender dissatisfaction is expected and fund release is blocked.</p>
-<div class="mitig"><strong>Mitigation:</strong> Sidonio compiling site photos, vendor names and invoices; Garrett pulling Yardi payment and voucher records; Megan assembling and submitting the lender packet to Sean. Request explicit lender guidance on whether asphalt patching satisfies the requirement before spending against remilling scope.</div>
-</div></div>
-<div class="risk medium"><div class="rank">5</div><div class="rbody">
-<h3>Upland Townhomes</h3>
-<div class="sev">medium severity</div>
-<p>Collections at 80% against a ~97% target cut effective occupancy to roughly 72% despite 92.24% physical occupancy. $114,000 outstanding among residents housed over two months, including ~$50,000 tied to concessions running past eight weeks - a screening and concession-design failure, not a collections-effort failure.</p>
-<div class="mitig"><strong>Mitigation:</strong> Second-chance approvals ended and applicants with prior evictions or bankruptcies now denied. TransUnion eviction-risk scores, move-in dates and 12-month late-payment history being layered into the delinquency report. Concession burn-off reminders by letter, call and assistant-manager follow-up. Residents with 4+ late payments and 61-day balances flagged for non-renewal.</div>
-</div></div>
-<h2>What's Working</h2>
-<div class="card green"><h3>Skye at Conway</h3><p class="body">The cleanest operating week in the portfolio - 93% occupancy, 95.91% pre-leased, a 50% close rate on tours, and delinquency down to a single pending payment. The team is raising application and admin fees from a position of strength rather than discounting into it.</p></div>
-<div class="card green"><h3>Park at Peachtree Hills</h3><p class="body">Occupancy up to 97.5% from 96.6% and the highest in the portfolio, with five tours completed and three more booked. Fee waivers were deployed as a closing tool while the $1,450 rate held - volume without rate erosion.</p></div>
-<div class="card green"><h3>Skye Reserve</h3><p class="body">Marketing is outrunning operations: leases rose from 21 to 45 with cost per lease down more than $100 after the PMAX upgrade, and the property led the portfolio in new Google reviews. Pending applications were cleaned from 79 to 34, which is what makes the occupancy projections credible.</p></div>
-<div class="card green"><h3>Skye Oaks</h3><p class="body">Leases quadrupled and cost per lease nearly halved following a website refresh and increased PMAX spend - the highest-ROI marketing change made anywhere in the portfolio this month.</p></div>
-<div class="card green"><h3>Skye at Hunter&#x27;s Creek</h3><p class="body">Occupancy at 90.74% trending to 95.3%, turnover at just 4.63%, delinquency exceptionally low, and an 8-of-9 application rate at a 75% close. The signature upgrade package also came down to $1,950 per unit from $2,500, saving $550 on every unit touched.</p></div>
-<div class="card green"><h3>Parks At Walnut</h3><p class="body">17 applications and seven approvals in a single week with 11 rent-ready units to absorb them, fully staffed, and the best cost per conversion in the Central/West group at $31.22 - which is why it is getting the reallocated Apartments.com budget.</p></div>
-<div class="card green"><h3>Portfolio marketing</h3><p class="body">Portfolio-wide PPC conversions rose over 7% to more than 600 at roughly $32 per conversion, and the portfolio gained 67 new Google reviews. Apartments.com packages are being cut at underperforming properties and the savings redeployed to PPC and PMAX where cost per conversion justifies it.</p></div>
-<div class="card green"><h3>Budget process</h3><p class="body">The 2027 budget process now runs on locked templates and standardized SOPs with a 5% or $5,000 variance-comment threshold. Maria&#x27;s Tampa submission came in detailed enough to be adopted as the house standard for every other region.</p></div>
-<h2>Asset Deep Dives</h2>
-<p class="lede">All 19 properties, grouped by market per the Master Property List.</p>
-<h3 style="margin-top:26px;font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft)">Arizona &mdash; 3 properties, 672 units</h3>
-<div class="card amber">
-<h3>The Flats <span class="badge amber">watchlist</span></h3>
-<p class="meta">Mesa, AZ &middot; 112 units &middot; AM: Mike &middot; Occupancy 88.39% &middot; Collections 87.5% &middot; Delinquency/bad debt 9.5%</p>
-<p class="body">Occupancy 88.39% (93.75% leased); 4 units rent-ready. Collections slipped to 87.5% with ~$10,684 in 0-30 day delinquency, over $9,800 of it across five tenants. Approved $10-$49 rent reductions on select units; classic studio rates held. November renewals only 40%. Maintenance destabilized by Chad&#x27;s resignation - Gary covering interim at $40/hr vs ~$33 budget; $500 signing bonus over 90 days proposed and an internal promotion is being pursued. Work orders cut from 30 to 13. Apartments.com cancelled effective Sept 30; zero Zillow applications or leases and a weak 22.6% tour-to-application rate.</p>
-</div>
-<div class="card red">
-<h3>Nightingale on 25th <span class="badge red">critical</span></h3>
-<p class="meta">Deer Valley, AZ &middot; 240 units &middot; AM: Mike &middot; Occupancy 80.00%</p>
-<p class="body">Remains under full passive lender operational control with no foreclosure filing and no clear exit plan. Occupancy approximately 80%. Interest-rate conditions remain unfavorable for any refinancing or exit. Flagged in the 2026 audit as a likely write-down to zero valuation. No ZMR-run weekly operations call this week - status derived from the Atlantic Creek monthly call and the Baker Tilly audit planning session. Nightingale Q2 data is being used to validate the new Q3 reporting automation prototype.</p>
-</div>
-<div class="card amber">
-<h3>The Julia <span class="badge amber">watchlist</span></h3>
-<p class="meta">Mesa, AZ &middot; 320 units &middot; AM: Mike &middot; Occupancy 90.31% &middot; Delinquency/bad debt 8.1%</p>
-<p class="body">Occupancy stable at 90.31%, projected 90.62% after scheduled move-ins; four move-ins against five move-outs last week. Seven tours produced five applications. November renewals sluggish, so the renewal incentive was raised from $350 to $500 with the 20th-of-month deadline held. Three tenants received visa denials - one departure already, another surrender expected; no ICE raids reported. Delinquency approximately $26,000 across 15 tenants with only ~$4,000 aged past 31 days. Maintenance staffing constrained after two failed interviews; one candidate in training plus a possible internal transfer. Open work orders declining into the 60s. Reservation of Rights document awaiting a funding-assurance clarification before signature.</p>
-</div>
-<h3 style="margin-top:26px;font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft)">Florida &mdash; 8 properties, 2,741 units</h3>
-<div class="card amber">
-<h3>The Boardwalk <span class="badge amber">watchlist</span></h3>
-<p class="meta">Fort Myers, FL &middot; 338 units &middot; AM: Nicole &middot; Occupancy 85.00% &middot; Collections 89.4%</p>
-<p class="body">Occupancy 85%. Month-to-date collections approximately 89.4% with delinquency near $50,158. Leasing constrained by unit readiness - five units leased last week against a 29-unit month-end goal; team exploring vendor support to lift turns from five to seven-to-ten per week. Renewal campaign launches 09/21 with a three-month concession. Vendors being used to accelerate complex work. Digital marketing improving: leads up to 57 and leases to 10, prompting a 20% PPC increase and an Apartments.com downgrade to Gold by Nov 1. Newmark lender-required repairs (curbing, asphalt patching, landscaping, ~$18,500 budget) remain in dispute - lender re-inspection still flags items and invoices, payment proof and before/after photos are outstanding.</p>
-</div>
-<div class="card amber">
-<h3>Hanley Place <span class="badge amber">watchlist</span></h3>
-<p class="meta">Tampa, FL &middot; 400 units &middot; AM: Nicole &middot; Occupancy 95.00%</p>
-<p class="body">Strongest occupancy in the Florida portfolio at 95%, and cited in the 2026 audit as one of only two clearly performing assets. The problem is the balance sheet: over $700,000 in aging payables with the cause not yet diagnosed - Jimmy Chestnut is reviewing the AP ballooning alongside the outstanding roofer report. Service manager position needs backfilling. Newmark lender repairs largely completed in-house (ADA curb work, Ring camera, landscaping, painting, down-unit repairs) against a ~$10,000 landscaping budget, but supporting documentation is missing and soffit repairs at Buildings 28 and 36 remain unverified.</p>
-</div>
-<div class="card green">
-<h3>Skye at Conway <span class="badge green">performing</span></h3>
-<p class="meta">Orlando, FL &middot; 220 units &middot; AM: Nicole &middot; Occupancy 93.00%</p>
-<p class="body">Best-in-class week. Occupancy reached 93% with pre-leasing at 95.91% and a 50% close rate (three leases from six tours). Delinquency minimal - a single pending payment - and the property ranks near the top of the portfolio on collections. Application fees rising to $50 and admin to $99 to filter out speculative applications; two-bedroom units will be held 30 days post-signing pending utility transfer. $500 renewal incentive for leases signed by Sept 30 and a $500 resident referral program both running. Dog park and basketball court security upgrades land by end of next week; gutter drainage repairs rescheduled to Saturday. A $117,000 waterfall release will fund prioritized vendor payments - HD Supply is locked pending payment, with Chadwell as backup. Lender site visit Thursday.</p>
-</div>
-<div class="card amber">
-<h3>Skye Oaks (Palms at Palisades) <span class="badge amber">watchlist</span></h3>
-<p class="meta">Brandon, FL &middot; 125 units &middot; AM: Nicole &middot; Occupancy 91.00%</p>
-<p class="body">Reported operationally as part of the combined Sky Oaks campus - occupancy approximately 91% with a 3% improvement in collections. Newmark lender repair work is the binding constraint ahead of the Sept 30 deadline: unit electrical complete, GFCI outlets and panel replacements roughly 90% done and in final inspection, car-wash station electrical complete but awaiting county permit sign-off. Curb repairs at two of three buildings (638 and 642) remain outstanding and extensive asphalt cracking needs lender guidance because the ~$22,500 budget supports patching rather than remilling. Property inspections are complete. Marketing turned sharply positive - leases quadrupled and cost per lease nearly halved after a website refresh and higher PMAX spend - though tour attendance and tour-to-lease conversion remain weak.</p>
-</div>
-<div class="card amber">
-<h3>Skye Oaks (Brandon Oaks) <span class="badge amber">watchlist</span></h3>
-<p class="meta">Brandon, FL &middot; 160 units &middot; AM: Nicole &middot; Occupancy 91.00%</p>
-<p class="body">Reported operationally as part of the combined Sky Oaks campus - occupancy approximately 91% with a 3% improvement in collections. Same Newmark lender repair exposure as the Palisades parcel with a hard Sept 30 deadline: GFCI and panel work in final inspection, county permit sign-off pending on car-wash electrical, curb repairs outstanding at Buildings 638 and 642, and asphalt scope unresolved against a ~$22,500 budget. Garrett is pulling Yardi payment records and Sidonio is on site collecting photographic evidence. Zillow package being reduced to mid-tier with $300/month SEO spend resuming.</p>
-</div>
-<div class="card red">
-<h3>Skye Reserve <span class="badge red">critical</span></h3>
-<p class="meta">Brandon, FL &middot; 982 units &middot; AM: Nicole &middot; Occupancy 78.00% &middot; Collections 87.0%</p>
-<p class="body">The portfolio&#x27;s largest and most troubled asset. Occupancy approximately 78% (76.37% at the low) against a projection of 79.1-79.2%; pending applications cleaned up from 79 to 34. Collections 87% as of the 13th with seven evictions tracked. Thirty-one units are down or admin-classified and require a formal remediation plan with cost detail - Garrett needs a clean, consistently-worded report for the lender. Vendor payables approach $800,000; a $144,000 draw request is being prepared against aging AP. Staffing is the root cause: Brian cannot relocate to Tampa, Tina&#x27;s role needs backfilling, and Ed is being pulled in at ~25% for three to four months while Julie&#x27;s portfolio is lightened to add on-site time. Jeremy is now on site daily and lease execution has accelerated. Separately, MF1/Berkshire negotiations converged on a $10 million equity injection, but the interest reserve is far apart ($4 million versus $850,000); debt yield moved to 2.5%, waterfall settled at 1.5%, CBRE BOV approximately $130 million, term sheet expected this week. Marketing is the bright spot - leases rose from 21 to 45 with cost per lease down over $100.</p>
-</div>
-<div class="card red">
-<h3>Preserve at Riverwalk <span class="badge red">critical</span></h3>
-<p class="meta">Bradenton, FL &middot; 300 units &middot; AM: Nicole</p>
-<p class="body">Valuation and funding stress. A comparable sale implies approximately $80.55 million against a $98 million acquisition price, with a $66.4 million loan balance outstanding - equity is deeply impaired. Roughly $7-8 million has been contributed since acquisition and the property is approaching capital call 19 or 20; Q2 additional contributions were $1.299 million against $46.897 million of equity invested to date. Capital reconciliation still carries a $50,000 variance with an unexplained additional paid-in-capital entry, and a June contribution was misposted to July in Yardi. Draw mechanics are worsening: approximately $130,000 in reallocations targeted for Draw 19 (Draw 18 was ~$173,000), and every capital draw on the Preserve loan now requires a title search plus a $175 wire. No operations metrics were reported this week.</p>
-</div>
-<div class="card amber">
-<h3>Skye at Hunter&#x27;s Creek <span class="badge amber">watchlist</span></h3>
-<p class="meta">Kissimmee, FL &middot; 216 units &middot; AM: Nicole &middot; Occupancy 90.74%</p>
-<p class="body">Meaningfully improving. Occupancy 90.74% with 30- and 60-day projections at 95.3% and an overall trend of 94.4%. Nine tours produced eight applications at a 75% closing ratio; turnover just 4.63% and delinquency exceptionally low. A flash sale (one month free on 1BR/2BR, two months on 3BR) pulled leasing forward ahead of the seasonal slowdown, and the team now plans to taper concessions and raise application and admin fees as availability tightens. October renewals 67% closed. Signature upgrade cost dropped to $1,950 per unit from $2,500. Fire-life-safety work sequenced: painted sprinkler-head corrections in September, breezeway lighting by Oct 10, smoke detector replacement mid-to-late October. Two watch items: the property missed the lender&#x27;s debt yield test by roughly $20,000 and is targeting a year-end exit from cash management, and cash is short while Silver Cap holds funds - the team is seeking release of $120,000-$160,000 to cover accounts payable. Google rating 4.4.</p>
-</div>
-<h3 style="margin-top:26px;font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft)">Georgia &mdash; 2 properties, 466 units</h3>
-<div class="card green">
-<h3>Park at Peachtree Hills <span class="badge green">performing</span></h3>
-<p class="meta">Atlanta, GA &middot; 118 units &middot; AM: Mike &middot; Occupancy 97.50% &middot; Collections 91.3%</p>
-<p class="body">Highest occupancy in the portfolio at 97.5%, up from 96.6% on a Monday move-in, with five tours completed and three more scheduled. Application and admin fees waived as a closing incentive for October and November leases; the $1,450 rental rate held. Preferred-employer program being revived at roughly $525-$550 of value (waived fees plus $275 off first month) with an industry-targeted website tab. Collections 91.3% of total charges and 93% of rental income, approximately $7,000 uncollected; seven-day abandonment notices posted on units C8, C9 and J4. Unit J4 slated for partial renovation - appliances, flooring, kitchen and bath resurfacing - under $5,000 targeting $1,325 rent. Four October renewals signed with a reduced 1.2% increase on B8. Resident referral special raised to $750 for 30 days. Tree permits, paver replacement, bollard removal, downspout and gutter work all in bid.</p>
-</div>
-<div class="card amber">
-<h3>Upland Townhomes <span class="badge amber">watchlist</span></h3>
-<p class="meta">Mableton, GA &middot; 348 units &middot; AM: Mike &middot; Occupancy 92.24% &middot; Collections 80.0%</p>
-<p class="body">Occupancy healthy at 92.24% with 96% pre-leased, ten tours, five applications and 14 pending; five move-ins against four move-outs expected in 30 days. Rates held with no new concessions. Collections are the issue - improved from 72% to 80% but far below the ~97% target, which drops effective occupancy to roughly 72%. Outstanding balances total $114,000 among residents moved in over two months, including ~$40,000 tied to about 40 recent residents and nearly $50,000 in concessions running longer than eight weeks; over $57,000 is expected by month-end. Screening is tightening materially: second-chance approvals ended, applicants with prior evictions or bankruptcies denied, TransUnion eviction-risk scores layered into the delinquency report alongside move-in dates and 12-month late-payment history. Residents with four or more late payments and 61-day balances are candidates for non-renewal. Business license inspection covering 87 units plus all exteriors; plumbing is the top capital priority; draft budget due the 18th.</p>
-</div>
-<h3 style="margin-top:26px;font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft)">Texas &mdash; 5 properties, 1,556 units</h3>
-<div class="card amber">
-<h3>Ninety-Nine 44 <span class="badge amber">watchlist</span></h3>
-<p class="meta">Dallas, TX &middot; 260 units &middot; AM: Mike</p>
-<p class="body">Leasing activity slower than sister property Parks at Walnut, which is undercutting it on rent in the same submarket. Response is a targeted rent reduction plus $500 concessions to restore demand, along with a correction to mispriced loss-leader listings on A3P floor plans. Renewal outreach is being pushed on non-responsive residents. A digital marketing audit is underway for 9944 to refine targeting, messaging and lead qualification. No discrete occupancy or collections figure was reported this week - the asset is covered inside the combined Walnut portfolio call.</p>
-</div>
-<div class="card green">
-<h3>Parks At Walnut <span class="badge green">performing</span></h3>
-<p class="meta">Dallas, TX &middot; 308 units &middot; AM: Mike</p>
-<p class="body">Strong leasing week - 17 applications, seven approvals, frequent move-ins and 11 vacant rent-ready units. Collections addressing approximately $26,000 owed with $2,000 incoming against a 94-96% target; eviction filings scheduled for Sept 18. Fully staffed. Capital work progressing: signage, pool deck and tree trimming complete, asphalt work begins Sept 21, though landscaping bids came in above the $5,400 budget and vendors have been asked to rebid. An $8,000 vendor payment was delayed and balcony plus asphalt costs are coming. Marketing momentum is good - Google score up to 4.1, $750 referral incentive, resident events - and the property has the best cost per conversion in the Central/West group at $31.22, earning a recommended $500/month PMAX increase funded by the Apartments.com cancellation. Site visit Thursday 9:00-11:30 AM.</p>
-</div>
-<div class="card red">
-<h3>Chimney Hill <span class="badge red">critical</span></h3>
-<p class="meta">Dallas, TX &middot; 240 units &middot; AM: Mike &middot; Occupancy 92.00% &middot; Collections 92.7% &middot; Delinquency/bad debt 19.7%</p>
-<p class="body">Occupancy is holding at 92% but the credit quality underneath it is deteriorating badly - bad debt reached nearly 19.7% by the 16th, the worst reading in the portfolio, against rent collection of 92.7% versus a 95% target. Delinquency reporting is also unreliable, with discrepancies up to $30,000 caused by past-due notices being incorrectly included. Approximately $6,000 in rental assistance was received and roughly $24,000 of the $30,000 in the 0-30 day bucket is expected to be collected, excluding residents already in eviction. Three-business-day notice requirements plus weekends and holidays are delaying filings. The team is standardizing delinquency reports, adding eviction history, and building a payment-pattern column to drive non-renewal decisions on chronic late payers. Marketing is also underperforming - lead-to-prospect conversion fell 30%, triggering a digital audit, though PPC cost per conversion is a healthy ~$46 against a $150 benchmark. Preferred-employer program relaunching with a Rent Cafe landing page.</p>
-</div>
-<div class="card amber">
-<h3>Skye Isle <span class="badge amber">watchlist</span></h3>
-<p class="meta">Dallas, TX &middot; 308 units &middot; AM: Nicole &middot; Occupancy 93.18%</p>
-<p class="body">Operationally the stronger of the two Dallas Skye assets - occupancy 93.18% with a four-week projection of 95.13% and fast unit turnover. Marketing is productive at 204 leads and 18 leases. The risk here is municipal and legal, not operational: the city is moving toward a habitual crime property designation, with outside counsel coordinating all communications and preparing for the city hearing - all city or external requests must route through the attorney. Related litigation support is being slowed by delays in obtaining police reports and records, which is accruing penalties; a lawsuit against the city was weighed but judged costly, lengthy and uncertain, so negotiating the penalty amount is the preferred path. Separately, the floodplain encampment issue near the creek remains unresolved - the city arborist must confirm whether creek-side trees are protected before any removal, and floodplain rules limit fencing to water-permeable structures that cannot fully span the creek. Coordination with adjacent cemetery security is being explored. Renewals pending; make-ready painting and resurfacing underway.</p>
-</div>
-<div class="card amber">
-<h3>Skye at Love <span class="badge amber">watchlist</span></h3>
-<p class="meta">Dallas, TX &middot; 440 units &middot; AM: Nicole &middot; Occupancy 89.77%</p>
-<p class="body">Crossed the 90% occupancy mark during the week and sits at 89.77% against a 95% budget, projected to 90.91% on 19 move-ins versus 12 move-outs. Leasing demand is strong; the bottleneck is make-ready throughput with 21 vacant not-ready units. Joshua Austin recommended outsourcing ten units to an external vendor at $250-$300 per unit. Renewals are the second problem - September renewal rate 76.19% - with time-limited offers, targeted rent increases, door-to-door resident outreach and pizza incentives proposed as the response. One eviction writ pending. Property is fully staffed. Water billing under audit review with the Urs firm, alarm system installation awaiting a vendor start date, and fire extinguisher inspection out to bid. Waterfall draws due to the lender by end of day. Refinancing discussions continue alongside Skye Ridge.</p>
-</div>
-<h3 style="margin-top:26px;font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft)">Las Vegas &mdash; 1 property, 216 units</h3>
-<div class="card amber">
-<h3>Skye Ridge <span class="badge amber">watchlist</span></h3>
-<p class="meta">Las Vegas, NV &middot; 216 units &middot; AM: Nicole &middot; Occupancy 94.44% &middot; Collections 88.1%</p>
-<p class="body">Lease rate 94.44% and trending toward 94% occupancy with 14 vacant units, but the renewal pipeline is the alarm: October retention 53.33% on three new renewals and November retention just 9% because of evictions and prior move-outs. Eleven total vacates including eight notices and three pending court actions. Collections 88.1% and down 4% period-over-period, with an early-payment raffle, door knocking, calls and emails deployed in response. Referral fee increase from $500 to $1,000 proposed against a competitor paying $1,200 - pending Nicole&#x27;s approval. Courtesy patrol costs could rise from $1,800 to $2,670; the team deferred additional patrols absent further incidents and is running resident security education plus a Sept 29 event. Six parking spaces remain out of service on carport damage with repairs held pending budget. A roughly $300,000 capital request is being prepared to clear shortfalls. Apartments.com cancelled effective Sept 30 with a Zillow listing deep-dive underway.</p>
-</div>
-<h2>Strategic Recommendations</h2>
-<div class="card"><h3>1. Fix the Skye Reserve org chart before underwriting the recap</h3><p class="body">The MF1/Berkshire term sheet lands this week against an operating record of 78% occupancy and 31 down units. Every week the regional manager seat and Tina&#x27;s backfill stay open, the counterparty&#x27;s stabilized-value argument gets weaker and the interest-reserve gap ($4M versus $850K) gets harder to close in our favor. Close the regional hire and name a single accountable owner for down-unit remediation before the term sheet is countered.</p></div>
-<div class="card"><h3>2. Treat the Newmark repair packet as a hard Sept 30 deliverable, not a documentation exercise</h3><p class="body">Three assets are blocked on the same packet and the original July 30 requirement is already missed. The binding question is not whether the work was done - it is whether ZMR can prove it. Get explicit written lender guidance on the asphalt scope at Skye Oaks before committing budget, and set a Friday internal cutoff so Megan has a full week of float before the deadline.</p></div>
-<div class="card"><h3>3. Stop making decisions off the Chimney Hill and Upland delinquency reports until they reconcile</h3><p class="body">Chimney Hill shows discrepancies up to $30,000 from misincluded past-due notices, and Upland&#x27;s effective occupancy of ~72% only became visible once concession burn-off was separated from true delinquency. Standardize one delinquency report format across both, with move-in date, 12-month late count, concession end date and eviction-risk score, then re-baseline.</p></div>
-<div class="card"><h3>4. Push the screening changes portfolio-wide rather than asset-by-asset</h3><p class="body">Upland ended second-chance approvals and began denying prior evictions and bankruptcies; Chimney Hill is building a payment-pattern column; Skye Ridge is fighting 9% November retention. These are the same problem. Florida income-to-rent thresholds as low as 2.0x and credit screening below 560 were flagged separately in the AM team call - set one portfolio standard and measure bad debt against it.</p></div>
-<div class="card"><h3>5. Redeploy marketing spend on the evidence already in hand</h3><p class="body">The Sky Oaks website refresh plus PMAX increase quadrupled leases and halved cost per lease. Parks at Walnut converts at $31.22. The Flats produces zero Zillow leases. Chimney Hill&#x27;s lead-to-prospect conversion fell 30% on $46 conversions. The data supports a faster reallocation than the current property-by-property approval cycle allows.</p></div>
-<div class="card"><h3>6. Make the capital draw workflow deterministic</h3><p class="body">Title search plus a $175 wire is now required on every Preserve draw, lenders are referencing outdated capital budgets, and $130K-$173K reallocations are being rediscovered each cycle. Publish one draw SOP covering reallocation file, proof of payment, aging AP detail and title search, and separate capital from replacement draws in the file structure.</p></div>
-<div class="card"><h3>7. Resolve the rent write-off GL coding before the 2027 budget locks</h3><p class="body">$90,754 in write-offs through September 2026 are inconsistently coded, with ~$31,000 reducing income accounts instead of hitting expense. Budgets map to 5800-01 while ARA Yardi defaults to 6800-01. Net bad debt is correct but market rent reporting is at risk of misstatement. Decide the code now so the 2027 budget and September close are built on it.</p></div>
-<h2>Action Items by Owner</h2>
-<p class="lede">39 open items extracted from this week&rsquo;s meetings.</p>
-<div class="owner"><h3>Nicole Chang <span class="tag">(7 items)</span></h3><ul>
-<li><span class="pri critical">critical</span>Resend the capital budget reallocation email to lender contacts Gabby and Christian with loan modification approval documents attached, and request a call if discrepancies persist <span class="tag">&mdash; Portfolio &middot; due 2026-09-25</span></li>
-<li><span class="pri critical">critical</span>Send directive to the Skye Reserve team to prioritize vendor payable paydowns and confirm payment statuses <span class="tag">&mdash; Skye Reserve &middot; due 2026-09-23</span></li>
-<li><span class="pri high">high</span>Complete and send the ~$300K capital funding request for Skye Ridge to Craig <span class="tag">&mdash; Skye Ridge &middot; due 2026-09-25</span></li>
-<li><span class="pri high">high</span>Follow up with Dan and Eric on the Pecan acquisition funding update <span class="tag">&mdash; Skye at Love &middot; due 2026-09-24</span></li>
-<li><span class="pri high">high</span>Consult Zach on the viability of legal action related to the Skye Isle city penalties <span class="tag">&mdash; Skye Isle &middot; due 2026-09-25</span></li>
-<li><span class="pri medium">medium</span>Approve the temporary resident referral fee increase from $500 to $1,000 <span class="tag">&mdash; Skye Ridge &middot; due 2026-09-23</span></li>
-<li><span class="pri medium">medium</span>Resolve CoStar access for offshore and new team members with Megan; confirm Apartment IQ and Hello Data access <span class="tag">&mdash; Portfolio &middot; due 2026-09-25</span></li>
-</ul></div>
-<div class="owner"><h3>Garrett Jones <span class="tag">(6 items)</span></h3><ul>
-<li><span class="pri critical">critical</span>Verify completion and documentation of lender-required repairs at Boardwalk, Skye Oaks and Hanley Place; supply photographs immediately <span class="tag">&mdash; Boardwalk / Hanley / Skye Oaks &middot; due 2026-09-25</span></li>
-<li><span class="pri critical">critical</span>Deliver the down-unit report to the lender with realistic remediation timelines and consistent terminology <span class="tag">&mdash; Skye Reserve &middot; due 2026-09-25</span></li>
-<li><span class="pri high">high</span>Follow up with lender on title search status and require title searches on all upcoming capital draws <span class="tag">&mdash; Preserve at Riverwalk &middot; due 2026-09-24</span></li>
-<li><span class="pri high">high</span>Decide the GL code for rent write-offs (5800-01 versus 6800-01) with internal accounting and communicate to Crystal <span class="tag">&mdash; Portfolio &middot; due 2026-09-25</span></li>
-<li><span class="pri high">high</span>Approve Mel Huertas&#x27;s vendor payment proposals against the $117,000 waterfall release <span class="tag">&mdash; Skye at Conway &middot; due 2026-09-23</span></li>
-<li><span class="pri medium">medium</span>Confirm and document the renewal concession eligibility criteria in writing <span class="tag">&mdash; Skye Reserve &middot; due 2026-09-24</span></li>
-</ul></div>
-<div class="owner"><h3>Mike Weiner <span class="tag">(5 items)</span></h3><ul>
-<li><span class="pri critical">critical</span>Reconcile the delinquency report discrepancies in the 0-30 day bucket before further decisions are taken off it <span class="tag">&mdash; Chimney Hill &middot; due 2026-09-24</span></li>
-<li><span class="pri high">high</span>Build a payment-pattern and eviction-history column to drive non-renewal decisions on chronic late payers <span class="tag">&mdash; Chimney Hill / Upland &middot; due 2026-09-30</span></li>
-<li><span class="pri high">high</span>Incorporate TransUnion eviction-risk data into the delinquency tracker and confirm guarantor and One App coverage periods <span class="tag">&mdash; Upland Townhomes &middot; due 2026-09-25</span></li>
-<li><span class="pri high">high</span>Review and finalize the budget drafts and provide plug-in data to the team <span class="tag">&mdash; Upland Townhomes &middot; due 2026-09-22</span></li>
-<li><span class="pri medium">medium</span>Review and approve the paver warranty, bollard removal pricing and J4 renovation quotes <span class="tag">&mdash; Park at Peachtree Hills &middot; due 2026-09-25</span></li>
-</ul></div>
-<div class="owner"><h3>Sugandha Siddharth <span class="tag">(4 items)</span></h3><ul>
-<li><span class="pri critical">critical</span>Prepare and submit the Skye Reserve draw invoices with aging AP detail and proof of payment <span class="tag">&mdash; Skye Reserve &middot; due 2026-09-23</span></li>
-<li><span class="pri high">high</span>Complete the reallocation file for Draw 19 with Molly and share with Garrett before lender submission <span class="tag">&mdash; Preserve at Riverwalk &middot; due 2026-09-24</span></li>
-<li><span class="pri high">high</span>Finish the Hunter&#x27;s Creek budget and send cash flow projections to Garrett <span class="tag">&mdash; Skye at Hunter&#x27;s Creek &middot; due 2026-09-22</span></li>
-<li><span class="pri medium">medium</span>Follow up with Andre on funding status and outstanding invoices <span class="tag">&mdash; Preserve at Riverwalk &middot; due 2026-09-23</span></li>
-</ul></div>
-<div class="owner"><h3>Megan Burrows <span class="tag">(3 items)</span></h3><ul>
-<li><span class="pri critical">critical</span>Consolidate Sidonio&#x27;s and Garrett&#x27;s repair documentation into the Newmark lender submission packet and send to Sean <span class="tag">&mdash; Boardwalk / Hanley / Skye Oaks &middot; due 2026-09-25</span></li>
-<li><span class="pri critical">critical</span>Request written lender clarification on asphalt and irrigation scope before budget is committed <span class="tag">&mdash; Skye Oaks &middot; due 2026-09-23</span></li>
-<li><span class="pri high">high</span>Clarify the Agora discrepancies including the $3M contribution recorded as $381K <span class="tag">&mdash; Portfolio &middot; due 2026-09-30</span></li>
-</ul></div>
-<div class="owner"><h3>Sidonio Martins <span class="tag">(3 items)</span></h3><ul>
-<li><span class="pri critical">critical</span>Visit Skye Oaks to photograph pothole, curbing and landscaping conditions; compile all proof of payment and send to Megan <span class="tag">&mdash; Skye Oaks &middot; due 2026-09-25</span></li>
-<li><span class="pri high">high</span>Forward the Slate portfolio capital plans to Nicole and review files for capital plans on assets outside Slate <span class="tag">&mdash; Portfolio &middot; due 2026-09-25</span></li>
-<li><span class="pri medium">medium</span>Review Nicole&#x27;s business plan template (tabs 6 and 7) and provide feedback <span class="tag">&mdash; Portfolio &middot; due 2026-09-30</span></li>
-</ul></div>
-<div class="owner"><h3>Jimmy Chestnut <span class="tag">(3 items)</span></h3><ul>
-<li><span class="pri critical">critical</span>Follow up on the roofer report and review aging payables to diagnose the AP ballooning <span class="tag">&mdash; Hanley Place &middot; due 2026-09-25</span></li>
-<li><span class="pri critical">critical</span>Merge Tina&#x27;s and Ed&#x27;s overlapping down-unit trackers into one authoritative source with unit status and cost <span class="tag">&mdash; Skye Reserve &middot; due 2026-09-25</span></li>
-<li><span class="pri high">high</span>Secure construction and facilities coverage for Tina&#x27;s responsibilities including Ed at ~25% for 3-4 months <span class="tag">&mdash; Skye Reserve &middot; due 2026-09-30</span></li>
-</ul></div>
-<div class="owner"><h3>Michael Regan <span class="tag">(2 items)</span></h3><ul>
-<li><span class="pri critical">critical</span>Review the MF1 term sheet on the $10M equity injection and close the interest reserve gap <span class="tag">&mdash; Skye Reserve &middot; due 2026-09-25</span></li>
-<li><span class="pri high">high</span>Circulate the updated CBRE broker opinion of value and independent valuations to the Berkshire team <span class="tag">&mdash; Skye Reserve &middot; due 2026-09-23</span></li>
-</ul></div>
-<div class="owner"><h3>Murlidhar Yadav <span class="tag">(2 items)</span></h3><ul>
-<li><span class="pri high">high</span>Send the governance document and cash flow template guidelines to Mike and Garrett <span class="tag">&mdash; Portfolio &middot; due 2026-09-25</span></li>
-<li><span class="pri medium">medium</span>Support draw tracker development and capital draw reconciliation <span class="tag">&mdash; Portfolio &middot; due 2026-09-30</span></li>
-</ul></div>
-<div class="owner"><h3>Chip Gates <span class="tag">(2 items)</span></h3><ul>
-<li><span class="pri high">high</span>Submit the Villa Traditions offer and follow up with brokers on Sherman Circle, Johns Creek and the Vegas deal <span class="tag">&mdash; Acquisitions &middot; due 2026-09-22</span></li>
-<li><span class="pri medium">medium</span>Update the acquisitions pipeline and prepare Monday&#x27;s pipeline review with Kevin <span class="tag">&mdash; Acquisitions &middot; due 2026-09-28</span></li>
-</ul></div>
-<div class="owner"><h3>Aditi Chhabra <span class="tag">(1 item)</span></h3><ul>
-<li><span class="pri high">high</span>Complete cash flow and incentive projections and coordinate timing with Mike and Nicole <span class="tag">&mdash; Portfolio &middot; due 2026-09-28</span></li>
-</ul></div>
-<div class="owner"><h3>Julie Dugoni <span class="tag">(1 item)</span></h3><ul>
-<li><span class="pri high">high</span>Investigate the negative additional paid-in-capital entry and review the June bank reconciliation <span class="tag">&mdash; Preserve at Riverwalk &middot; due 2026-09-25</span></li>
-</ul></div>
-<h2>Coverage Gaps</h2>
-<p class="lede">Properties with no dedicated operations call this week, or reported without discrete metrics. Last known status is carried forward.</p>
-<div class="card amber"><h3>Nightingale on 25th</h3><p class="meta">Deer Valley, AZ &middot; 240 units</p><p class="body">No ZMR-run weekly operations call this week - the asset remains under full passive lender operational control. Last known status: occupancy approximately 80%, no foreclosure filing, no exit plan, and flagged in the 2026 audit as a likely write-down to zero. Coverage came only from the Atlantic Creek monthly call and the Baker Tilly audit planning session.</p></div>
-<div class="card amber"><h3>Preserve at Riverwalk</h3><p class="meta">Bradenton, FL &middot; 300 units</p><p class="body">Covered this week only on capital, valuation and draw mechanics - no operations call, so no occupancy, collections or leasing metrics were reported. Last known operating reference is the equity contribution review; request a weekly ops call be added given the asset is approaching capital call 19-20.</p></div>
-<div class="card amber"><h3>Skye Oaks (Palms at Palisades)</h3><p class="meta">Brandon, FL &middot; 125 units</p><p class="body">Not reported as a discrete asset. All operating discussion treats the two Skye Oaks parcels as one combined campus, so the 91% occupancy and 3% collections improvement are campus-level figures allocated to both. Recommend splitting the weekly report by parcel to match the Master Property List.</p></div>
-<div class="card amber"><h3>Skye Oaks (Brandon Oaks)</h3><p class="meta">Brandon, FL &middot; 160 units</p><p class="body">Not reported as a discrete asset - see note on Palms at Palisades. Campus-level metrics applied to both parcels.</p></div>
-<div class="card amber"><h3>Ninety-Nine 44</h3><p class="meta">Dallas, TX &middot; 260 units</p><p class="body">Covered inside the combined Walnut portfolio call with qualitative leasing and pricing discussion only. No discrete occupancy, collections or delinquency figures reported this week.</p></div>
-<div class="card amber"><h3>Parks At Walnut</h3><p class="meta">Dallas, TX &middot; 308 units</p><p class="body">Strong qualitative leasing detail from the Walnut portfolio call (17 applications, seven approvals, 11 rent-ready units) but no stated occupancy percentage or collections percentage. Collections referenced only as a ~$26,000 balance against a 94-96% target.</p></div>
-<footer>
-<p><strong>ZMR Capital &mdash; Weekly Asset Management Report, Week 38 (2026-W38)</strong><br>
-Covering 2026-09-14 to 2026-09-20. Built from 47 Fireflies meeting transcripts. Property names, markets and unit counts per the Master Property List (Implementation Guide Section 10). Structured data archived at <code>archive/2026-W38.json</code>.</p>
-<p>Figures are as reported in meetings and are not reconciled to financial statements. Occupancy is unit-weighted across reporting properties only.</p>
-</footer>
+<header><h1>ZMR Capital &mdash; Weekly Asset Management Report</h1><p>Week 39 &middot; 2026-09-21 to 2026-09-27 &middot; 19 properties &middot; 5,651 units &middot; 5 markets &middot; Source: 96 Fireflies meeting records</p></header>
+<h2>1. Portfolio Snapshot</h2><div class="kpis">
+<div class="kpi"><div class="v">87.8%</div><div class="l">Wtd occupancy (3,580 reporting units)</div></div>
+<div class="kpi"><div class="v">89.3%</div><div class="l">Avg collections (6 reporting)</div></div>
+<div class="kpi"><div class="v">5,651</div><div class="l">Total units</div></div>
+<div class="kpi"><div class="v">11 / 19</div><div class="l">Assets reporting occupancy</div></div>
+<div class="kpi"><div class="v">1</div><div class="l">Green</div></div>
+<div class="kpi"><div class="v">15</div><div class="l">Amber</div></div>
+<div class="kpi"><div class="v">3</div><div class="l">Red</div></div>
+</div><p class="small">W38 comparison: 88.1% weighted occupancy (4,783 units), 88.0% avg collections, 3 green / 12 amber / 4 red. Collections averages are simple averages of the properties that reported a rate; Skye Isle and Skye at Love share one combined figure.</p>
+<h2>2. Property Performance</h2><div class="tw"><table><thead><tr><th>Property</th><th>Market</th><th class="n">Units</th><th>AM</th><th class="n">Occ.</th><th class="n">Coll.</th><th>Status</th><th>Headline</th></tr></thead><tbody>
+<tr class="mk"><td colspan="8">ARIZONA &middot; 3 properties &middot; 672 units</td></tr>
+<tr><td>The Flats</td><td>Mesa, AZ</td><td class="n">112</td><td>Mike</td><td class="n">87.5%</td><td class="n">n/r</td><td><span class="b amber">amber</span></td><td>87.5% occupied / 92.85% leased; traffic slowing</td></tr>
+<tr><td>Nightingale on 25th</td><td>Deer Valley, AZ</td><td class="n">240</td><td>Mike</td><td class="n">n/r</td><td class="n">n/r</td><td><span class="b red">red</span></td><td>Not discussed - lender control (last known ~80%)</td></tr>
+<tr><td>The Julia</td><td>Mesa, AZ</td><td class="n">320</td><td>Mike</td><td class="n">89.5%</td><td class="n">n/r</td><td><span class="b amber">amber</span></td><td>89-90% occupied; $198K lender funding secured</td></tr>
+<tr class="mk"><td colspan="8">FLORIDA &middot; 8 properties &middot; 2,741 units</td></tr>
+<tr><td>The Boardwalk</td><td>Fort Myers, FL</td><td class="n">338</td><td>Nicole</td><td class="n">n/r</td><td class="n">n/r</td><td><span class="b amber">amber</span></td><td>Newmark repairs incomplete; asphalt not actually done</td></tr>
+<tr><td>Hanley Place</td><td>Tampa, FL</td><td class="n">400</td><td>Nicole</td><td class="n">n/r</td><td class="n">n/r</td><td><span class="b amber">amber</span></td><td>Lender repairs nearly closed; payables still heavy</td></tr>
+<tr><td>Skye at Conway</td><td>Orlando, FL</td><td class="n">220</td><td>Nicole</td><td class="n">92.3%</td><td class="n">n/r</td><td><span class="b amber">amber</span></td><td>Ops strong (92.3% -&gt; 94%); loan 5-7% above value</td></tr>
+<tr><td>Skye Oaks (Palms at Palisades)</td><td>Brandon, FL</td><td class="n">125</td><td>Nicole</td><td class="n">n/r</td><td class="n">n/r</td><td><span class="b amber">amber</span></td><td>Lender repair extension being requested</td></tr>
+<tr><td>Skye Oaks (Brandon Oaks)</td><td>Brandon, FL</td><td class="n">160</td><td>Nicole</td><td class="n">n/r</td><td class="n">n/r</td><td><span class="b amber">amber</span></td><td>Shares campus lender-repair exposure</td></tr>
+<tr><td>Skye Reserve</td><td>Brandon, FL</td><td class="n">982</td><td>Nicole</td><td class="n">77.3%</td><td class="n">n/r</td><td><span class="b red">red</span></td><td>77.3% occupied; $200M loan matures April</td></tr>
+<tr><td>Preserve at Riverwalk</td><td>Bradenton, FL</td><td class="n">300</td><td>Nicole</td><td class="n">92.0%</td><td class="n">n/r</td><td><span class="b amber">amber</span></td><td>~92% occupied; $243K capital call received</td></tr>
+<tr><td>Skye at Hunter&#x27;s Creek</td><td>Kissimmee, FL</td><td class="n">216</td><td>Nicole</td><td class="n">90.0%</td><td class="n">n/r</td><td><span class="b amber">amber</span></td><td>~90% occupied; budget stabilization cut to 92%</td></tr>
+<tr class="mk"><td colspan="8">GEORGIA &middot; 2 properties &middot; 466 units</td></tr>
+<tr><td>Park at Peachtree Hills</td><td>Atlanta, GA</td><td class="n">118</td><td>Mike</td><td class="n">96.6%</td><td class="n">91.0%</td><td><span class="b green">green</span></td><td>96.6% occupied / 97.5% leased</td></tr>
+<tr><td>Upland Townhomes</td><td>Mableton, GA</td><td class="n">348</td><td>Mike</td><td class="n">92.2%</td><td class="n">84.0%</td><td><span class="b amber">amber</span></td><td>Collections up to 84%; stricter eviction policy</td></tr>
+<tr class="mk"><td colspan="8">TEXAS &middot; 5 properties &middot; 1,556 units</td></tr>
+<tr><td>Ninety-Nine 44</td><td>Dallas, TX</td><td class="n">260</td><td>Mike</td><td class="n">n/r</td><td class="n">n/r</td><td><span class="b amber">amber</span></td><td>Slow tour traffic; no metrics reported</td></tr>
+<tr><td>Parks At Walnut</td><td>Dallas, TX</td><td class="n">308</td><td>Mike</td><td class="n">n/r</td><td class="n">n/r</td><td><span class="b amber">amber</span></td><td>Targeting 87% by Oct 12; capital call notices</td></tr>
+<tr><td>Chimney Hill</td><td>Dallas, TX</td><td class="n">240</td><td>Mike</td><td class="n">n/r</td><td class="n">91.3%</td><td><span class="b red">red</span></td><td>AP $1.48M vs $285K cash; Aug books not closed</td></tr>
+<tr><td>Skye Isle</td><td>Dallas, TX</td><td class="n">308</td><td>Nicole</td><td class="n">93.5%</td><td class="n">89.5%</td><td><span class="b amber">amber</span></td><td>93.5% -&gt; 95.1%; habitual-crime designation open</td></tr>
+<tr><td>Skye at Love</td><td>Dallas, TX</td><td class="n">440</td><td>Nicole</td><td class="n">91.1%</td><td class="n">89.5%</td><td><span class="b amber">amber</span></td><td>91.1% occupied; 93% expected in 10 days</td></tr>
+<tr class="mk"><td colspan="8">LAS VEGAS &middot; 1 properties &middot; 216 units</td></tr>
+<tr><td>Skye Ridge</td><td>Las Vegas, NV</td><td class="n">216</td><td>Nicole</td><td class="n">94.0%</td><td class="n">90.8%</td><td><span class="b amber">amber</span></td><td>94.0% occupied; $350K reno capital call</td></tr>
+</tbody></table></div><p class="small">n/r = not reported in this week's meetings.</p>
+<h2>3. Portfolio Narrative</h2><p>Week 39 was a capital-structure week more than an operating week. Physical occupancy held or improved at most reporting assets - Skye Isle (93.5%), Skye Ridge (94.0%), Skye at Love (91.1%, up from 89.8%) and Park at Peachtree Hills (96.6%) all moved the right way, and collections improved at Upland (80% to 84%) and Skye Ridge (88.1% to 90.8%). The unit-weighted occupancy of the 11 assets that reported a figure is 87.8%, dragged down almost entirely by Skye Reserve&#x27;s 982 units at 77.3%.</p><p>The binding constraints are debt and liquidity. Skye Reserve&#x27;s ~$200M loan matures in April with MF1 asking for a $60M paydown and ~$450K of rate-cap arrears and extension cost outstanding. Skye at Conway is worth 5-7% less than its loan and Starwood rejected ZMR&#x27;s $750K offer. Chimney Hill is carrying ~$1.48M of AP on ~$285K of cash with August books still open. Across the RPM portfolio, more than $650K is owed to the manager because waterfalls pay debt service and escrows first, and Skye at Love, Skye Isle and Skye Ridge are waiting on lender or equity funding to clear payables.</p><p>The team is responding on the right levers: stricter delinquency rules and TransUnion screening at Upland, a funded renovation test at Skye Ridge where renovated units command $236-$270 premiums, lender extension requests on the Newmark repairs, and AM fees moving above the line in the 2027 budgets. Budget season is the other major workstream - first solid PMC drafts are due Oct 9, and reviews at Preserve and Hunter&#x27;s Creek surfaced loss-to-lease, concession and fee assumptions that were materially off T12 actuals.</p><p>Coverage remains uneven. Nightingale was not discussed, and Ninety-Nine 44, both Skye Oaks parcels, Boardwalk and Hanley Place produced no discrete occupancy or collections figures. Preserve at Riverwalk got its first operating read in weeks (~92% occupied), attributed from a site call whose summary did not name the property.</p>
+<h2>4. Top 5 Risks</h2>
+<div class="card red"><h3>1. Skye Reserve <span class="b high">high</span></h3><p>982 units at 77.3% occupancy with a ~$200M loan maturing in April. MF1 is demanding a $60M paydown, rate-cap lapses leave ~$250K overdue plus ~$200K for an extension, and the RPM leadership bench just thinned again (Brian&#x27;s transfer cancelled, Tina resigning). 762 competing units are under construction in Brandon.</p><p><strong>Mitigation:</strong> Down units cut from 35 to 12-13; CBRE BOV ~$130M supports the recap case. Nicole and Garrett to send Anna Jensen the rate-cap dates and amounts; Michael Regan modeling 501(c)(3) bond recap and phased sale; meet the RPM regional-manager candidate for sign-off.</p></div>
+<div class="card red"><h3>2. Chimney Hill <span class="b high">high</span></h3><p>Accounts payable of ~$1.48M against ~$285K cash, and August financials are still unpublished because commingled CMA bank accounts have not been reconciled. Owner reporting and payment decisions are running blind.</p><p><strong>Mitigation:</strong> Josh scheduling $130K of AP after cash confirmation; $255K rent-relief wire incoming; Mindy and Brendan completing reclass and new bank ID; Jocel reviewing Chimney reports. Escalate the treasury ticket if not closed this week.</p></div>
+<div class="card red"><h3>3. Portfolio liquidity <span class="b high">high</span></h3><p>RPM is owed more than $650K because lender waterfalls release cash only after debt service and escrows. Aging payables at Skye at Love (~$400K) and Skye Isle (~$300K) await lender funds; Skye Ridge awaits an equity call; property-tax and AM-fee shortfalls may require capital calls (Parks at Walnut).</p><p><strong>Mitigation:</strong> Payables prioritized debt service, utilities, RPM, then vendors against the 14th waterfall date; biweekly reviews with Terra Crowley; AM fees moved above the line starting with 2027 budgets; Nicole sending Zamir a per-property RPM breakdown.</p></div>
+<div class="card red"><h3>4. Skye at Conway <span class="b high">high</span></h3><p>Value ($33-37M) sits 5-7% below the loan. Starwood rejected a $750K offer and wants a 10%+ paydown with a 3-5 year extension and more equity; the Conway draw was denied and Draw 16 must be rebuilt.</p><p><strong>Mitigation:</strong> Counterproposal to Starwood in progress; loan-purchase and foreclosure scenarios being modeled; Sugandha rebuilding Draw 16 and sizing the ~$360K washer-dryer spend for additional draws.</p></div>
+<div class="card amber"><h3>5. Boardwalk / Hanley Place / Skye Oaks <span class="b medium">medium</span></h3><p>Newmark lender-required repairs hit the Sept 30 deadline with asphalt at Boardwalk (~$7K) and Skye Oaks (~$22.5K) wrongly reported complete, plus missing proofs of payment and lien waivers.</p><p><strong>Mitigation:</strong> Megan submitting separate extension requests (Skye Oaks to mid/late October); Sean sending the documentation requirements; Sid confirming asphalt status. Payments over $25K need unconditional lien waivers and bank-debit proof.</p></div>
+<h2>5. What's Working</h2>
+<div class="card win"><h3>Skye Ridge</h3><p>Collections up to 90.76% from 88.1% and occupancy at 93.98%. Renovated units lease at $236-$270 premiums (27 of 29 leased), supporting a ~$350K spend for ~$2.5M of equity value.</p></div>
+<div class="card win"><h3>Skye Isle / Skye at Love</h3><p>Isle at 93.51% heading to 95.13%; Love crossed 91% and projects 93% within ten days on 23 move-ins. Rent increases approved on the tightest floor plans.</p></div>
+<div class="card win"><h3>Upland Townhomes</h3><p>Collections improved from 80% to 84% in a week and October renewals rose from 28.5% to 36% as stricter eviction and TransUnion screening rules took effect.</p></div>
+<div class="card win"><h3>Skye Reserve</h3><p>Down units fell from 35 to 12-13 and the IHG recovery is tracking ~$8.7M vs the $7.8M estimate. The Skye Reserve term sheet was reset on better terms.</p></div>
+<div class="card win"><h3>Park at Peachtree Hills</h3><p>96.6% occupied and 97.5% leased - the portfolio&#x27;s best - with November renewals near 100%.</p></div>
+<div class="card win"><h3>Skye at Conway</h3><p>Eight tours produced seven applications and the property leader ranks second regionally in leasing dollars. Fee increases stuck with no pushback.</p></div>
+<div class="card win"><h3>Preserve at Riverwalk</h3><p>$243K July capital call received, September retention 88.9%, and occupancy near 92% on first operating read.</p></div>
+<div class="card win"><h3>Cost savings</h3><p>~$108K saved on Hunter&#x27;s Creek unit upgrades, ~$33K net chiller claim at Skye Oaks, $260K+ potential utility savings at Skye Isle, and ~$198K of lender funding released at The Julia.</p></div>
+<h2>6. Asset Deep Dives</h2>
+<div class="card amber"><h3>The Flats <span class="b amber">amber</span></h3><div class="meta">Mesa, AZ &middot; 112 units &middot; AM: Mike &middot; Occ 87.5% &middot; Coll n/r</div><p>Occupancy 87.5% (92.85% leased) with two move-ins and no move-outs expected in 30 days, but leasing traffic is slowing; Nelly to alert Mike if tours do not rise by Friday. Two weeks free approved on A2 units 203 and 215 with a flyer and email blast. Eviction hearings scheduled on two court cases (units 137, 148). No full-time maintenance manager - recruiting via Inner Solutions and LinkedIn. Chiller parts ordered (~$2,100, three-week lead time); the $5,000+ Diamondback evaporator heat exchanger project is unresolved; boiler leak and recirculation pump replacement scheduled Sept 22-23. Google Nest thermostats (~$70 each) approved for select units with the $10 tech fee waived for a year. Budget submission followed instructions more closely than other PMCs.</p></div>
+<div class="card red"><h3>Nightingale on 25th <span class="b red">red</span></h3><div class="meta">Deer Valley, AZ &middot; 240 units &middot; AM: Mike &middot; Occ n/r &middot; Coll n/r</div><p>Not discussed in any meeting this week beyond a note that Nightingale and The Julia are excluded from cash-flow work because budgets sit under lender control. Last known status (W38): ~80% occupancy, full passive lender operational control, no foreclosure filing, no exit plan, flagged in the 2026 audit as a likely write-down to zero.</p></div>
+<div class="card amber"><h3>The Julia <span class="b amber">amber</span></h3><div class="meta">Mesa, AZ &middot; 320 units &middot; AM: Mike &middot; Occ 89.5% &middot; Coll n/r</div><p>Occupancy approximately 89-90% with 10 move-ins against 9 move-outs in the next 30 days. More than $198,000 secured from the lender (excluding October Greystar billables); a $300,000 October request will follow, subject to proof of prior payment - bills and receipts due in lender format by Oct 8, Greystar and Conservice payment confirmations required. Damaged carport: demolition ~$4,200 vs $17,000 partial repair vs $30,000 full rebuild; more bids pending, salvage in progress, carport fee changes being communicated. Renewal plan: $500 early-renewal concession, 15-month options with incentives and 6-month options without, ahead of 26 December expirations. New technician Marcus starts Oct 2; overtime tightly monitored. Senior leadership is modeling a distressed loan acquisition / foreclosure scenario for The Julia.</p></div>
+<div class="card amber"><h3>The Boardwalk <span class="b amber">amber</span></h3><div class="meta">Fort Myers, FL &middot; 338 units &middot; AM: Nicole &middot; Occ n/r &middot; Coll n/r</div><p>No discrete operating metrics this week (last known W38: 85% occupancy, 89.4% collections). Newmark lender-required repairs remain open: several proof-of-payment items are missing, down-unit contract documentation may be required, and asphalt work previously reported complete has no vendor payment in Yardi - it is still outstanding at ~$7,000 (incl. 125% adjustment). Megan is submitting a separate extension request. Budget from Sugandha due Sept 29. Personnel changes at Boardwalk flagged in the team call.</p></div>
+<div class="card amber"><h3>Hanley Place <span class="b amber">amber</span></h3><div class="meta">Tampa, FL &middot; 400 units &middot; AM: Nicole &middot; Occ n/r &middot; Coll n/r</div><p>Newmark repairs nearly complete - an unconditional lien waiver for down units and an exterior-painting invoice remain outstanding, plus payment evidence. Budget is in hand. Legal is working a Hanley easement matter. No discrete operating metrics this week (last known W38: 95% occupancy with $700K+ aging payables). The Slate weekly ops call reported 49 vacant units (9 ready now, ~8 more per week for three weeks), tours down to 11 from 31 a year ago, and collections of 91.9%-95% across the Slate assets - figures were not split by property.</p></div>
+<div class="card amber"><h3>Skye at Conway <span class="b amber">amber</span></h3><div class="meta">Orlando, FL &middot; 220 units &middot; AM: Nicole &middot; Occ 92.3% &middot; Coll n/r</div><p>Operations are solid: occupancy 92.27% targeting 95.91%, eight tours produced seven applications, and the team expects 94% by month-end. $50 application and $99 admin fees drew no pushback; rent increases deferred until occupancy stabilizes. Three delinquency cases (two stipulations, one bankruptcy ~$1,912). Mel Huertas ranks second in regional leasing dollars. The problem is the capital stack: the IPA BOV puts value at $33-37M, 5-7% below the loan balance. Starwood rejected a $750,000 offer and wants a 10%+ paydown with a 3-5 year extension and more equity. The Conway draw request was denied after bucket reallocations, forcing Draw 16 to be rebuilt; ~$360,000 of washer-dryer connection spend may support additional draws. Conway funding has been removed from cash-flow projections. Loan purchase and foreclosure scenarios are being modeled.</p></div>
+<div class="card amber"><h3>Skye Oaks (Palms at Palisades) <span class="b amber">amber</span></h3><div class="meta">Brandon, FL &middot; 125 units &middot; AM: Nicole &middot; Occ n/r &middot; Coll n/r</div><p>No operations call this week. Newmark: asphalt work was incorrectly reported complete - ~$22,500 outstanding (incl. 125% adjustment) across the Skye Oaks campus. Megan is submitting an extension request through mid-to-late October covering repairs, asphalt, inspection delays and curbing risk; a siding lien waiver and payment evidence are still needed. Sidonio overseeing electrical panel and GFCI completion. Chiller insurance claim expected to net ~$33,000 after deductible (~$38,000 gross). Renewal dashboard data feed issue ticketed. Campus-level figures shared with Brandon Oaks.</p></div>
+<div class="card amber"><h3>Skye Oaks (Brandon Oaks) <span class="b amber">amber</span></h3><div class="meta">Brandon, FL &middot; 160 units &middot; AM: Nicole &middot; Occ n/r &middot; Coll n/r</div><p>No operations call this week; reported only as part of the combined Skye Oaks campus. Same Newmark repair exposure as Palms at Palisades (~$22,500 asphalt outstanding, extension request to mid/late October, siding lien waiver). Chiller claim proceeds (~$33,000 net) apply at campus level.</p></div>
+<div class="card red"><h3>Skye Reserve <span class="b red">red</span></h3><div class="meta">Brandon, FL &middot; 982 units &middot; AM: Nicole &middot; Occ 77.3% &middot; Coll n/r</div><p>Occupancy 77.29%, expected near 79% within 60 days after application cleanup; confirmed down units fell from 35 to 12-13, with capital costs now tracked weekly on a make-ready board. Demand is stronger for smaller units and prospects are price-sensitive; the team may redirect part of concessions to guarantor-fee assistance. More than 80% of tenants reaching eviction stage two do not recover. Fire extinguisher inspections under way; ER permit and Fire Marshal coordination open. Phantom occupancy flagged by RPM. Capital: CBRE BOV ~$130M on $7.8M NOI (92% occupancy, 1% concessions); IHG recovery now ~$8.7M vs $7.8M estimated; MF1 requires a $60M paydown; rate-cap lapses leave ~$250K overdue plus ~$200K for an extension; the ~$200M loan matures in April. Options under review: phased sale, 501(c)(3) bond financing (~$2M tax savings, 85% occupancy threshold), recap. Staffing: Brian&#x27;s transfer cancelled (RPM leadership vacancy), Tina gave notice, Ed covering. 762 units under construction in Brandon with negative rent growth forecast through 2028.</p></div>
+<div class="card amber"><h3>Preserve at Riverwalk <span class="b amber">amber</span></h3><div class="meta">Bradenton, FL &middot; 300 units &middot; AM: Nicole &middot; Occ 92.0% &middot; Coll n/r</div><p>First operating read in weeks (attributed from Garrett&#x27;s Stephanie-led site call): ~276 occupied units (~92%), projected 277 in October and 273 in November absent new leases. Specials: two months free on 2BR, one month on 1BR/3BR. Collections $481,675; current-resident delinquency ~$20,191 with eight residents over $1,000 and two evictions filed. AP ~$238,000 against ~$231,649 cash. September retention 88.9%; 11 of 19 October and 11 of 17 November renewals captured. Roof leak repairs Sept 30, roof cleaning by Oct 15, parking lot bid for 2027. July equity capital call of $243,000 received; Garrett requesting JV-to-operating transfer to pay down payables incl. ZMR balances. Budget review found 10% loss to lease (ramp to 5% needed), ~-3% rent growth, missing schedules and questionable expense lines - approval packet due Oct 20, business plan Oct 30. Smart-home contract ($31/unit) vs bulk internet under review. Standby pilot candidate. Upgraded from red on operating data; equity impairment is unchanged.</p></div>
+<div class="card amber"><h3>Skye at Hunter&#x27;s Creek <span class="b amber">amber</span></h3><div class="meta">Kissimmee, FL &middot; 216 units &middot; AM: Nicole &middot; Occ 90.0% &middot; Coll n/r</div><p>Budget review: market rent $1,607 with a $94 (5%) loss to lease vs 1% assumed; occupancy ~90% after declining from 93% to 91%, so stabilization was cut from 93% to 92%. Renewal concessions ($200) and new-lease concessions ($1,500) judged too low - one month free with a 2027 step-down recommended. Reserved-parking and garage income, water recovery (85% vs 88% calculated) and fee lines need formula-driven schedules. Unit-upgrade rebids saved ~$108,000. Smart-home contract modeling (with Preserve) for ARA and Silver Cap.</p></div>
+<div class="card green"><h3>Park at Peachtree Hills <span class="b green">green</span></h3><div class="meta">Atlanta, GA &middot; 118 units &middot; AM: Mike &middot; Occ 96.6% &middot; Coll 91.0%</div><p>Portfolio&#x27;s best physical occupancy: 96.6% occupied, 97.5% leased. Studios pushing back on the new admin fee - waived on two studios. Retention: September 75%, October 57%, November ~100%, December 40%, with a $100 timely-signing incentive. September collections slipped to 91%; delinquents C9, B2, H4, F7, J4 being worked with abandonment notices, motions to compel and a balance-waiver offer to F7 if they vacate within seven days. Tree trimming, dead tree removal and paver repairs scheduled; Pruitt invoice payment delayed in AP queue. City watershed pipe/easement meeting pending.</p></div>
+<div class="card amber"><h3>Upland Townhomes <span class="b amber">amber</span></h3><div class="meta">Mableton, GA &middot; 348 units &middot; AM: Mike &middot; Occ 92.2% &middot; Coll 84.0%</div><p>Occupancy 92.24% with nine move-ins vs five move-outs expected. $98,611 in delinquency with 84% collected by the 23rd (up from 80% last week). New policy: eviction filings mandatory on the 10th for tenants late more than twice in 12 months; late-fee waivers limited to once a year. TransUnion risk scores (70 applications, median 9.34%, high 25%) now in the delinquency report; &gt;12% requires a guarantor or denial. Guarantored tenants with 31-60 day balances offered waivers to vacate within a week. October renewals 36% (from 28.5%), November 12%; $20 increases for below-market renewals, December incentives start at $250; central renewal analyst assigned. ~$15,000 plumbing across three buildings (insurance review); business-license issue delaying a city inspection. Resident referral concession removed.</p></div>
+<div class="card amber"><h3>Ninety-Nine 44 <span class="b amber">amber</span></h3><div class="meta">Dallas, TX &middot; 260 units &middot; AM: Mike &middot; Occ n/r &middot; Coll n/r</div><p>Covered only qualitatively inside the Walnut portfolio call: tour traffic remains slower than sister properties, prompting outreach through a local bazaar. No occupancy, collections or delinquency figures reported.</p></div>
+<div class="card amber"><h3>Parks At Walnut <span class="b amber">amber</span></h3><div class="meta">Dallas, TX &middot; 308 units &middot; AM: Mike &middot; Occ n/r &middot; Coll n/r</div><p>Targeting 87% occupancy by Oct 12 (current figure not stated). Collections hit by ~$30,000 in &#x27;other&#x27; delinquent charges incl. ~$22,000 relet fees; ~$6,000 expected this week. Unit 2138 in make-ready; unit 2054 needs ~$3,000 subfloor repair; no new down units until current work progresses. Gutters complete, asphalt ongoing, lender inspection checklist being documented with bids and photos. Assistant manager recruiting. Senior leadership flagged capital call notices for property-tax shortfalls at Parks at Walnut. Downgraded from green: the occupancy target implies sub-87% today.</p></div>
+<div class="card red"><h3>Chimney Hill <span class="b red">red</span></h3><div class="meta">Dallas, TX &middot; 240 units &middot; AM: Mike &middot; Occ n/r &middot; Coll 91.3%</div><p>Balance sheet is the crisis: accounts payable ~$1,477,480 against ~$285,000 cash. $130,000 of AP payments being scheduled; a $255,000 rent-relief wire is incoming. August financials remain unpublished pending bank reconciliation and reclassification of commingled old/new CMA accounts (Mindy and Brendan at RPM). Operations: maintenance supervisor moved from Emilio to Diego at no payroll increase; six tours, two applications; third-floor 1BR $500 concession replaced with a $30 rent cut, admin+application fee cut from $355 to $255 for 48 hours post-tour; $200 occupied-unit cleaning fee approved. 0-30 day delinquency down to ~$28,000; current rent collection nearing 91.3%. Renewals slow (3 October, 7 November pending). Mailbox bids targeted ~$4,500; chimney fire permitting being expedited. Occupancy not stated this week (W38: 92%).</p></div>
+<div class="card amber"><h3>Skye Isle <span class="b amber">amber</span></h3><div class="meta">Dallas, TX &middot; 308 units &middot; AM: Nicole &middot; Occ 93.5% &middot; Coll 89.5%</div><p>Occupancy 93.51%, projected 95.13% and trending toward 95%. Small rent increases proposed on highly occupied floor plans. Combined Isle/Love delinquency $27,603 with $7,489 recently collected (89.5% collection rate) and 12 pending evictions. ~$300,000 of lender funding expected to clear aging payables. Utility audit could identify $260,000+ in annual savings. Habitual-crime designation hearing prep continues with outside counsel; meeting moved to Wednesday. Fire-insurance unit claim being followed by Zach.</p></div>
+<div class="card amber"><h3>Skye at Love <span class="b amber">amber</span></h3><div class="meta">Dallas, TX &middot; 440 units &middot; AM: Nicole &middot; Occ 91.1% &middot; Coll 89.5%</div><p>Occupancy 91.14% (up from 89.77%), projected 93% within ten days on 23 move-ins vs 12 move-outs. Modest rent increases approved. Valet Living waste program (~$5,100/month) would save ~$300/month vs current costs, cut overage fees and return ~20 maintenance hours a week; contract and peer-property references pending. Preventive maintenance flagged a $1,355 boiler blower fan replacement (more bids pending). Ten make-ready bids approved, five units starting. ~$400,000 of lender funding expected for aging payables next week. Apartments.com contract ends Sept 30.</p></div>
+<div class="card amber"><h3>Skye Ridge <span class="b amber">amber</span></h3><div class="meta">Las Vegas, NV &middot; 216 units &middot; AM: Nicole &middot; Occ 94.0% &middot; Coll 90.8%</div><p>Occupancy 93.98% (30-day trend 91.67%, 60/90-day 88.89%). 25 leads, one tour, two applications; one month free on select units; competitor offering heavy concessions. 12 vacant - five rentable, seven not ready (five needing extensive make-readies). Collections improved to 90.76% (from 88.1%); six September evictions filed, lockout hearings for three units on the 28th. Referral incentive raised to $1,000. Building 9 mainline leak fixed. Underwriting: ~$33M value today, ~$37M at a 5.75% cap post-stabilization; renovated units earn $236-$270 premiums with 27 of 29 leased; a ~$350,000 capital call to Inceptive would fund renovations and capex for ~$2.5M of equity value, with a separate legal notice on the funding default. 2026 NOI ~$2.0M vs $2.1M in 2025; trash up 50% since 2024; 2027 taxes may rise 5-8%.</p></div>
+<h2>7. Strategic Recommendations</h2>
+<div class="card"><h3>1. Put a single owner on the Skye Reserve April maturity</h3><p>The $200M maturity, the $60M MF1 paydown ask and the rate-cap arrears are one negotiation. Pick the path (bond recap, phased sale or extension) by mid-October so the 2027 budget and lender package are built on it, and close the RPM regional hire before the lender asks who runs the asset.</p></div>
+<div class="card"><h3>2. Freeze discretionary spend at Chimney Hill until August closes</h3><p>AP is 5x cash and the books are two months behind. Approve only life-safety and cash-generating items until the CMA reconciliation is done and a 13-week cash forecast exists.</p></div>
+<div class="card"><h3>3. Standardize the delinquency playbook from Upland across Mike&#x27;s assets</h3><p>Filing on the 10th, TransUnion guarantor thresholds and cash-for-keys waivers moved Upland collections four points in a week. Apply the same rules at Peachtree, Chimney Hill and The Flats, and set the cutoff with Aditi&#x27;s statistical analysis rather than per property.</p></div>
+<div class="card"><h3>4. Fund the Skye Ridge renovation test now</h3><p>The premium data (27 of 29 renovated units leased at $236-$270 premiums) is the strongest value-creation evidence in the portfolio. Send the $350K capital call separately from the default notice so the legal track does not delay renovations.</p></div>
+<div class="card"><h3>5. Replace Newmark self-reporting with evidence-first closeout</h3><p>Two assets reported asphalt complete when it was not. Require invoice, bank-debit proof and photo before any line is marked complete in the lender packet.</p></div>
+<div class="card"><h3>6. Add operating calls for the uncovered assets</h3><p>Nightingale, Ninety-Nine 44, both Skye Oaks parcels, Boardwalk and Hanley produced no discrete occupancy or collections numbers this week. Ask RPM/Slate for a per-property weekly KPI export so the dashboard does not rely on meeting coverage.</p></div>
+<div class="card"><h3>7. Lock the budget calendar</h3><p>First solid PMC drafts Oct 9, Preserve approval packet Oct 20, business plans Oct 30. Reforecasts must use RealPage/Yardi reforecast reports, not budget reports, to avoid the month/annual mismatches found this week.</p></div>
+<h2>8. Action Items by Owner</h2><div class="owner">
+<h3>Nicole Chang</h3><ul>
+<li><span class="b critical">critical</span> Send Anna Jensen the rate-cap expiration dates, IHG requested amounts and default-notice details <span class="small">&middot; Skye Reserve &middot; due 2026-09-29</span></li>
+<li><span class="b critical">critical</span> Provide Michael Regan the $350K allocation for Skye Ridge renovations and expedite the capital call separately from Zach&#x27;s legal letter <span class="small">&middot; Skye Ridge &middot; due 2026-09-29</span></li>
+<li><span class="b high">high</span> Send Zamir the per-property breakdown of amounts owed to RPM (&gt;$650K) <span class="small">&middot; Portfolio &middot; due 2026-09-30</span></li>
+<li><span class="b high">high</span> Lead budget calendar to first solid PMC drafts by Oct 9; cancel the Oct 2 call (India holiday) <span class="small">&middot; Portfolio &middot; due 2026-10-09</span></li>
+<li><span class="b medium">medium</span> Deliver BOV inventory summary to Merle with Sugandha and Aditi <span class="small">&middot; Portfolio &middot; due 2026-09-28</span></li>
+<li><span class="b medium">medium</span> Review Skye Isle / Skye at Love rent increase proposals and Valet Living contract <span class="small">&middot; Skye at Love &middot; due 2026-10-02</span></li>
+</ul>
+<h3>Michael Regan</h3><ul>
+<li><span class="b critical">critical</span> Draft and send the Skye Ridge $350K capital call summary to Inceptive <span class="small">&middot; Skye Ridge &middot; due 2026-09-30</span></li>
+<li><span class="b high">high</span> Deliver side-by-side CBRE BOV comparison and run the bond-recap model for Skye Reserve <span class="small">&middot; Skye Reserve &middot; due 2026-10-02</span></li>
+<li><span class="b high">high</span> Continue lender talks on the Conway valuation gap; update IPA on disposition/refi options <span class="small">&middot; Skye at Conway &middot; due 2026-10-02</span></li>
+</ul>
+<h3>Zamir Kazi</h3><ul>
+<li><span class="b high">high</span> Lead lender messaging on capital-call notices for tax shortfalls and AM fees <span class="small">&middot; Parks At Walnut &middot; due 2026-10-02</span></li>
+<li><span class="b high">high</span> Coordinate strategy and offers for distressed loan acquisitions at The Julia and Skye at Conway <span class="small">&middot; The Julia / Skye at Conway &middot; due 2026-10-09</span></li>
+</ul>
+<h3>Megan Burrows</h3><ul>
+<li><span class="b critical">critical</span> Submit Newmark extension requests for Skye Oaks and Boardwalk with documentation and payment evidence <span class="small">&middot; Skye Oaks / Boardwalk &middot; due 2026-09-30</span></li>
+<li><span class="b high">high</span> Provide Hanley Place lien waiver and payment evidence to Newmark <span class="small">&middot; Hanley Place &middot; due 2026-09-30</span></li>
+<li><span class="b high">high</span> Close out utility audits (Skye Isle $260K+ potential savings) <span class="small">&middot; Skye Isle &middot; due 2026-09-30</span></li>
+<li><span class="b high">high</span> Run QAR preparation for the Oct 8 deadline; build the capital project tracker for CM fees <span class="small">&middot; Portfolio &middot; due 2026-10-08</span></li>
+<li><span class="b medium">medium</span> Select two Standby pilot properties after contract review with Zach <span class="small">&middot; Portfolio &middot; due 2026-10-09</span></li>
+</ul>
+<h3>Garrett Jones</h3><ul>
+<li><span class="b high">high</span> Request JV-to-operating transfer from Josh and Julie to pay Preserve payables <span class="small">&middot; Preserve at Riverwalk &middot; due 2026-09-29</span></li>
+<li><span class="b high">high</span> Deliver budget comments on Preserve and Hunter&#x27;s Creek budgets <span class="small">&middot; Preserve / Hunter&#x27;s Creek &middot; due 2026-10-02</span></li>
+<li><span class="b high">high</span> Continue Starwood counterproposal on the Conway loan modification <span class="small">&middot; Skye at Conway &middot; due 2026-10-02</span></li>
+<li><span class="b critical">critical</span> Continue lender extension/restructure talks ahead of the April maturity <span class="small">&middot; Skye Reserve &middot; due 2026-10-09</span></li>
+</ul>
+<h3>Sugandha Siddharth</h3><ul>
+<li><span class="b high">high</span> Submit the Boardwalk budget <span class="small">&middot; The Boardwalk &middot; due 2026-09-29</span></li>
+<li><span class="b high">high</span> Rebuild Conway Draw 16 and resolve the reallocation denial <span class="small">&middot; Skye at Conway &middot; due 2026-10-02</span></li>
+<li><span class="b high">high</span> Request move-in/out, renewal and loss-to-lease ramp schedules and payroll workbook from Stephanie <span class="small">&middot; Preserve at Riverwalk &middot; due 2026-10-02</span></li>
+<li><span class="b medium">medium</span> Clarify Hunter&#x27;s Creek assumptions with Maria (concessions, water recovery, fees, parking ramp) <span class="small">&middot; Skye at Hunter&#x27;s Creek &middot; due 2026-10-02</span></li>
+</ul>
+<h3>Mike Weiner</h3><ul>
+<li><span class="b high">high</span> Set the TransUnion guarantor/denial threshold with Aditi&#x27;s analysis <span class="small">&middot; Upland Townhomes &middot; due 2026-10-02</span></li>
+<li><span class="b critical">critical</span> Approve $130K Chimney Hill AP payment schedule after cash confirmation; finalize eviction on unit 1416 <span class="small">&middot; Chimney Hill &middot; due 2026-09-29</span></li>
+<li><span class="b medium">medium</span> Decide carport scope (demo $4.2K vs repair $17K vs rebuild $30K) once bids arrive <span class="small">&middot; The Julia &middot; due 2026-10-09</span></li>
+<li><span class="b medium">medium</span> Coordinate insurance claim on Upland plumbing once the consolidated quote arrives <span class="small">&middot; Upland Townhomes &middot; due 2026-10-02</span></li>
+<li><span class="b medium">medium</span> Monitor Flats tour traffic and decide on marketing changes if tours do not rise <span class="small">&middot; The Flats &middot; due 2026-10-02</span></li>
+</ul>
+<h3>Jocel Zafe</h3><ul>
+<li><span class="b high">high</span> Finalize Chimney Hill reports after RPM reconciliation; generate September CM fee invoices <span class="small">&middot; Chimney Hill &middot; due 2026-10-01</span></li>
+</ul>
+<h3>Murlidhar Yadav</h3><ul>
+<li><span class="b medium">medium</span> Obtain Symmetry budget dashboard access and training videos from Lucas; fix template formulas <span class="small">&middot; Portfolio &middot; due 2026-10-02</span></li>
+</ul>
+<h3>Aditi Chhabra</h3><ul>
+<li><span class="b medium">medium</span> Complete Upland variance analysis and validate management fees per PMA <span class="small">&middot; Upland Townhomes &middot; due 2026-09-29</span></li>
+</ul>
+<h3>Sidonio Martins</h3><ul>
+<li><span class="b high">high</span> Confirm asphalt status at Boardwalk and Skye Oaks; pull renovation kit specs for Skye Ridge <span class="small">&middot; Skye Oaks / Skye Ridge &middot; due 2026-09-30</span></li>
+</ul>
+<h3>Zach Oseland</h3><ul>
+<li><span class="b medium">medium</span> Review Standby contract; send Inceptive default letter; resolve Skye Reserve environmental permit transfer <span class="small">&middot; Portfolio &middot; due 2026-10-02</span></li>
+</ul>
+</div><h2>9. Coverage Gaps</h2><table><thead><tr><th>Property</th><th>Market</th><th class="n">Units</th><th>Gap / last known status</th></tr></thead><tbody>
+<tr><td>Nightingale on 25th</td><td>Deer Valley, AZ</td><td class="n">240</td><td>Not discussed this week except as excluded from cash-flow work (lender-controlled budget). Last known (W38): ~80% occupancy, full passive lender control, no foreclosure filing, likely write-down to zero.</td></tr>
+<tr><td>Ninety-Nine 44</td><td>Dallas, TX</td><td class="n">260</td><td>Qualitative only (slow tours, bazaar outreach) inside the Walnut portfolio call. No occupancy or collections figures for two straight weeks.</td></tr>
+<tr><td>Skye Oaks (Palms at Palisades)</td><td>Brandon, FL</td><td class="n">125</td><td>No operations call; covered only via Newmark lender repairs and the chiller claim. Last known (W38): ~91% campus occupancy.</td></tr>
+<tr><td>Skye Oaks (Brandon Oaks)</td><td>Brandon, FL</td><td class="n">160</td><td>No operations call; campus-level only. Last known (W38): ~91% campus occupancy.</td></tr>
+<tr><td>The Boardwalk</td><td>Fort Myers, FL</td><td class="n">338</td><td>No discrete operating metrics; lender repairs and budget timing only. Last known (W38): 85% occupancy, 89.4% collections.</td></tr>
+<tr><td>Hanley Place</td><td>Tampa, FL</td><td class="n">400</td><td>No discrete operating metrics; the Slate ops call reported combined figures without a property split. Last known (W38): 95% occupancy, $700K+ aging payables.</td></tr>
+<tr><td>Parks At Walnut</td><td>Dallas, TX</td><td class="n">308</td><td>Occupancy target (87% by Oct 12) stated but no current figure or collections rate.</td></tr>
+<tr><td>Chimney Hill</td><td>Dallas, TX</td><td class="n">240</td><td>Occupancy not stated this week (W38: 92%); August financials unpublished.</td></tr>
+</tbody></table><p class="small" style="margin-top:24px">Generated 2026-09-28T09:00:00-07:00 from Fireflies transcripts dated 2026-09-21 to 2026-09-28. Markets per Master Property Reference (IMPLEMENTATION_GUIDE.md Section 10). Preserve at Riverwalk operating figures are attributed from an unnamed site-call summary led by the Preserve site team; the Slate ops call figures were not split by property.</p>
 </div>
 </body>
 </html>
