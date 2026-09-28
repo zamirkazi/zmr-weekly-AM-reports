@@ -5,7 +5,7 @@
 **Owner:** Zamir Kazi (zamir@zmrcapital.com)
 **Portfolio:** 19 properties
 **Created:** April 14, 2026
-**Last Updated:** September 21, 2026
+**Last Updated:** September 28, 2026
 
 ---
 
@@ -322,6 +322,13 @@ CRITICAL: The dashboard and all reports MUST use the market (City, State) listed
 | 2026-09-21 | Spec corrections | Section 3 still said 18 table rows and 11 deep-dive cards; corrected to 19 rows and all 19 properties to match Section 10. |
 | 2026-09-21 | Transfer method note | `DecompressionStream` via `Blob.stream().pipeThrough()` stalls and never resolves on the GitHub upload page. Writing to the stream's own writer (`ds.writable.getWriter()`) works. See Section 7. |
 | 2026-09-21 | Coverage gap follow-ups | Preserve at Riverwalk has no weekly ops call (capital/valuation coverage only) and both Skye Oaks parcels are reported as one combined campus. Recommend adding a Preserve ops call and splitting Skye Oaks by parcel. |
+| 2026-09-28 | Week 39 report generated | Built dashboard from 96 Fireflies meeting records (2026-09-21 to 2026-09-28; ~78 with processed summaries, incl. duplicate Fred/organizer recordings). Summaries were taken from the fireflies_get_transcripts payload, which returns the full summary and action items inline. All 19 properties covered; 12 reported an occupancy figure. Portfolio: 87.8% unit-weighted occupancy across 3,580 reporting units, 89.3% average collections (6 reporting), 1 green / 15 amber / 3 red. |
+| 2026-09-28 | GitHub Pages deployment | Committed `index.html` (44,057 bytes) to main via gzip+base64 injection (Method B, 4 chunks under 6KB) and the upload page. |
+| 2026-09-28 | JSON archive | Created `archive/2026-W39.json` (31,805 bytes) with meta, portfolioSnapshot, properties (19), risks (5), actionItems (34), wins (8), recommendations (7) and coverageGaps (8). |
+| 2026-09-28 | Slack distribution | Sent Week 39 summary to Zamir DM (U01N25J7789), basic ASCII only. |
+| 2026-09-28 | Gmail draft | Created draft to all 7 team members with the live dashboard link. |
+| 2026-09-28 | Attribution notes | Preserve at Riverwalk operating figures (~276 occupied / ~92%) were attributed from an unnamed Garrett site-call summary based on the Preserve site team (Stephanie). The Slate weekly ops call reports combined Hanley/Boardwalk figures (49 vacant, 91.9-95% collections) without a property split, so no discrete occupancy was assigned. Recommend asking Slate/RPM for a per-property weekly KPI export. |
+| 2026-09-28 | Tooling note | javascript_tool return values are truncated near 1,000 characters on github.com and responses containing URLs with query strings can be blocked; use get_page_text on raw.githubusercontent.com URLs to read repo files. |
 
 ---
 
