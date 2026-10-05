@@ -1,11 +1,11 @@
-# ZMR Capital â Weekly AM Report Pipeline
+# ZMR Capital — Weekly AM Report Pipeline
 
 ## Implementation Guide & System Log
 
 **Owner:** Zamir Kazi (zamir@zmrcapital.com)
 **Portfolio:** 19 properties
 **Created:** April 14, 2026
-**Last Updated:** September 28, 2026
+**Last Updated:** October 5, 2026
 
 ---
 
@@ -16,10 +16,10 @@ This pipeline automatically generates a weekly asset management report for ZMR C
 ### Pipeline Flow
 
 ```
-Fireflies Transcripts â Extract Data â Build HTML Dashboard â Deploy to GitHub Pages
-                                                            â Archive JSON (weekly)
-                                                            â Send Slack Summary
-                                                            â Draft Gmail to Team
+Fireflies Transcripts → Extract Data → Build HTML Dashboard → Deploy to GitHub Pages
+                                                            → Archive JSON (weekly)
+                                                            → Send Slack Summary
+                                                            → Draft Gmail to Team
 ```
 
 ### Key URLs
@@ -34,11 +34,11 @@ Fireflies Transcripts â Extract Data â Build HTML Dashboard â Dep
 
 ```
 zmr-weekly-AM-reports/
-âââ index.html                    # Current week's dashboard (deployed via GitHub Pages)
-âââ archive/
-â   âââ 2026-W15.json            # Weekly structured data archive
-âââ IMPLEMENTATION_GUIDE.md       # This file
-âââ README.md                     # Repo description
+├── index.html                    # Current week's dashboard (deployed via GitHub Pages)
+├── archive/
+│   └── 2026-W15.json            # Weekly structured data archive
+├── IMPLEMENTATION_GUIDE.md       # This file
+└── README.md                     # Repo description
 ```
 
 ### GitHub Pages Configuration
@@ -56,15 +56,15 @@ zmr-weekly-AM-reports/
 Pure HTML/CSS, no external dependencies, fully self-contained.
 
 **Sections:**
-1. Portfolio Snapshot â high-level KPIs (occupancy, collections, delinquency)
-2. Property Performance Table â 19 rows with status indicators (green/amber/red)
-3. Portfolio Narrative â qualitative summary from meeting transcripts
-4. Top 5 Risks â ranked risk items with severity indicators
-5. What's Working â portfolio wins and positive trends
-6. Asset Deep Dives â detailed cards for all 19 properties
-7. Strategic Recommendations â forward-looking action items
-8. Action Items by Owner â tasks assigned to specific team members
-9. Coverage Gaps â properties not discussed in meetings that week
+1. Portfolio Snapshot — high-level KPIs (occupancy, collections, delinquency)
+2. Property Performance Table — 19 rows with status indicators (green/amber/red)
+3. Portfolio Narrative — qualitative summary from meeting transcripts
+4. Top 5 Risks — ranked risk items with severity indicators
+5. What's Working — portfolio wins and positive trends
+6. Asset Deep Dives — detailed cards for all 19 properties
+7. Strategic Recommendations — forward-looking action items
+8. Action Items by Owner — tasks assigned to specific team members
+9. Coverage Gaps — properties not discussed in meetings that week
 
 ### CSS Variables
 
@@ -150,7 +150,7 @@ Each week's data is stored in `archive/YYYY-WNN.json` for future monthly, quarte
 
 | Period     | Source               | Aggregation |
 |-----------|----------------------|-------------|
-| Monthly   | 4â5 weekly JSONs     | Average KPIs, merge action items, trend occupancy/collections |
+| Monthly   | 4–5 weekly JSONs     | Average KPIs, merge action items, trend occupancy/collections |
 | Quarterly | 3 monthly rollups    | Trend analysis, YoY comparison |
 | Biannual  | 2 quarterly rollups  | Strategic review, portfolio health trajectory |
 | Annual    | 4 quarterly rollups  | Full year summary, board-ready metrics |
@@ -190,7 +190,7 @@ Each week's data is stored in `archive/YYYY-WNN.json` for future monthly, quarte
 
 The automated task should:
 
-1. **Extract data** from Fireflies transcripts for the prior week (MondayâFriday)
+1. **Extract data** from Fireflies transcripts for the prior week (Monday–Friday)
    - Use `fireflies_get_transcripts` filtered to the past 7 days
    - Get summaries via `fireflies_get_summary` for each meeting
 2. **Build the HTML dashboard** using the template structure in Section 3
@@ -218,13 +218,13 @@ The automated task should:
 
 The sandbox and browser run in completely separate environments with no shared filesystem. To upload files from the sandbox to GitHub:
 
-**Method A â Fetch + Fix from GitHub (preferred for edits):**
+**Method A — Fetch + Fix from GitHub (preferred for edits):**
 1. Use `javascript_tool` in Chrome to fetch current file from `raw.githubusercontent.com`
 2. Apply fixes via JavaScript string operations in the browser
 3. Create a File object and inject into GitHub's upload form via DataTransfer API
 4. Commit directly to main
 
-**Method B â Gzip + Base64 injection (for new files):**
+**Method B — Gzip + Base64 injection (for new files):**
 1. In sandbox: `gzip -c file.html | base64 -w0 > gz_b64.txt`
 2. Split into chunks and inject into browser via `javascript_tool`
 3. Decompress in browser using `DecompressionStream` API. IMPORTANT: do NOT use `new Blob([bytes]).stream().pipeThrough(ds)` - it stalls indefinitely on GitHub pages. Write to the stream's own writer instead: `const ds = new DecompressionStream("gzip"); const w = ds.writable.getWriter(); w.write(bytes); w.close(); await new Response(ds.readable).arrayBuffer();`
@@ -329,16 +329,25 @@ CRITICAL: The dashboard and all reports MUST use the market (City, State) listed
 | 2026-09-28 | Gmail draft | Created draft to all 7 team members with the live dashboard link. |
 | 2026-09-28 | Attribution notes | Preserve at Riverwalk operating figures (~276 occupied / ~92%) were attributed from an unnamed Garrett site-call summary based on the Preserve site team (Stephanie). The Slate weekly ops call reports combined Hanley/Boardwalk figures (49 vacant, 91.9-95% collections) without a property split, so no discrete occupancy was assigned. Recommend asking Slate/RPM for a per-property weekly KPI export. |
 | 2026-09-28 | Tooling note | javascript_tool return values are truncated near 1,000 characters on github.com and responses containing URLs with query strings can be blocked; use get_page_text on raw.githubusercontent.com URLs to read repo files. |
+| 2026-10-05 | Week 40 report generated | Built dashboard from 92 Fireflies meeting records (2026-09-28 to 2026-10-05; 76 with processed summaries, incl. duplicate Fred/organizer recordings). Summaries and action items were taken from the fireflies_get_transcripts payload (three paginated calls). All 19 properties covered; 11 reported an occupancy figure. Portfolio: 88.4% unit-weighted occupancy across 3,984 reporting units, 95.6% average collections (8 reporting), 2 green / 12 amber / 5 red. Archive week label follows the W39 convention (week covered, ISO 2026-W40). |
+| 2026-10-05 | GitHub Pages deployment | Committed index.html (51,602 bytes, pure ASCII) to main via gzip+base64 injection (Method B, 4 chunks of 5,000 chars) and the upload page. |
+| 2026-10-05 | JSON archive | Created archive/2026-W40.json (32,658 bytes) with meta, portfolioSnapshot, properties (19), risks (5), actionItems (35), wins (8), recommendations (7) and coverageGaps (8). |
+| 2026-10-05 | Slack distribution | Sent Week 40 summary to Zamir DM (U01N25J7789), basic ASCII only. |
+| 2026-10-05 | Gmail draft | Created draft to all 7 team members with the live dashboard link (not sent). |
+| 2026-10-05 | Team change flagged | Meetings on 9/30 report that Nicole Chang has left ZMR; Megan Burrows is covering her assets on an interim basis and a reallocation (Mike/Garrett) is under discussion. Section 10 AM mapping and the Section 5 recipient list were left unchanged pending Zamir's decision; both should be updated once coverage is confirmed. |
+| 2026-10-05 | Attribution notes | The Flats occupancy (88.39%, ATR 11.61%) is the "Mesa" line in the RPM leadership review (equals 99 of 112 units; The Julia is Greystar-managed and reported 90.31% separately). Preserve at Riverwalk figures again come from Garrett's unnamed Stephanie/Harrison site review. Hanley moved to red on liquidity ($856K AP vs $229K cash) and Skye Ridge to red on the August debt-service shortfall. |
+| 2026-10-05 | Encoding fix | This guide contained double-encoded UTF-8 (e.g. em dashes and arrows rendered as mojibake) from an earlier browser edit. Repaired in this commit by reversing the cp1252 round-trip in the browser before re-upload; build the File from a Uint8Array/TextEncoder output, never from an atob() binary string. |
+| 2026-10-05 | Tooling note | A GitHub upload commit is lost if the tab navigates immediately after clicking Commit changes; wait for the redirect to the repo page before navigating. The upload page also timed out once (ERR_TIMED_OUT) and had to be reloaded, which clears injected chunks. |
 
 ---
 
 ## 12. Troubleshooting
 
 **Dashboard not updating after commit:**
-GitHub Pages can take 1â5 minutes to propagate. Check deployment status at Settings â Pages in the repo.
+GitHub Pages can take 1–5 minutes to propagate. Check deployment status at Settings → Pages in the repo.
 
 **Slack message fails with `invalid_blocks`:**
-Strip special characters from the message: no tildes (~), no em dashes (â), no emoji shortcodes (:emoji:). Keep to basic ASCII.
+Strip special characters from the message: no tildes (~), no em dashes (—), no emoji shortcodes (:emoji:). Keep to basic ASCII.
 
 **Gmail draft missing recipients:**
 Use `search_threads` or Slack `slack_search_users` to look up current email addresses. All addresses follow the pattern `name@zmrcapital.com`.
