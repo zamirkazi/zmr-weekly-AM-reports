@@ -5,7 +5,7 @@
 **Owner:** Zamir Kazi (zamir@zmrcapital.com)
 **Portfolio:** 19 properties
 **Created:** April 14, 2026
-**Last Updated:** October 5, 2026
+**Last Updated:** October 12, 2026
 
 ---
 
@@ -338,6 +338,14 @@ CRITICAL: The dashboard and all reports MUST use the market (City, State) listed
 | 2026-10-05 | Attribution notes | The Flats occupancy (88.39%, ATR 11.61%) is the "Mesa" line in the RPM leadership review (equals 99 of 112 units; The Julia is Greystar-managed and reported 90.31% separately). Preserve at Riverwalk figures again come from Garrett's unnamed Stephanie/Harrison site review. Hanley moved to red on liquidity ($856K AP vs $229K cash) and Skye Ridge to red on the August debt-service shortfall. |
 | 2026-10-05 | Encoding fix | This guide contained double-encoded UTF-8 (e.g. em dashes and arrows rendered as mojibake) from an earlier browser edit. Repaired in this commit by reversing the cp1252 round-trip in the browser before re-upload; build the File from a Uint8Array/TextEncoder output, never from an atob() binary string. |
 | 2026-10-05 | Tooling note | A GitHub upload commit is lost if the tab navigates immediately after clicking Commit changes; wait for the redirect to the repo page before navigating. The upload page also timed out once (ERR_TIMED_OUT) and had to be reloaded, which clears injected chunks. |
+| 2026-10-12 | Week 41 report generated | Built dashboard from 91 Fireflies meeting records (2026-10-05 to 2026-10-12, incl. duplicate Fred/organizer recordings and ~25 silent/skipped meetings). Summaries and action items taken from the fireflies_get_transcripts payload (7 paginated calls). All 19 properties covered; 13 reported an occupancy figure. Portfolio: 88.4% unit-weighted occupancy across 4,009 reporting units, 90.4% average collections (12 reporting), 2 green / 10 amber / 7 red. |
+| 2026-10-12 | GitHub Pages deployment | Committed index.html (39,423 bytes, pure ASCII) to main via gzip+base64 injection (Method B, 3 chunks of 5,100 chars) and the upload page. SHA-256 verified against raw.githubusercontent.com after commit. |
+| 2026-10-12 | JSON archive | Created archive/2026-W41.json (31,613 bytes) with meta, portfolioSnapshot, properties (19), risks (5), actionItems (36), wins (8), recommendations (7) and coverageGaps (6). Uploaded directly via /upload/main/archive. |
+| 2026-10-12 | Slack distribution | Sent Week 41 summary to Zamir DM (U01N25J7789), basic ASCII only. |
+| 2026-10-12 | Gmail draft | Created draft to all 7 team members with the live dashboard link (not sent). |
+| 2026-10-12 | Status changes | Downgraded to red: The Boardwalk (<85% occupancy, up to 3 months free), The Julia (trustee sale set for Dec 29), Ninety-Nine 44 (83.85% occupancy, 77.6% collections). Hunter's Creek downgraded green to amber ($51K opex shortfall). Chimney Hill upgraded red to amber (fire project moving to pre-construction). |
+| 2026-10-12 | Attribution notes | Hanley Place occupancy (92%) taken from an unnamed Garrett site-review recording that references the Hanley mascot and Amanda; the Slate review cited ~94%. Skye at Love collections reported as 77.5% (10/6 weekly) and 98% (10/9 RPM catch-up), likely MTD vs prior-month close; 98% shown and flagged. Skye Oaks still reported as one combined campus. One record (Chip / Eric - Deal Discussion, 10/9) contained unrelated audio and was excluded. |
+| 2026-10-12 | Open item | Nicole Chang's departure is still not reflected in Section 10 (AM column) or Section 5 (recipient list); nicole@zmrcapital.com was kept on the draft per the task prompt. Awaiting Zamir's reassignment decision. |
 
 ---
 
