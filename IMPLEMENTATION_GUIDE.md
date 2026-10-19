@@ -5,7 +5,7 @@
 **Owner:** Zamir Kazi (zamir@zmrcapital.com)
 **Portfolio:** 19 properties
 **Created:** April 14, 2026
-**Last Updated:** October 12, 2026
+**Last Updated:** October 19, 2026
 
 ---
 
@@ -346,6 +346,14 @@ CRITICAL: The dashboard and all reports MUST use the market (City, State) listed
 | 2026-10-12 | Status changes | Downgraded to red: The Boardwalk (<85% occupancy, up to 3 months free), The Julia (trustee sale set for Dec 29), Ninety-Nine 44 (83.85% occupancy, 77.6% collections). Hunter's Creek downgraded green to amber ($51K opex shortfall). Chimney Hill upgraded red to amber (fire project moving to pre-construction). |
 | 2026-10-12 | Attribution notes | Hanley Place occupancy (92%) taken from an unnamed Garrett site-review recording that references the Hanley mascot and Amanda; the Slate review cited ~94%. Skye at Love collections reported as 77.5% (10/6 weekly) and 98% (10/9 RPM catch-up), likely MTD vs prior-month close; 98% shown and flagged. Skye Oaks still reported as one combined campus. One record (Chip / Eric - Deal Discussion, 10/9) contained unrelated audio and was excluded. |
 | 2026-10-12 | Open item | Nicole Chang's departure is still not reflected in Section 10 (AM column) or Section 5 (recipient list); nicole@zmrcapital.com was kept on the draft per the task prompt. Awaiting Zamir's reassignment decision. |
+| 2026-10-19 | Week 42 report generated | Built dashboard from 120 Fireflies meeting records (2026-10-12 to 2026-10-19; 3 paginated calls; 93 processed summaries, 27 silent/skipped, incl. duplicate Fred/organizer recordings). Summaries and action items taken from the fireflies_get_transcripts payload. All 19 properties covered; 13 reported an occupancy figure. Portfolio: 89.1% unit-weighted occupancy across 3,983 reporting units, 93.8% average collections (10 reporting), 2 green / 10 amber / 7 red. |
+| 2026-10-19 | GitHub Pages deployment | Committed index.html (49,699 bytes, pure ASCII) to main via gzip+base64 injection (Method B, chunks of 6,000 chars) and the upload page. SHA-256 verified in the browser after decompression and before upload. |
+| 2026-10-19 | JSON archive | Created archive/2026-W42.json (38,207 bytes) with meta, portfolioSnapshot, properties (19), risks (5), actionItems (39), wins (8), recommendations (7) and coverageGaps (8). Uploaded directly via /upload/main/archive. |
+| 2026-10-19 | Slack distribution | Sent Week 42 summary to Zamir DM (U01N25J7789), basic ASCII only. |
+| 2026-10-19 | Gmail draft | Created draft to all 7 team members with the live dashboard link (not sent). |
+| 2026-10-19 | Status changes | Status mix unchanged (2/10/7). The Julia stays red: a receiver was appointed and ZMR no longer controls the asset (10/16). Skye Reserve stays red with new fire-system failures (153 units flagged, leasing paused in affected buildings, $250K-300K+ repairs). Skye Ridge stays red as partners cannot fund the $360K capital call. Ninety-Nine 44 held at red pending KPIs despite 17 move-ins. |
+| 2026-10-19 | Attribution notes | Skye Reserve occupancy 78.82% (10/13 ops) vs 'mid-60s' (10/13 tax call, likely incl. ~130 offline units) vs ~82% projected (10/15 fire call); 78.82% shown. Skye at Love collections 97% (10/12 budget review) vs 84% (10/13 weekly update); 97% shown. The ~$240K asphalt requirement is attributed to Skye at Love; one AM-connect summary named Skye Ridge. Boardwalk 84.3% / 95% and Hanley 92.3% / 92% taken from the 10/12 Inceptiv review. Atlantic Creek monthly call (tree removal, $150K capital call, 94% Q4 target) attributed to Skye Ridge. Inceptiv mention of Hunter's Creek 'receivership' treated as lender cash management. |
+| 2026-10-19 | Open item | Nicole Chang's departure is still not reflected in Section 10 (AM column) or Section 5 (recipient list); nicole@zmrcapital.com kept on the draft per the task prompt. The Florida tax consultant (FSSR) now lists Megan as primary contact for all properties. |
 
 ---
 
