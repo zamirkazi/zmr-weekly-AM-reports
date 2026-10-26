@@ -1,0 +1,524 @@
+{
+  "meta": {
+    "week": "2026-W43",
+    "weekEnding": "2026-10-26",
+    "periodCovered": "Oct 19 - Oct 26, 2026",
+    "generatedAt": "2026-10-26T12:00:00-07:00",
+    "meetingCount": 84,
+    "meetingCountNote": "84 unique Fireflies records 2026-10-19 to 2026-10-26 from two fireflies_get_transcripts calls (summaries returned inline); many silent or non-property meetings",
+    "source": "Fireflies"
+  },
+  "portfolioSnapshot": {
+    "totalUnits": 5651,
+    "avgOccupancy": 0.8649,
+    "occupancyMethod": "unit-weighted across reporting properties",
+    "occupancyReportingProperties": 11,
+    "occupancyReportingUnits": 3640,
+    "avgCollections": 0.8803,
+    "collectionsReportingProperties": 5,
+    "avgDelinquency": 0.1197,
+    "propertiesGreen": 1,
+    "propertiesAmber": 9,
+    "propertiesRed": 9
+  },
+  "properties": [
+    {
+      "name": "The Flats",
+      "market": "Mesa, AZ",
+      "units": 112,
+      "assetManager": "Mike",
+      "occupancy": 0.9018,
+      "collections": null,
+      "status": "amber",
+      "headline": "Projected 90.18% vs 92% target; 5 tours, 1 app",
+      "notes": "Ops (10/21): projected occupancy 90.18%, needs 3-4 move-ins to approach 92%; an Elite One move-out may pull it down later. Renewals Nov 60%, Dec 50% (upside 67%). Collections hit by move-out damages and final utility bills; guarantor payouts for units 250 and 137 did not match balances. Marketing: 49% missed-call rate persists though recovery signals noted. Budget call: Katena revising application-fee/renewal concession math; budget package held."
+    },
+    {
+      "name": "Nightingale on 25th",
+      "market": "Deer Valley, AZ",
+      "units": 240,
+      "assetManager": "Mike",
+      "occupancy": 0.8012,
+      "collections": null,
+      "status": "red",
+      "headline": "80.12% occupied; ~$500K repairs needed; receiver flat",
+      "notes": "Budget call (10/20, titled Flats Budget Call): 80.12% occupancy, daily skips, evictions, flooding and pipe issues. Receiver performance unchanged, approvals limited to concessions. About $500K of repairs needed; stolen backflow needs $2K-$4K replacement. ATTRIBUTION NOTE: transcript text says 'Nightingale' for the receiver comments; last week the receiver was attributed to The Julia."
+    },
+    {
+      "name": "The Julia",
+      "market": "Mesa, AZ",
+      "units": 320,
+      "assetManager": "Mike",
+      "occupancy": null,
+      "collections": null,
+      "status": "red",
+      "headline": "Not discussed; last known: receiver appointed",
+      "notes": "No Julia-specific meeting this week. ZMR/Sym sync (10/22) asked to exclude Julia from standard reporting. Last known (W42): receiver appointed 10/16, ZMR no longer controls the asset."
+    },
+    {
+      "name": "The Boardwalk",
+      "market": "Fort Myers, FL",
+      "units": 338,
+      "assetManager": "Nicole",
+      "occupancy": 0.861,
+      "collections": 0.9,
+      "status": "red",
+      "headline": "86.10% occ, 50 vacant; capital ~$222K vs AP ~$232K",
+      "notes": "Slate ops (10/20): 86.10% occupancy, 50 available, 12 apps in progress, 3 move-ins next week; loss-leader pricing leasing fast. Collections near 90%, 5 evictions in stage two, maintenance hire pending. Capital ~ $222K vs ~$232K AP; budget due to lender Friday. Digital: 5 of 8 leases; Apartments.com package downgraded, budget shifted to PPC/PMax."
+    },
+    {
+      "name": "Hanley Place",
+      "market": "Tampa, FL",
+      "units": 400,
+      "assetManager": "Nicole",
+      "occupancy": null,
+      "collections": null,
+      "status": "red",
+      "headline": "AP >$500K, possibly ~$1M; ~$76K insurance surplus",
+      "notes": "Megan/Garrett (10/22): aging AP above $500K and possibly near $1M with lien and invoice-practice concerns; ~$76K insurance escrow surplus. Sr leadership (10/21): $500K+ AP a key risk. Revised budget in progress. Digital: 5 of 7 leases; Zillow and Apartments.com packages cut, $690 moved to digital."
+    },
+    {
+      "name": "Skye at Conway",
+      "market": "Orlando, FL",
+      "units": 220,
+      "assetManager": "Nicole",
+      "occupancy": 0.9273,
+      "collections": null,
+      "status": "amber",
+      "headline": "92.73% occ; pre-lease 95.91% in 30 days",
+      "notes": "Weekly (10/20): 92.73% occupied, 4 tours / 4 leases, bankruptcy dismissed (move-out by month-end). Spectrum bill cut $376 to $130, lien exposure limited to Ready Carpet (~$2,500/month for 6 months). Jan 9 loan maturity: sale, extension or recap under review; lender reporting response in progress."
+    },
+    {
+      "name": "Skye Oaks (Palms at Palisades)",
+      "market": "Brandon, FL",
+      "units": 125,
+      "assetManager": "Nicole",
+      "occupancy": null,
+      "collections": null,
+      "status": "amber",
+      "headline": "Marketing only; budget and lender approval pending",
+      "notes": "Meetings did not distinguish the two Skye Oaks parcels. Digital: 23 leads / 7 leases, bandit signs approved, website fixes improved activity. Budget pending (delivery next week); Sky Oaks lender approval outstanding (Sid/Garrett)."
+    },
+    {
+      "name": "Skye Oaks (Brandon Oaks)",
+      "market": "Brandon, FL",
+      "units": 160,
+      "assetManager": "Nicole",
+      "occupancy": null,
+      "collections": null,
+      "status": "amber",
+      "headline": "Marketing only; budget and lender approval pending",
+      "notes": "See Palms at Palisades: no parcel-level occupancy or collections discussed this week. Budget delivery expected next week; lender approval outstanding."
+    },
+    {
+      "name": "Skye Reserve",
+      "market": "Brandon, FL",
+      "units": 982,
+      "assetManager": "Nicole",
+      "occupancy": 0.7902,
+      "collections": null,
+      "status": "red",
+      "headline": "79.02% leased; fire watch cut 6 to 1; ~$2M deferred",
+      "notes": "Ops (10/20): 79.02% leased, 14 leases and 14 move-ins, 12 evictions; make-ready output may slow for 1-2 weeks as maintenance supports fire-marshal inspections; fire-panel repairs 2-3 weeks. Leadership (10/26): fire watch cut from six people to one, ~$5,000/day to under $1,000/day. Cracked beam, closed staircase, severe mold (3-5 vacant units; ~130 units remediation est. $650K-$750K), ~$200K-$300K fire system work plus ~$2M other deferred. MF1/CBRE debt ~ $200M; recovery needs 90-92% occupancy. Spectrum bulk internet could bring ~$245K upfront."
+    },
+    {
+      "name": "Preserve at Riverwalk",
+      "market": "Bradenton, FL",
+      "units": 300,
+      "assetManager": "Nicole",
+      "occupancy": null,
+      "collections": null,
+      "status": "amber",
+      "headline": "Not discussed this week",
+      "notes": "No meeting coverage. Last known status amber (no current KPIs on file)."
+    },
+    {
+      "name": "Skye at Hunter's Creek",
+      "market": "Kissimmee, FL",
+      "units": 216,
+      "assetManager": "Nicole",
+      "occupancy": 0.944,
+      "collections": null,
+      "status": "amber",
+      "headline": "94.4% occ, 30-day trend above 95%",
+      "notes": "Weekly (10/19): 94.4% occupancy, both recent tours converted; three-bedroom concession extended toward two months, holiday specials. 12 of 14 leases digital; PMax cut $780 to $500; Yelp rating 1.0 needs review push. Vendor payment of $45,704 (I Apartments) paused pending compliance; AP needs capital funding. Bulk Wi-Fi could cut tech cost from ~$31 to ~$2/unit. Budget finalized 10/23."
+    },
+    {
+      "name": "Park at Peachtree Hills",
+      "market": "Atlanta, GA",
+      "units": 118,
+      "assetManager": "Mike",
+      "occupancy": null,
+      "collections": null,
+      "status": "amber",
+      "headline": "Traffic slowing; half-month concession test",
+      "notes": "Ops (10/21): leasing traffic declining, half-month-free test through October, $350 Dec renewal offer, 5 evictions pending (~$3,600 expected). Unit renovation approved at $1,275 asking, ~$8,300. Referral raised to $750. Downgraded from green: traffic decline and concession reliance; no occupancy figure given. Budget GL changes (COA) under review."
+    },
+    {
+      "name": "Upland Townhomes",
+      "market": "Mableton, GA",
+      "units": 348,
+      "assetManager": "Mike",
+      "occupancy": null,
+      "collections": 0.83,
+      "status": "red",
+      "headline": "Collections fell 88% to 83%; ~$100K license/backflow exposure",
+      "notes": "Weekly (10/21): collections fell from ~88% to 83% (month-end mid-80s); 13 delinquent residents with prior issues = ~$36K (30% of delinquency); need ~$100K, expect $28K-$30K. 5 high-balance evictions (~$26K) targeted before 10/30. New screening safeguards live. Leadership (10/26): licensing may need two backflow devices (~$100K), 25% unit inspections, possible six-figure repairs. Upgraded to red on collections plus compliance cost."
+    },
+    {
+      "name": "Ninety-Nine 44",
+      "market": "Dallas, TX",
+      "units": 260,
+      "assetManager": "Mike",
+      "occupancy": 0.8385,
+      "collections": 0.9,
+      "status": "red",
+      "headline": "83.85% occ; $750 concession lifting activity",
+      "notes": "Walnut ops (10/20): 83.85% occupancy, 5 shows / 5 apps, collections above 90% with $9,506 pending (~$15K more to reach target). Priority repairs mostly done; retaining wall and fencing bids pending. 110 PPC conversions at $25 each. Possible property-tax funding need (Parks and 9944)."
+    },
+    {
+      "name": "Parks At Walnut",
+      "market": "Dallas, TX",
+      "units": 308,
+      "assetManager": "Mike",
+      "occupancy": 0.8377,
+      "collections": 0.885,
+      "status": "red",
+      "headline": "83.77% occ (86% projected); collections 88.5%",
+      "notes": "Walnut ops (10/20): 83.77% occupancy, projected 86%, 18 move-ins vs 5 move-outs in 30 days; 2BR concession to $1,225 and larger-unit incentive $800; collections 88.50%, two accounts ($2,531) may need filing. Tax funding may be needed (existing escrow, ACRE ~$150K vs $360K). Downgraded to red on sub-85% occupancy and tax exposure."
+    },
+    {
+      "name": "Chimney Hill",
+      "market": "Dallas, TX",
+      "units": 240,
+      "assetManager": "Mike",
+      "occupancy": null,
+      "collections": null,
+      "status": "amber",
+      "headline": "Collections +2%; occupancy counts conflict (107/113/124)",
+      "notes": "Weekly (10/20): collections improved 2%, December renewal special (one month + $150 Spruce credit), mailbox replacement done for $800 vs $8K-$10K bids; $102,183 Waterfall deposit pending reconciliation. Budget review (10/19): occupancy counts differ across files, 14 repositioned units returning June-August, rent growth 1.2%, insurance $203,140. PMax conversion ~ $29. Site visit and municipal approval pending."
+    },
+    {
+      "name": "Skye Isle",
+      "market": "Dallas, TX",
+      "units": 308,
+      "assetManager": "Nicole",
+      "occupancy": 0.9513,
+      "collections": null,
+      "status": "green",
+      "headline": "95.13% occ; retention 68%/75%; delinquency $7.7K",
+      "notes": "Weekly (10/20): 95.13% occupancy, 7 shows / 5 apps, no pricing pushback; delinquency $7,661.73 (plus $16K-$17K in transit). Retention 68% Sep / 75% Oct. Watch items: vendor payments blocked, website conversion fell to 1.8%, maturity extended to June 2027 (Isle and Love) with funding decision pending."
+    },
+    {
+      "name": "Skye at Love",
+      "market": "Dallas, TX",
+      "units": 440,
+      "assetManager": "Nicole",
+      "occupancy": 0.9386,
+      "collections": null,
+      "status": "amber",
+      "headline": "27 vacancies (~93.9% derived); maturity extended",
+      "notes": "Weekly (10/20): 440 units, 27 vacancies (~93.9% derived; summary says near 95%), rent increases deferred through Q4. Maturity extended to June 2027; team leaning against additional funding, considering forbearance or post-year-end sale; Regan preparing capital-call analysis; HAP decision pending (Zach). Budget revisions due; paving, HVAC and tree work budgeted."
+    },
+    {
+      "name": "Skye Ridge",
+      "market": "Las Vegas, NV",
+      "units": 216,
+      "assetManager": "Nicole",
+      "occupancy": 0.9167,
+      "collections": 0.9,
+      "status": "red",
+      "headline": "91.67% occ / 93.98% leased; capital call unfunded",
+      "notes": "Ops (10/21): occupancy 91.67%, leased 93.98%, collections back to 90% (Tableau 82.31%), retention 66.66%, guarantor program live, 274 Google reviews. Capital: renovations not started, funds undrawn; partners could not fund the $360K call (ACRE may provide ~$150K). Summer pricing cuts lifted occupancy ~500 bps. Cox agreement, HAP ledger discrepancy under review."
+    }
+  ],
+  "risks": [
+    {
+      "rank": 1,
+      "property": "Skye Reserve",
+      "severity": "high",
+      "description": "Fire-system, mold and structural issues at a 982-unit asset: ~$200K-$300K fire work plus ~$2M deferred items, cracked beam and closed staircase, mold remediation (~130 units, $650K-$750K est.). Lender oversight is heightened on ~$200M MF1/CBRE debt; recovery needs 90-92% occupancy versus 79.02% leased today.",
+      "mitigation": "Fire watch cut from six staff to one (savings ~$4K/day) but deficiencies remain open. Get the structural engineer assessment and a lender-approved remediation plan."
+    },
+    {
+      "rank": 2,
+      "property": "Hanley Place / The Boardwalk",
+      "severity": "high",
+      "description": "Hanley Place aging AP exceeds $500K and may approach $1M with lien and invoice-practice concerns; Boardwalk holds ~$222K capital against ~$232K AP. Cash sources are thin (Hanley ~$76K insurance surplus).",
+      "mitigation": "Audit AP aging and liens at both assets; confirm funding sources before Friday lender budget submissions."
+    },
+    {
+      "rank": 3,
+      "property": "Upland Townhomes",
+      "severity": "high",
+      "description": "Collections slid from ~88% to 83% (prior-issue residents are ~$36K of delinquency) while licensing may require two backflow devices (~$100K), 25% unit inspections and possible six-figure repairs.",
+      "mitigation": "Accelerate set-outs, finalize licensing strategy with the city, and obtain backflow and electrical bids."
+    },
+    {
+      "rank": 4,
+      "property": "Parks At Walnut / Ninety-Nine 44",
+      "severity": "high",
+      "description": "Both Dallas Walnut assets sit near 84% occupancy with collections of 88-90%, soft Texas fundamentals, and a possible property-tax funding need; investor (Watershed) scrutiny of historical reserve and capex use is rising.",
+      "mitigation": "Hold concession plan, confirm tax escrow and ACRE funding (~$150K vs $360K), and complete the capital reconciliation for one property first."
+    },
+    {
+      "rank": 5,
+      "property": "Capital structure: Isle/Love, Skye Ridge, Conway",
+      "severity": "medium",
+      "description": "Isle and Love maturity extended to June 2027 but additional funding is disfavored; Skye Ridge partners could not fund the $360K call; Conway's Jan 9 loan maturity needs a sale, extension or recap decision. A Yardi-to-Cemetery feed outage (collections missing since 10/17) also limits reporting visibility.",
+      "mitigation": "Decide funding stance with Atlantic Creek and Rialto this week; finish Conway model; restore the data feed."
+    }
+  ],
+  "actionItems": [
+    {
+      "owner": "Megan Burrows",
+      "task": "Resolve Yardi-to-Cemetery reporting feed outage with RPM and Cemetery",
+      "property": "Portfolio",
+      "priority": "critical",
+      "dueDate": "2026-10-30"
+    },
+    {
+      "owner": "Megan Burrows",
+      "task": "Review Tier 1 and Tier 2 2027 budgets; Tier 2 due Friday",
+      "property": "Portfolio",
+      "priority": "high",
+      "dueDate": "2026-10-30"
+    },
+    {
+      "owner": "Megan Burrows",
+      "task": "Prepare Q3 investor reporting and Slate materials (Slate meeting Nov 4)",
+      "property": "Portfolio",
+      "priority": "high",
+      "dueDate": "2026-11-04"
+    },
+    {
+      "owner": "Megan Burrows",
+      "task": "Follow up on Hanley Place insurance escrow surplus and AP; confirm Conway debt follow-up",
+      "property": "Hanley Place",
+      "priority": "high",
+      "dueDate": "2026-10-30"
+    },
+    {
+      "owner": "Megan Burrows",
+      "task": "Coordinate MF1 discussion on insurance return-premium routing",
+      "property": "Skye Reserve",
+      "priority": "medium",
+      "dueDate": "2026-11-06"
+    },
+    {
+      "owner": "Garrett Jones",
+      "task": "Drive Sky Reserve fire-deficiency remediation; get structural-engineer assessment and mold tracker",
+      "property": "Skye Reserve",
+      "priority": "critical",
+      "dueDate": "2026-10-30"
+    },
+    {
+      "owner": "Garrett Jones",
+      "task": "Review Hanley Place and Boardwalk capital needs and AP",
+      "property": "Hanley Place",
+      "priority": "high",
+      "dueDate": "2026-10-30"
+    },
+    {
+      "owner": "Garrett Jones",
+      "task": "Obtain Sky Oaks lender approval; evaluate bulk Wi-Fi at Conway and Hunter's Creek",
+      "property": "Skye Oaks",
+      "priority": "medium",
+      "dueDate": "2026-11-06"
+    },
+    {
+      "owner": "Mike Weiner",
+      "task": "Resolve Upland business-license requirements and engage attorney on backflow compliance",
+      "property": "Upland Townhomes",
+      "priority": "critical",
+      "dueDate": "2026-10-30"
+    },
+    {
+      "owner": "Mike Weiner",
+      "task": "Complete tier-two budgets; follow up with Sid on Upland and Peachtree items",
+      "property": "Georgia / Arizona",
+      "priority": "high",
+      "dueDate": "2026-10-30"
+    },
+    {
+      "owner": "Mike Weiner",
+      "task": "Offer rent reduction to Cupcake prospect and raise future townhome pricing at Parks",
+      "property": "Parks At Walnut",
+      "priority": "medium",
+      "dueDate": "2026-10-30"
+    },
+    {
+      "owner": "Zamir Kazi",
+      "task": "Discuss Isle and Love funding with Atlantic Creek; coordinate Rialto forbearance or sale discussion",
+      "property": "Skye Isle / Skye at Love",
+      "priority": "critical",
+      "dueDate": "2026-10-30"
+    },
+    {
+      "owner": "Zamir Kazi",
+      "task": "Circulate Houston deal to investors; prepare exit-cap sensitivity",
+      "property": "Acquisitions",
+      "priority": "high",
+      "dueDate": "2026-10-30"
+    },
+    {
+      "owner": "Zach Oseland",
+      "task": "Confirm HAP decision and appeal options (Love); brief Crystal on insurance reimbursement",
+      "property": "Skye at Love",
+      "priority": "high",
+      "dueDate": "2026-10-30"
+    },
+    {
+      "owner": "Regan",
+      "task": "Provide Isle and Love capital-call analysis and HAP documents",
+      "property": "Skye Isle / Skye at Love",
+      "priority": "high",
+      "dueDate": "2026-10-30"
+    },
+    {
+      "owner": "Sugandha Siddharth",
+      "task": "Finalize Hanley Place and Boardwalk budgets; Slate capex reconciliation",
+      "property": "Hanley Place",
+      "priority": "high",
+      "dueDate": "2026-10-27"
+    },
+    {
+      "owner": "Aditi Chhabra",
+      "task": "Deliver cash-flow projections and apply new COA treatment (renewal concessions) across properties",
+      "property": "Portfolio",
+      "priority": "medium",
+      "dueDate": "2026-10-27"
+    },
+    {
+      "owner": "Joshua Austin",
+      "task": "Resolve Chimney Hill occupancy count mismatch (ticket) and revise Chimney Hill and Love budgets",
+      "property": "Chimney Hill",
+      "priority": "high",
+      "dueDate": "2026-10-27"
+    },
+    {
+      "owner": "Jessica Jackson",
+      "task": "Send January renewal recommendations; meet HD Supply on unit-turn pricing",
+      "property": "Skye Ridge",
+      "priority": "medium",
+      "dueDate": "2026-10-30"
+    },
+    {
+      "owner": "Nicole King",
+      "task": "Send January renewals, request TransUnion score ranges, obtain gate-lock bid",
+      "property": "Park at Peachtree Hills",
+      "priority": "medium",
+      "dueDate": "2026-10-30"
+    },
+    {
+      "owner": "Jenique Wilkerson",
+      "task": "Issue January renewal offers; push earlier set-out dates; license roadmap",
+      "property": "Upland Townhomes",
+      "priority": "high",
+      "dueDate": "2026-10-30"
+    },
+    {
+      "owner": "Jennifer Perez",
+      "task": "Obtain retaining-wall bids; send January renewal proposals",
+      "property": "Parks At Walnut",
+      "priority": "medium",
+      "dueDate": "2026-10-30"
+    },
+    {
+      "owner": "Maria Hood",
+      "task": "Cover Hunter's Creek; implement holiday promotion; reallocate $45,704 vendor payment",
+      "property": "Skye at Hunter's Creek",
+      "priority": "medium",
+      "dueDate": "2026-10-30"
+    },
+    {
+      "owner": "Jeremy Leasure",
+      "task": "Complete Sky Reserve make-ready units; obtain final fire-panel and tree bids",
+      "property": "Skye Reserve",
+      "priority": "high",
+      "dueDate": "2026-10-30"
+    },
+    {
+      "owner": "Katena Houfek",
+      "task": "Revise Flats concession assumptions and obtain backflow cage pricing",
+      "property": "The Flats",
+      "priority": "medium",
+      "dueDate": "2026-10-30"
+    }
+  ],
+  "wins": [
+    {
+      "property": "Skye at Hunter's Creek",
+      "description": "94.4% occupancy with a 30-day trend above 95%; 12 of 14 leases came from digital marketing and PMax spend was trimmed to $500."
+    },
+    {
+      "property": "Skye Reserve",
+      "description": "Fire watch reduced from six staff to one (about $5,000/day down to under $1,000/day); 14 leases and 14 move-ins last week and a Spectrum bulk-internet proposal of ~$245K upfront."
+    },
+    {
+      "property": "Skye at Love / Skye Isle",
+      "description": "Maturity extended to June 2027; Isle at 95.13% occupancy with delinquency down to $7.7K."
+    },
+    {
+      "property": "Skye at Conway",
+      "description": "4 of 4 tours converted; Spectrum bill cut from $376 to $130 and bankruptcy case dismissed."
+    },
+    {
+      "property": "Chimney Hill",
+      "description": "Mailbox replacement completed for $800 versus $8K-$10K bids; collections up 2%."
+    },
+    {
+      "property": "Skye Ridge",
+      "description": "Summer pricing cuts lifted occupancy about 500 bps to 91.67%; guarantor program launched and collections back to 90%."
+    },
+    {
+      "property": "Acquisitions",
+      "description": "Houston PSA fully executed and Smart Living Genoa PSA signed; Elysian (Jacksonville) emerged as lead pipeline deal."
+    }
+  ],
+  "recommendations": [
+    "Skye Reserve: obtain the structural-engineer assessment and mold-units tracker this week, document remediation approvals for RPM, and hold the lender cash-flow analysis to a single agreed set of numbers.",
+    "Hanley Place and The Boardwalk: complete an AP and lien audit before lender budget submissions; do not release new payables until funding sources are confirmed.",
+    "Upland: finalize the licensing roadmap with the City of Mableton, get two backflow quotes, and push set-outs on the five high-balance accounts before 10/30.",
+    "Isle and Love / Skye Ridge / Conway: take a funding stance with Atlantic Creek and Rialto (non-funding plus forbearance or post-year-end sale is the current lean) and finish the Conway maturity model.",
+    "Data hygiene: escalate the Yardi-to-Cemetery feed outage (no collections since 10/17) and resolve conflicting occupancy and movement counts at Chimney Hill, Isle and Love before budget finalization."
+  ],
+  "coverageGaps": [
+    {
+      "property": "Preserve at Riverwalk",
+      "note": "No meeting coverage this week; no KPIs on file.",
+      "lastKnownStatus": "amber"
+    },
+    {
+      "property": "The Julia",
+      "note": "No property meeting; only a Sym request to exclude Julia from standard reporting. Last known: receiver appointed, ZMR no longer controls the asset.",
+      "lastKnownStatus": "red"
+    },
+    {
+      "property": "Skye Oaks (Palms at Palisades)",
+      "note": "Only marketing and budget mentions; parcel-level occupancy and collections not discussed (the two Skye Oaks parcels were not distinguished).",
+      "lastKnownStatus": "amber"
+    },
+    {
+      "property": "Skye Oaks (Brandon Oaks)",
+      "note": "Same as above: no parcel-level KPIs.",
+      "lastKnownStatus": "amber"
+    },
+    {
+      "property": "Hanley Place",
+      "note": "Occupancy and collections not stated in this week's meetings (AP and budget only).",
+      "lastKnownStatus": "red"
+    },
+    {
+      "property": "Chimney Hill, Peachtree Hills, Skye Reserve, Isle (collections %)",
+      "note": "Collections percentages not given for these; occupancy not given for Chimney Hill and Peachtree Hills.",
+      "lastKnownStatus": "-"
+    }
+  ],
+  "attributionNotes": [
+    "Nightingale vs Julia receiver: the 10/20 budget call (titled 'Flats Budget Call') attributes the receiver to Nightingale; W42 attributed it to The Julia. Both shown red.",
+    "Skye at Love occupancy is derived from 27 vacancies / 440 units (93.86%); the summary says 'near 95%'.",
+    "Boardwalk shown from the Slate ops call (86.10%); Upland collections 83% vs 'mid-80s' month-end; Skye Ridge collections 90% (call) vs 82.31% (Tableau).",
+    "Status changes: Upland amber to red; Parks At Walnut amber to red; Peachtree Hills green to amber. Others held."
+  ]
+}
